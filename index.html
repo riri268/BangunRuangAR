@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b9ecff" />
+    <title>BangunRuang — Media Pembelajaran Bangun Ruang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Buka navigasi">
+      ☰
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="Beranda">
+        <img src="assets/images/logo_utama.png" alt="Logo BangunRuang" />
+        <span>BangunRuang</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <button class="nav-link active" data-page="Beranda">
+          <img src="assets/images/icon_beranda.png" alt="" /><span
+            >Beranda</span
+          >
+        </button>
+        <button class="nav-link" data-page="Materi">
+          <img src="assets/images/icon_materi.png" alt="" /><span>Materi</span>
+        </button>
+        <button class="nav-link" data-page="Eksplorasi 3D">
+          <img src="assets/images/icon_Eksplorasi3D.png" alt="" /><span
+            >Eksplorasi 3D</span
+          >
+        </button>
+        <button class="nav-link" data-page="Video">
+          <img src="assets/images/icon_video.png" alt="" /><span>Video</span>
+        </button>
+        <button class="nav-link" data-page="Latihan Soal">
+          <img src="assets/images/icon_latihansoal.png" alt="" /><span
+            >Latihan Soal</span
+          >
+        </button>
+        <button class="nav-link" data-page="Kuis">
+          <img src="assets/images/icon_kuis.png" alt="" /><span>Kuis</span>
+        </button>
+        <button class="nav-link" data-page="Games">
+          <img src="assets/images/icon_games.png" alt="" /><span>Games</span>
+        </button>
+        <div class="nav-divider"></div>
+        <button class="nav-link progress-link" data-page="Progres Belajar">
+          <img src="assets/images/icon progresbelajar.png" alt="" /><span
+            >Progres Belajar</span
+          >
+        </button>
+      </nav>
+      <div class="robot-wrap" aria-label="Maskot BangunRuang">
+        <img src="assets/images/ic_robot.png" alt="Robot maskot BangunRuang" />
+        <div class="robot-caption">
+          <span class="robot-copyright">© 2026 BangunRuang</span>
+          <span class="robot-tagline">Belajar Bangun Ruang Lebih Seru!</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-spacer"></div>
+        <label class="search-box">
+          <span class="search-icon">⌕</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Cari materi, video, atau soal..."
+            autocomplete="off"
+          />
+          <kbd>⌘ K</kbd>
+        </label>
+        <button class="round-action notification" aria-label="Notifikasi">
+          ♧<i></i>
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
+          <span>☀</span><b></b>
+        </button>
+        <button class="profile-pill" id="profileButton">
+          <span class="profile-avatar">👩🏻‍🎓</span
+          ><span class="profile-name">Halo, Siswa</span
+          ><span class="chevron">⌄</span>
+        </button>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="hero-mark">
+            <img
+              src="assets/images/BangunRuang_3D Learning_Badge.png"
+              alt="BangunRuang"
+            />
+          </div>
+          <h1>Bangun<span>Ruang</span></h1>
+          <p class="hero-subtitle">Media Pembelajaran Bangun Ruang</p>
+          <p class="hero-description">
+            Yuk, jelajahi dunia bangun ruang dengan cara yang seru, mudah, dan
+            menyenangkan!
+          </p>
+          <button class="primary-cta" data-page="Materi">
+            Mulai Belajar <span>➜</span>
+          </button>
+        </div>
+        <div class="hero-shapes" aria-hidden="true">
+          <div class="shape-cube"></div>
+          <div class="shape-cylinder"></div>
+          <div class="shape-cone"></div>
+          <div class="shape-sphere"></div>
+          <div class="shape-block"></div>
+        </div>
+        <aside class="progress-card">
+          <div class="progress-title">
+            <img src="assets/images/icon progresbelajar.png" alt="" />
+            <strong>Progres Belajar</strong>
+          </div>
+          <div class="progress-content">
+            <div class="progress-ring"><span>75%</span></div>
+            <div>
+              <strong class="progress-count">6/8</strong
+              ><small>Materi Selesai</small>
+            </div>
+          </div>
+          <button class="progress-button" data-page="Progres Belajar">
+            Lihat Progres <span>›</span>
+          </button>
+        </aside>
+      </section>
+
+      <section class="quick-links" aria-label="Menu cepat">
+        <button class="quick-card quick-materi" data-page="Materi">
+          <img src="assets/images/button_materi.png" alt="Materi" />
+        </button>
+        <button class="quick-card quick-explore" data-page="Eksplorasi 3D">
+          <img
+            src="assets/images/button_eksplorasi_3d.png"
+            alt="Eksplorasi 3D"
+          />
+        </button>
+        <button class="quick-card quick-video" data-page="Video">
+          <img src="assets/images/button_video.png" alt="Video" />
+        </button>
+        <button class="quick-card quick-latihan" data-page="Latihan Soal">
+          <img src="assets/images/button_latihan.png" alt="Latihan" />
+        </button>
+        <button class="quick-card quick-kuis" data-page="Kuis">
+          <img src="assets/images/button_kuis.png" alt="Kuis" />
+        </button>
+        <button class="quick-card quick-games" data-page="Games">
+          <img src="assets/images/button_games.png" alt="Games" />
+        </button>
+      </section>
+
+      <section class="materials-section" id="materialsSection">
+        <div class="section-heading">
+          <div class="heading-title">
+            <span class="mini-cube">◆</span>
+            <div>
+              <h2>Materi Bangun Ruang</h2>
+              <p>Kenali bentuk, sifat, dan rumusnya!</p>
+            </div>
+          </div>
+          <button class="see-all" data-page="Materi">
+            Lihat Semua Materi <span>➜</span>
+          </button>
+        </div>
+        <div class="material-grid" id="materialGrid">
+          <button class="material-card" data-material="Kubus">
+            <img src="assets/images/button_kubus.png" alt="Kubus" />
+          </button>
+          <button class="material-card" data-material="Balok">
+            <img src="assets/images/button_balok.png" alt="Balok" />
+          </button>
+          <button class="material-card" data-material="Prisma">
+            <img src="assets/images/button_prisma.png" alt="Prisma" />
+          </button>
+          <button class="material-card" data-material="Limas">
+            <img src="assets/images/button_limas.png" alt="Limas" />
+          </button>
+          <button class="material-card" data-material="Tabung">
+            <img src="assets/images/button_tabung.png" alt="Tabung" />
+          </button>
+          <button class="material-card" data-material="Kerucut">
+            <img src="assets/images/button_kerucut.png" alt="Kerucut" />
+          </button>
+          <button class="material-card" data-material="Bola">
+            <img src="assets/images/button_bola.png" alt="Bola" />
+          </button>
+        </div>
+        <p class="empty-state" id="emptyState" hidden>
+          Materi tidak ditemukan. Coba kata kunci lain, ya!
+        </p>
+      </section>
+
+      <footer class="footer-note">
+        Belajar jadi lebih seru bersama <strong>BangunRuang</strong> ✨
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
