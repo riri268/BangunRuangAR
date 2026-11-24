@@ -1,173 +1,2956 @@
 /* BangunRuang — dashboard responsive */
-:root{
-  --ink:#101d58;--muted:#637095;--white:rgba(255,255,255,.88);
-  --line:rgba(255,255,255,.92);--shadow:0 8px 22px rgba(60,88,139,.13);
-  --mint:#b9f6d8;--blue:#b9e9ff;--pink:#ffd8e8;--yellow:#fff0b9;--purple:#ead8ff;
-  --sidebar:260px;
+:root {
+  --ink: #101d58;
+  --muted: #637095;
+  --white: rgba(255, 255, 255, 0.88);
+  --line: rgba(255, 255, 255, 0.92);
+  --shadow: 0 8px 22px rgba(60, 88, 139, 0.13);
+  --mint: #b9f6d8;
+  --blue: #b9e9ff;
+  --pink: #ffd8e8;
+  --yellow: #fff0b9;
+  --purple: #ead8ff;
+  --sidebar: 258px;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;font-family:'Nunito',sans-serif;color:var(--ink);background:#fffaf5;overflow-x:hidden}
-button,input{font:inherit}
-button{cursor:pointer}
-.page-bg{position:fixed;inset:0;z-index:-2;background:url('../assets/images/background_bangunruang.png') center top/cover no-repeat;opacity:.96}
-.page-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.16))}
-.sidebar{position:fixed;z-index:20;left:16px;top:18px;bottom:18px;width:var(--sidebar);padding:22px 17px 12px;background:rgba(255,255,255,.86);border:2px solid rgba(255,255,255,.96);border-radius:30px;box-shadow:0 12px 35px rgba(56,91,140,.12);backdrop-filter:blur(14px);display:flex;flex-direction:column;overflow:hidden}
-.brand{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--ink);font-size:25px;font-weight:900;letter-spacing:-.8px;margin:0 0 24px}
-.brand img{width:88px;height:78px;object-fit:contain;margin-bottom:2px}
-.main-nav{display:flex;flex-direction:column;gap:5px}
-.nav-link{height:47px;border:0;background:transparent;border-radius:18px;display:flex;align-items:center;gap:13px;padding:5px 12px;color:var(--ink);font-size:17px;font-weight:800;text-align:left;transition:.2s}
-.nav-link img{width:34px;height:34px;object-fit:contain;flex:0 0 34px}
-.nav-link:hover,.nav-link.active{background:linear-gradient(100deg,#ffe0d0,#ffd0bd);transform:translateX(2px)}
-.nav-divider{height:1px;background:#d9d9ec;margin:7px 10px 4px}
-.progress-link{margin-top:0}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Nunito", sans-serif;
+  color: var(--ink);
+  background: #fffaf5;
+  overflow-x: hidden;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url("../assets/images/background_bangunruang.png") center
+    top/cover no-repeat;
+  opacity: 1;
+  pointer-events: none;
+}
+.page-bg:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.16)
+  );
+}
+.sidebar {
+  position: fixed;
+  z-index: 20;
+  left: 18px;
+  top: 42px;
+  bottom: 20px;
+  width: var(--sidebar);
+  padding: 18px 14px 13px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(250, 247, 255, 0.95) 58%,
+    rgba(243, 236, 255, 0.97) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.98);
+  border-radius: 30px;
+  box-shadow: 0 12px 35px rgba(56, 91, 140, 0.13);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -8%;
+  right: -8%;
+  bottom: 0;
+  height: 18px;
+  background: linear-gradient(165deg, #b6f18b 0 48%, #6fdf73 49% 100%);
+  border-radius: 55% 55% 0 0/65% 65% 0 0;
+  opacity: 0.95;
+  pointer-events: none;
+}
+.sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin: 0 0 17px;
+  flex: 0 0 auto;
+}
+.brand img {
+  width: 94px;
+  height: 88px;
+  object-fit: contain;
+  margin-bottom: 1px;
+}
+.main-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+  flex: 0 0 auto;
+}
+.nav-link {
+  height: 42px;
+  border: 0;
+  background: transparent;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 5px 12px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 800;
+  text-align: left;
+  transition: 0.2s;
+}
+.nav-link img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex: 0 0 32px;
+}
+.nav-link:hover,
+.nav-link.active {
+  background: linear-gradient(100deg, #ffe2d5, #ffc8b4);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 177, 148, 0.3),
+    0 3px 10px rgba(238, 151, 119, 0.13);
+  transform: translateX(2px);
+}
+.nav-divider {
+  height: 1px;
+  background: #d9d9ec;
+  margin: 6px 10px 3px;
+  flex: 0 0 auto;
+}
+.progress-link {
+  margin-top: 0;
+}
 /* Maskot sidebar: ukuran sedang, berada di tengah bawah, dengan keterangan kecil */
-.robot-wrap{
-  margin-top:auto;
-  flex:0 0 auto;
-  min-height:205px;
-  padding:8px 4px 7px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  align-items:center;
-  gap:3px;
-  text-align:center;
+.robot-wrap {
+  margin-top: auto;
+  flex: 0 1 auto;
+  min-height: 0;
+  padding: 8px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
 }
-.robot-wrap img{
-  display:block;
-  width:min(100%,158px);
-  height:150px;
-  object-fit:contain;
-  object-position:center bottom;
-  filter:drop-shadow(0 6px 5px rgba(32,75,130,.12));
+.robot-wrap img {
+  display: block;
+  width: min(100%, 145px);
+  height: 132px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 6px 5px rgba(32, 75, 130, 0.12));
+  flex: 0 1 auto;
 }
-.robot-caption{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:2px;
-  line-height:1.25;
-  max-width:100%;
+.robot-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 1.2;
+  max-width: 100%;
+  flex: 0 0 auto;
 }
-.robot-copyright{
-  color:#5d5a9a;
-  font-size:10.5px;
-  font-weight:800;
-  letter-spacing:.1px;
+.robot-copyright {
+  color: #5d5a9a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1px;
 }
-.robot-tagline{
-  color:#7c83a8;
-  font-size:9.5px;
-  font-weight:600;
+.robot-tagline {
+  color: #7c83a8;
+  font-size: 10.5px;
+  font-weight: 600;
 }
-.main-content{margin-left:calc(var(--sidebar) + 34px);padding:16px 24px 24px 10px;max-width:1900px}
-.topbar{height:60px;display:flex;justify-content:flex-end;align-items:center;gap:15px;margin-bottom:10px}
-.topbar-spacer{flex:1}
-.search-box{width:min(390px,38vw);height:48px;border-radius:28px;background:rgba(255,255,255,.9);border:1px solid #fff;box-shadow:0 5px 15px rgba(58,92,140,.13);display:flex;align-items:center;padding:0 17px;gap:10px}
-.search-icon{font-size:27px;line-height:1;color:#13245f;transform:rotate(-20deg)}
-.search-box input{border:0;outline:0;background:transparent;color:var(--ink);width:100%;font-size:14px;font-weight:700}
-.search-box input::placeholder{color:#69749a}
-.search-box kbd{font-size:10px;color:#8992ad;background:#f3f4fb;border-radius:6px;padding:3px 5px;white-space:nowrap}
-.round-action,.theme-toggle,.profile-pill{border:1px solid #fff;background:rgba(255,255,255,.9);box-shadow:0 5px 15px rgba(58,92,140,.12);height:48px}
-.round-action{width:48px;border-radius:50%;font-size:25px;color:#14235e;position:relative}
-.round-action i{position:absolute;right:8px;top:6px;width:8px;height:8px;border-radius:50%;background:#ff5a58;border:2px solid white}
-.theme-toggle{width:104px;border-radius:28px;display:flex;align-items:center;justify-content:space-around;padding:4px;color:#f3a800;font-size:22px}
-.theme-toggle b{width:43px;height:29px;border-radius:20px;background:#65dc65;position:relative}
-.theme-toggle b:after{content:"";position:absolute;right:2px;top:2px;width:25px;height:25px;border-radius:50%;background:white;box-shadow:0 1px 4px #9bb59b}
-.profile-pill{border-radius:28px;padding:4px 12px 4px 5px;display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:800}
-.profile-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#f2eaff;font-size:23px}
-.chevron{font-size:22px}
-.hero{min-height:330px;border-radius:30px;position:relative;overflow:hidden;padding:28px 30px;display:flex;align-items:center;background:linear-gradient(110deg,rgba(255,255,255,.78),rgba(220,248,255,.62) 48%,rgba(218,255,234,.75));border:2px solid rgba(255,255,255,.95);box-shadow:var(--shadow)}
-.hero:before{content:"";position:absolute;inset:auto -3% -35px -3%;height:100px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.72));border-radius:50%}
-.hero-copy{position:relative;z-index:2;max-width:480px}
-.hero-mark{width:112px;height:62px;margin-bottom:2px}
-.hero-mark img{width:100%;height:100%;object-fit:contain;object-position:left center}
-.hero h1{margin:0;font-size:clamp(38px,4vw,62px);font-weight:900;letter-spacing:-2px;line-height:1.02;color:#10245f;text-shadow:0 3px 0 #fff,0 5px 10px rgba(36,75,140,.13)}
-.hero h1 span{color:#ff675e}
-.hero-subtitle{display:inline-block;margin:12px 0 8px;padding:7px 18px;border-radius:12px;background:#ffe47d;color:#10245f;font-size:18px;font-weight:900;transform:rotate(-1deg);box-shadow:0 3px 0 rgba(255,197,51,.25)}
-.hero-description{max-width:380px;margin:8px 0 13px;color:#42527b;font-size:14px;font-weight:700}
-.primary-cta{border:0;border-radius:22px;background:linear-gradient(90deg,#ff9a71,#ffbd69);color:#fff;padding:10px 19px;font-size:14px;font-weight:900;box-shadow:0 5px 0 rgba(231,117,76,.2)}
-.primary-cta span{margin-left:13px}
-.hero-shapes{position:absolute;left:39%;top:50%;width:33%;height:80%;transform:translateY(-48%);display:flex;align-items:flex-end;justify-content:center;gap:14px}
-.shape-cube{width:90px;height:90px;background:linear-gradient(135deg,#c66aff,#8b54ed);transform:skewY(-25deg) rotate(30deg);border-radius:12px;box-shadow:inset -10px -8px 0 rgba(82,29,161,.15),0 12px 16px #9c79e65c}
-.shape-cylinder{width:62px;height:95px;border-radius:50%/14%;background:linear-gradient(90deg,#ffe95c,#ffbf1c);box-shadow:inset -9px 0 0 #efa90055}
-.shape-cone{width:0;height:0;border-left:43px solid transparent;border-right:43px solid transparent;border-bottom:105px solid #ff82b5;filter:drop-shadow(0 7px 5px #e77caa55)}
-.shape-sphere{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#aafff4,#29d7bd 65%,#11b7ad);box-shadow:0 8px 14px #35cbbd55}
-.shape-block{width:95px;height:66px;background:linear-gradient(135deg,#67d8ff,#189fe9);transform:skewY(-8deg);border-radius:8px;box-shadow:inset -9px -7px 0 #087bc655}
-.progress-card{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:225px;padding:15px 17px 14px;background:rgba(255,255,255,.9);border:2px solid #fff;border-radius:25px;box-shadow:0 8px 22px rgba(64,135,101,.15);z-index:3}
-.progress-title{display:flex;align-items:center;gap:8px;font-size:16px}
-.progress-title img{width:28px;height:28px;object-fit:contain}
-.progress-content{display:flex;align-items:center;justify-content:space-around;padding:13px 0}
-.progress-ring{width:91px;height:91px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#42d34f 0 75%,#d8f3dc 75% 100%);position:relative;font-size:20px;font-weight:900}
-.progress-ring:before{content:"";position:absolute;inset:9px;border-radius:50%;background:#fff}
-.progress-ring span{z-index:1}
-.progress-count{display:block;font-size:23px;font-weight:900}
-.progress-content small{font-size:11px;font-weight:800}
-.progress-button{width:100%;border:0;border-radius:18px;padding:8px 12px;background:#c9f5df;color:#10245f;font-size:13px;font-weight:900}
-.progress-button span{font-size:20px;margin-left:10px;color:#10ad83}
-.quick-links{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:14px 0 24px;padding:0 5px}
-.quick-card{border:0;background:transparent;padding:0;min-width:0;transition:transform .2s,filter .2s}
-.quick-card img{display:block;width:100%;height:auto;max-height:126px;object-fit:contain;filter:drop-shadow(0 5px 4px rgba(55,75,120,.13))}
-.quick-card:hover,.material-card:hover{transform:translateY(-5px);filter:brightness(1.03)}
-.materials-section{padding:0 4px}
-.section-heading{display:flex;justify-content:space-between;align-items:center;margin:0 4px 12px}
-.heading-title{display:flex;align-items:center;gap:12px}
-.mini-cube{width:42px;height:42px;display:grid;place-items:center;font-size:34px;color:#f5b82b;text-shadow:2px 2px #56c6ec,-2px -1px #ff72aa}
-.heading-title h2{font-size:25px;line-height:1.1;margin:0;font-weight:900;letter-spacing:-.5px}
-.heading-title p{margin:3px 0 0;color:#7b86a5;font-size:12px;font-weight:700}
-.see-all{border:1px solid #fff;background:rgba(255,255,255,.88);border-radius:25px;padding:9px 16px;color:var(--ink);font-weight:900;box-shadow:0 4px 12px rgba(62,75,130,.1)}
-.see-all span{margin-left:10px;color:#7555d8}
-.material-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
-.material-card{border:0;background:transparent;padding:0;min-width:0;transition:transform .2s}
-.material-card img{width:100%;height:auto;display:block;object-fit:contain;filter:drop-shadow(0 5px 4px rgba(55,75,120,.11))}
-.empty-state{text-align:center;padding:25px;color:#7a83a3;font-weight:800}
-.footer-note{text-align:center;color:#7581a0;font-size:12px;margin:24px 0 4px}
-.mobile-menu{display:none}
-.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#14245f;color:#fff;padding:11px 18px;border-radius:20px;font-weight:800;box-shadow:var(--shadow);transition:.25s;z-index:50}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-body.dark{--ink:#eef3ff;--muted:#b8c4e6;background:#17213c;color:var(--ink)}
-body.dark .sidebar,body.dark .search-box,body.dark .round-action,body.dark .theme-toggle,body.dark .profile-pill,body.dark .progress-card,body.dark .see-all{background:rgba(30,42,75,.92);color:var(--ink);border-color:rgba(255,255,255,.13)}
-body.dark .hero{background:linear-gradient(110deg,rgba(42,62,102,.9),rgba(35,83,108,.85),rgba(37,91,74,.85));border-color:rgba(255,255,255,.12)}
-body.dark .hero-description,body.dark .heading-title p{color:#c3cdec}
-body.dark .progress-ring:before{background:#26385f}
-body.dark .search-box input{color:var(--ink)}
-@media(max-width:1250px){
- :root{--sidebar:225px}.main-content{padding-right:16px}.sidebar{left:12px;width:var(--sidebar)}.nav-link{font-size:15px}.hero{min-height:310px}.progress-card{width:195px}.hero-shapes{left:42%;width:30%;transform:translate(-4%,-48%) scale(.86)}.material-grid{gap:6px}
+.main-content {
+  margin-left: calc(var(--sidebar) + 16px);
+  padding: 16px 24px 28px 0;
+  max-width: 1900px;
 }
-@media(max-width:980px){
- :root{--sidebar:210px}.hero{padding:22px;min-height:300px}.hero-copy{max-width:390px}.hero-description{max-width:300px}.hero-shapes{left:43%;opacity:.78;transform:translateY(-45%) scale(.72)}.progress-card{right:12px;width:170px;padding:11px}.progress-ring{width:70px;height:70px}.progress-count{font-size:19px}.quick-links{gap:5px}.quick-card img{max-height:100px}.material-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.topbar {
+  height: 58px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 9px;
 }
-@media(max-width:720px){
- .mobile-menu{display:grid;place-items:center;position:fixed;z-index:31;top:12px;left:12px;width:44px;height:44px;border:1px solid #fff;border-radius:15px;background:#fff;color:#14245f;font-size:22px;box-shadow:var(--shadow)}
- .sidebar{left:10px;top:64px;bottom:10px;width:245px;transform:translateX(calc(-100% - 20px));transition:transform .25s}
- .sidebar.open{transform:translateX(0)}
- .brand{font-size:22px;margin-bottom:12px}.brand img{width:70px;height:62px}
- .nav-link{height:42px}
- .robot-wrap{min-height:142px;padding:5px 2px 5px;gap:2px}
- .robot-wrap img{height:112px;width:128px}
- .robot-copyright{font-size:9.5px}
- .robot-tagline{font-size:8.5px}
- .main-content{margin-left:0;padding:10px 12px 20px}
- .topbar{height:50px;gap:7px;margin-left:48px;margin-bottom:9px}.search-box{width:auto;flex:1;height:42px;padding:0 10px}.search-box kbd,.profile-name{display:none}.round-action,.theme-toggle,.profile-pill{height:42px}.round-action{width:42px}.theme-toggle{width:70px}.theme-toggle b{width:28px;height:23px}.theme-toggle b:after{width:19px;height:19px}
- .profile-pill{padding:3px 7px 3px 3px}.profile-avatar{width:34px;height:34px}
- .hero{min-height:310px;padding:20px 18px;align-items:flex-start;border-radius:24px}
- .hero-copy{max-width:75%}.hero-mark{width:82px;height:48px}.hero h1{font-size:clamp(34px,9vw,48px)}.hero-subtitle{font-size:13px;padding:6px 10px}.hero-description{font-size:12px;max-width:235px}
- .hero-shapes{left:48%;top:72%;width:55%;height:42%;transform:translateY(-35%) scale(.6);transform-origin:center bottom;opacity:.8}
- .progress-card{position:absolute;right:10px;bottom:10px;top:auto;transform:none;width:145px;padding:8px;border-radius:17px}
- .progress-title{font-size:11px}.progress-title img{width:20px;height:20px}.progress-content{padding:5px 0}.progress-ring{width:53px;height:53px;font-size:13px}.progress-ring:before{inset:6px}.progress-count{font-size:15px}.progress-content small{font-size:9px}.progress-button{font-size:10px;padding:5px}
- .quick-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:10px 0 18px;padding:0}
- .quick-card img{max-height:112px}
- .section-heading{align-items:flex-start;gap:8px}.heading-title{gap:7px}.mini-cube{width:30px;height:30px;font-size:25px}.heading-title h2{font-size:19px}.heading-title p{font-size:10px}.see-all{font-size:10px;padding:7px 9px;white-space:nowrap}
- .material-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.topbar-spacer {
+  flex: 1;
 }
-@media(max-width:390px){
- .hero{min-height:325px}.hero-copy{max-width:100%}.hero-description{max-width:200px}.progress-card{width:132px}.quick-card img{max-height:98px}.heading-title h2{font-size:17px}.see-all{font-size:9px}
+.search-box {
+  width: min(380px, 36vw);
+  height: 48px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #fff;
+  box-shadow: 0 5px 15px rgba(58, 92, 140, 0.13);
+  display: flex;
+  align-items: center;
+  padding: 0 17px;
+  gap: 10px;
+}
+.search-icon {
+  font-size: 27px;
+  line-height: 1;
+  color: #13245f;
+  transform: rotate(-20deg);
+}
+.search-box input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+}
+.search-box input::placeholder {
+  color: #69749a;
+}
+.search-box kbd {
+  font-size: 10px;
+  color: #8992ad;
+  background: #f3f4fb;
+  border-radius: 6px;
+  padding: 3px 5px;
+  white-space: nowrap;
+}
+.round-action,
+.theme-toggle,
+.profile-pill {
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 15px rgba(58, 92, 140, 0.12);
+  height: 48px;
+}
+.round-action {
+  width: 48px;
+  border-radius: 50%;
+  font-size: 25px;
+  color: #14235e;
+  position: relative;
+}
+.round-action i {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff5a58;
+  border: 2px solid white;
+}
+.theme-toggle {
+  width: 104px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 4px;
+  color: #f3a800;
+  font-size: 22px;
+}
+.theme-toggle b {
+  width: 43px;
+  height: 29px;
+  border-radius: 20px;
+  background: #65dc65;
+  position: relative;
+}
+.theme-toggle b:after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 4px #9bb59b;
+}
+.profile-pill {
+  border-radius: 28px;
+  padding: 4px 12px 4px 5px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  font-weight: 800;
+}
+.profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #f2eaff;
+  font-size: 23px;
+}
+.chevron {
+  font-size: 22px;
+}
+.hero {
+  height: clamp(285px, 22vw, 355px);
+  min-height: 0;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg, #c9f1ff, #e9faff 55%, #d8f8e8);
+  border: 2px solid rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow);
+}
+.hero-art {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(100% - 245px);
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+/* Menyamarkan potongan pohon yang ikut terbawa pada aset banner agar tidak bertabrakan dengan pohon background halaman. */
+.hero-tree-cleanup {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: clamp(150px, 16vw, 230px);
+  height: 22%;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(194, 237, 255, 0.98) 0%,
+    rgba(221, 247, 255, 0.94) 65%,
+    rgba(218, 247, 233, 0.12) 100%
+  );
+  clip-path: polygon(0 0, 100% 0, 88% 28%, 66% 52%, 38% 78%, 0 100%);
+}
+.hero-tree-edge {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 12%;
+  width: clamp(42px, 4.8vw, 66px);
+  height: 58%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 241, 255, 0.98),
+    rgba(220, 248, 255, 0.92),
+    rgba(220, 248, 255, 0.48),
+    transparent
+  );
+}
+.progress-card {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 270px;
+  padding: 17px 18px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #fff;
+  border-radius: 25px;
+  box-shadow: 0 8px 22px rgba(64, 135, 101, 0.15);
+  z-index: 3;
+}
+.progress-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+.progress-title img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.progress-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 13px 0;
+}
+.progress-ring {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(#42d34f 0 75%, #d8f3dc 75% 100%);
+  position: relative;
+  font-size: 20px;
+  font-weight: 900;
+}
+.progress-ring:before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+.progress-ring span {
+  z-index: 1;
+}
+.progress-count {
+  display: block;
+  font-size: 25px;
+  font-weight: 900;
+}
+.progress-content small {
+  font-size: 11px;
+  font-weight: 800;
+}
+.progress-button {
+  width: 100%;
+  border: 0;
+  border-radius: 18px;
+  padding: 8px 12px;
+  background: #c9f5df;
+  color: #10245f;
+  font-size: 13px;
+  font-weight: 900;
+}
+.progress-button span {
+  font-size: 20px;
+  margin-left: 10px;
+  color: #10ad83;
+}
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 9px;
+  margin: 9px 0 17px;
+  padding: 0 5px;
+  width: calc(100% - 245px);
+  box-sizing: border-box;
+}
+.quick-card {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s,
+    filter 0.2s;
+}
+.quick-card img {
+  display: block;
+  width: 100%;
+  height: clamp(100px, 7.4vw, 124px);
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 5px 4px rgba(55, 75, 120, 0.13));
+}
+.quick-card:hover,
+.material-card:hover {
+  transform: translateY(-5px);
+  filter: brightness(1.03);
+}
+.materials-section {
+  padding: 0 4px 8px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4px 12px;
+}
+.heading-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mini-cube {
+  width: 42px;
+  height: 42px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px rgba(40, 70, 130, 0.12));
+}
+.heading-title h2 {
+  font-size: 25px;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 8px;
+}
+.heading-title h2:after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  bottom: 0;
+  width: 190px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffbd25;
+  transform: rotate(-2deg);
 }
 
-@media (max-height:760px) and (min-width:721px){
-  .robot-wrap{min-height:166px;padding-top:4px}
-  .robot-wrap img{height:118px;width:min(100%,132px)}
-  .robot-copyright{font-size:9.5px}
-  .robot-tagline{font-size:8.5px}
+.see-all {
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 25px;
+  padding: 9px 16px;
+  color: var(--ink);
+  font-weight: 900;
+  box-shadow: 0 4px 12px rgba(62, 75, 130, 0.1);
+}
+.see-all span {
+  margin-left: 10px;
+  color: #7555d8;
+}
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 9px;
+}
+.material-card {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  min-width: 0;
+  transition: transform 0.2s;
+}
+.material-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 4px rgba(55, 75, 120, 0.11));
+}
+.empty-state {
+  text-align: center;
+  padding: 25px;
+  color: #7a83a3;
+  font-weight: 800;
+}
+.footer-note {
+  display: none;
+}
+.mobile-menu {
+  display: none;
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  pointer-events: none;
+  background: #14245f;
+  color: #fff;
+  padding: 11px 18px;
+  border-radius: 20px;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+  transition: 0.25s;
+  z-index: 50;
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+body.dark {
+  --ink: #eef3ff;
+  --muted: #b8c4e6;
+  background: #17213c;
+  color: var(--ink);
+}
+body.dark .sidebar,
+body.dark .search-box,
+body.dark .round-action,
+body.dark .theme-toggle,
+body.dark .profile-pill,
+body.dark .progress-card,
+body.dark .see-all {
+  background: rgba(30, 42, 75, 0.92);
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+body.dark .hero {
+  background: linear-gradient(
+    110deg,
+    rgba(42, 62, 102, 0.9),
+    rgba(35, 83, 108, 0.85),
+    rgba(37, 91, 74, 0.85)
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+}
+body.dark .hero-description,
+body.dark .heading-title p {
+  color: #c3cdec;
+}
+body.dark .progress-ring:before {
+  background: #26385f;
+}
+body.dark .search-box input {
+  color: var(--ink);
+}
+@media (max-width: 1250px) {
+  :root {
+    --sidebar: 225px;
+  }
+  .main-content {
+    padding-right: 16px;
+  }
+  .sidebar {
+    left: 12px;
+    top: 30px;
+    bottom: 16px;
+    padding: 15px 12px 11px;
+  }
+  .brand {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .brand img {
+    width: 82px;
+    height: 78px;
+  }
+  .nav-link {
+    font-size: 15px;
+    height: 40px;
+    gap: 10px;
+    padding: 4px 10px;
+  }
+  .nav-link img {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+  .robot-wrap img {
+    height: 118px;
+    width: min(100%, 132px);
+  }
+  .robot-copyright {
+    font-size: 11px;
+  }
+  .robot-tagline {
+    font-size: 9.5px;
+  }
+  .hero {
+    height: clamp(265px, 25vw, 330px);
+  }
+  .hero-art {
+    width: calc(100% - 210px);
+  }
+  .progress-card {
+    width: 220px;
+    padding: 13px 14px;
+  }
+  .quick-links {
+    width: calc(100% - 210px);
+    gap: 6px;
+  }
+  .quick-card img {
+    height: clamp(82px, 8vw, 105px);
+  }
+  .material-grid {
+    gap: 6px;
+  }
+}
+@media (max-width: 980px) and (min-width: 721px) {
+  :root {
+    --sidebar: 195px;
+  }
+  .sidebar {
+    left: 9px;
+    top: 22px;
+    bottom: 12px;
+    padding: 12px 9px 10px;
+  }
+  .brand {
+    font-size: 20px;
+    margin-bottom: 9px;
+  }
+  .brand img {
+    width: 72px;
+    height: 70px;
+  }
+  .nav-link {
+    font-size: 13px;
+    height: 37px;
+    gap: 8px;
+    padding: 3px 8px;
+  }
+  .nav-link img {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+  }
+  .robot-wrap {
+    padding: 5px 1px;
+  }
+  .robot-wrap img {
+    height: 98px;
+    width: 112px;
+  }
+  .robot-copyright {
+    font-size: 10px;
+  }
+  .robot-tagline {
+    font-size: 8.5px;
+  }
+  .main-content {
+    padding: 10px 12px 22px 0;
+  }
+  .topbar {
+    height: 50px;
+    gap: 8px;
+  }
+  .search-box {
+    width: min(300px, 34vw);
+    height: 42px;
+  }
+  .round-action,
+  .theme-toggle,
+  .profile-pill {
+    height: 42px;
+  }
+  .round-action {
+    width: 42px;
+  }
+  .theme-toggle {
+    width: 82px;
+  }
+  .hero {
+    height: 280px;
+    border-radius: 24px;
+  }
+  .hero-art {
+    width: calc(100% - 165px);
+  }
+  .progress-card {
+    right: 9px;
+    width: 158px;
+    padding: 9px;
+    border-radius: 18px;
+  }
+  .progress-title {
+    font-size: 12px;
+  }
+  .progress-title img {
+    width: 21px;
+    height: 21px;
+  }
+  .progress-content {
+    padding: 7px 0;
+  }
+  .progress-ring {
+    width: 62px;
+    height: 62px;
+    font-size: 14px;
+  }
+  .progress-ring:before {
+    inset: 7px;
+  }
+  .progress-count {
+    font-size: 18px;
+  }
+  .progress-content small {
+    font-size: 9px;
+  }
+  .progress-button {
+    font-size: 10px;
+    padding: 6px;
+  }
+  .quick-links {
+    width: 100%;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 4px;
+    margin: 8px 0 14px;
+  }
+  .quick-card img {
+    height: clamp(70px, 9vw, 88px);
+  }
+  .section-heading {
+    margin-bottom: 8px;
+  }
+  .heading-title h2 {
+    font-size: 21px;
+  }
+  .mini-cube {
+    width: 34px;
+    height: 34px;
+  }
+  .see-all {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+  .material-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+@media (max-width: 720px) {
+  .mobile-menu {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 31;
+    top: 12px;
+    left: 12px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    background: #fff;
+    color: #14245f;
+    font-size: 22px;
+    box-shadow: var(--shadow);
+  }
+  .sidebar {
+    left: 10px;
+    top: 64px;
+    bottom: 10px;
+    width: 245px;
+    transform: translateX(calc(-100% - 20px));
+    transition: transform 0.25s;
+    padding: 13px 12px 12px;
+    overflow-y: auto;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .brand {
+    font-size: 22px;
+    margin-bottom: 9px;
+  }
+  .brand img {
+    width: 72px;
+    height: 68px;
+  }
+  .nav-link {
+    height: 39px;
+    font-size: 15px;
+  }
+  .nav-link img {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+  .robot-wrap {
+    min-height: 120px;
+    padding: 4px 2px 6px;
+    gap: 2px;
+  }
+  .robot-wrap img {
+    height: 94px;
+    width: 112px;
+  }
+  .robot-copyright {
+    font-size: 10px;
+  }
+  .robot-tagline {
+    font-size: 9px;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 10px 12px 20px;
+  }
+  .topbar {
+    height: 50px;
+    gap: 7px;
+    margin-left: 48px;
+    margin-bottom: 9px;
+  }
+  .search-box {
+    width: auto;
+    flex: 1;
+    height: 42px;
+    padding: 0 10px;
+  }
+  .search-box kbd,
+  .profile-name {
+    display: none;
+  }
+  .round-action,
+  .theme-toggle,
+  .profile-pill {
+    height: 42px;
+  }
+  .round-action {
+    width: 42px;
+  }
+  .theme-toggle {
+    width: 70px;
+  }
+  .theme-toggle b {
+    width: 28px;
+    height: 23px;
+  }
+  .theme-toggle b:after {
+    width: 19px;
+    height: 19px;
+  }
+  .profile-pill {
+    padding: 3px 7px 3px 3px;
+  }
+  .profile-avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .hero {
+    height: clamp(205px, 54vw, 285px);
+    border-radius: 22px;
+  }
+  .hero-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  .hero-tree-cleanup {
+    width: 72px;
+    height: 18%;
+    opacity: 0.5;
+  }
+  .hero-tree-edge {
+    width: 18px;
+    height: 42%;
+    opacity: 0.5;
+  }
+  .progress-card {
+    right: 8px;
+    bottom: 8px;
+    top: auto;
+    transform: none;
+    width: clamp(126px, 35vw, 155px);
+    padding: 7px;
+    border-radius: 16px;
+  }
+  .progress-title {
+    font-size: 10px;
+  }
+  .progress-title img {
+    width: 18px;
+    height: 18px;
+  }
+  .progress-content {
+    padding: 4px 0;
+  }
+  .progress-ring {
+    width: 48px;
+    height: 48px;
+    font-size: 12px;
+  }
+  .progress-ring:before {
+    inset: 5px;
+  }
+  .progress-count {
+    font-size: 14px;
+  }
+  .progress-content small {
+    font-size: 8px;
+  }
+  .progress-button {
+    font-size: 9px;
+    padding: 5px;
+  }
+  .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 4px;
+    margin: 9px 0 15px;
+    padding: 0;
+  }
+  .quick-card img {
+    height: clamp(82px, 25vw, 108px);
+  }
+  .section-heading {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .heading-title {
+    gap: 7px;
+  }
+  .mini-cube {
+    width: 30px;
+    height: 30px;
+  }
+  .heading-title h2 {
+    font-size: 19px;
+  }
+  .heading-title h2:after {
+    width: 140px;
+    height: 3px;
+  }
+  .see-all {
+    font-size: 10px;
+    padding: 7px 9px;
+    white-space: nowrap;
+  }
+  .material-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+@media (max-width: 390px) {
+  .hero {
+    height: 220px;
+  }
+  .progress-card {
+    width: 126px;
+  }
+  .quick-card img {
+    height: 88px;
+  }
+  .heading-title h2 {
+    font-size: 17px;
+  }
+  .see-all {
+    font-size: 9px;
+  }
+}
+@media (max-height: 820px) and (min-width: 721px) {
+  .sidebar {
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  .brand {
+    margin-bottom: 10px;
+  }
+  .brand img {
+    width: 78px;
+    height: 74px;
+  }
+  .nav-link {
+    height: 38px;
+  }
+  .nav-link img {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+  .robot-wrap {
+    padding-top: 4px;
+    padding-bottom: 5px;
+  }
+  .robot-wrap img {
+    height: 104px;
+    width: min(100%, 122px);
+  }
+  .robot-copyright {
+    font-size: 10.5px;
+  }
+  .robot-tagline {
+    font-size: 9px;
+  }
+}
+@media (max-height: 700px) and (min-width: 721px) {
+  .sidebar {
+    top: 10px;
+    bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .brand {
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+  .brand img {
+    width: 62px;
+    height: 60px;
+  }
+  .nav-link {
+    height: 34px;
+    font-size: 13px;
+  }
+  .nav-link img {
+    width: 25px;
+    height: 25px;
+    flex-basis: 25px;
+  }
+  .robot-wrap img {
+    height: 82px;
+    width: 100px;
+  }
+  .robot-copyright {
+    font-size: 9px;
+  }
+  .robot-tagline {
+    font-size: 8px;
+  }
+}
+
+/* === Revisi tata letak banner + progres (24-11-2026) === */
+/* Banner berdiri sendiri: tidak ada panel, border, atau kartu progres yang menutup ilustrasi. */
+.hero {
+  height: auto;
+  min-height: 0;
+  margin: 0 0 8px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.hero-art {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+/* Progress dipindahkan ke sisi kanan deretan enam tombol. */
+.feature-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 258px;
+  align-items: center;
+  gap: 14px;
+  margin: 0 4px 18px;
+}
+.feature-row .quick-links {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px;
+}
+.feature-row .quick-card {
+  min-width: 0;
+}
+.feature-row .quick-card img {
+  width: 100%;
+  height: clamp(90px, 7.6vw, 118px);
+  object-fit: contain;
+}
+.feature-row .progress-card {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: 100%;
+  min-width: 0;
+  padding: 13px 15px 12px;
+  background: rgba(255, 255, 255, 0.91);
+  border: 2px solid rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  box-shadow: 0 7px 20px rgba(64, 135, 101, 0.13);
+}
+.feature-row .progress-title {
+  font-size: 15px;
+}
+.feature-row .progress-content {
+  padding: 8px 0;
+}
+.feature-row .progress-ring {
+  width: 82px;
+  height: 82px;
+  font-size: 18px;
+}
+.feature-row .progress-ring:before {
+  inset: 8px;
+}
+.feature-row .progress-count {
+  font-size: 23px;
+}
+.feature-row .progress-content small {
+  font-size: 10px;
+}
+.feature-row .progress-button {
+  padding: 8px 10px;
+}
+.materials-section {
+  padding-top: 0;
+}
+
+/* Laptop kecil dan tablet landscape */
+@media (max-width: 1250px) {
+  .hero {
+    height: auto;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 10px;
+  }
+  .feature-row .quick-links {
+    gap: 5px;
+  }
+  .feature-row .quick-card img {
+    height: clamp(78px, 8vw, 100px);
+  }
+  .feature-row .progress-card {
+    padding: 10px 11px;
+  }
+  .feature-row .progress-ring {
+    width: 70px;
+    height: 70px;
+    font-size: 16px;
+  }
+  .feature-row .progress-ring:before {
+    inset: 7px;
+  }
+}
+@media (max-width: 980px) and (min-width: 721px) {
+  .hero {
+    height: auto;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 185px;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .feature-row .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px 5px;
+  }
+  .feature-row .quick-card img {
+    height: 76px;
+  }
+  .feature-row .progress-card {
+    padding: 9px;
+    border-radius: 18px;
+  }
+  .feature-row .progress-title {
+    font-size: 12px;
+  }
+  .feature-row .progress-title img {
+    width: 21px;
+    height: 21px;
+  }
+  .feature-row .progress-ring {
+    width: 58px;
+    height: 58px;
+    font-size: 13px;
+  }
+  .feature-row .progress-ring:before {
+    inset: 6px;
+  }
+  .feature-row .progress-count {
+    font-size: 18px;
+  }
+  .feature-row .progress-content small {
+    font-size: 8px;
+  }
+  .feature-row .progress-button {
+    font-size: 10px;
+    padding: 6px;
+  }
+}
+/* HP: banner tetap utuh, enam tombol 3x2, progres berada di bawah tombol agar tidak sesak. */
+@media (max-width: 720px) {
+  .hero {
+    height: clamp(185px, 54vw, 260px);
+    margin-bottom: 7px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .hero-art {
+    object-fit: cover;
+    object-position: center 49%;
+  }
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    margin: 0 0 14px;
+  }
+  .feature-row .quick-links {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3px 5px;
+    margin: 0;
+  }
+  .feature-row .quick-card img {
+    height: clamp(76px, 23vw, 98px);
+  }
+  .feature-row .progress-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 3px 10px;
+    padding: 9px 12px;
+    border-radius: 18px;
+  }
+  .feature-row .progress-title {
+    grid-column: 1/-1;
+    font-size: 12px;
+  }
+  .feature-row .progress-title img {
+    width: 21px;
+    height: 21px;
+  }
+  .feature-row .progress-content {
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 3px 0;
+  }
+  .feature-row .progress-ring {
+    width: 54px;
+    height: 54px;
+    font-size: 13px;
+  }
+  .feature-row .progress-ring:before {
+    inset: 6px;
+  }
+  .feature-row .progress-count {
+    font-size: 18px;
+  }
+  .feature-row .progress-content small {
+    font-size: 9px;
+  }
+  .feature-row .progress-button {
+    width: auto;
+    min-width: 118px;
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+  .materials-section {
+    padding-top: 0;
+  }
+}
+@media (max-width: 390px) {
+  .hero {
+    height: 190px;
+  }
+  .feature-row .quick-card img {
+    height: 78px;
+  }
+  .feature-row .progress-button {
+    min-width: 105px;
+  }
+}
+
+/* =========================================================
+   FINAL HOME COMPOSITION — banner, progress, quick buttons
+   and book decoration (responsive desktop / tablet / phone)
+   ========================================================= */
+.brand img {
+  width: 82px;
+  height: 78px;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+/* Banner transparan, dengan kartu progres di sisi kanan. */
+.hero-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 19vw, 258px);
+  align-items: center;
+  gap: clamp(10px, 1.2vw, 18px);
+  margin: 0 0 7px;
+  min-width: 0;
+}
+.hero {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.hero-art {
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+/* Gelombang pastel tipis di depan bagian bawah banner. */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.hero::before {
+  z-index: 2;
+  height: clamp(13px, 1.8vw, 22px);
+  background: rgba(255, 255, 255, 0.78);
+  clip-path: polygon(
+    0 48%,
+    12% 72%,
+    25% 42%,
+    39% 70%,
+    53% 38%,
+    68% 72%,
+    82% 42%,
+    100% 65%,
+    100% 100%,
+    0 100%
+  );
+}
+.hero::after {
+  z-index: 3;
+  height: clamp(9px, 1.25vw, 16px);
+  background: linear-gradient(
+    90deg,
+    rgba(179, 242, 198, 0.88),
+    rgba(210, 249, 232, 0.88),
+    rgba(177, 237, 207, 0.9)
+  );
+  clip-path: polygon(
+    0 44%,
+    14% 76%,
+    28% 48%,
+    43% 80%,
+    57% 44%,
+    72% 76%,
+    87% 46%,
+    100% 70%,
+    100% 100%,
+    0 100%
+  );
+}
+.hero-stage > .progress-card {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: 100%;
+  min-width: 0;
+  align-self: center;
+  padding: clamp(12px, 1.2vw, 17px);
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(255, 255, 255, 0.98);
+  border-radius: 25px;
+  box-shadow: 0 8px 22px rgba(64, 135, 101, 0.15);
+}
+.hero-stage .progress-title {
+  font-size: clamp(13px, 1.1vw, 16px);
+}
+.hero-stage .progress-title img {
+  width: 27px;
+  height: 27px;
+}
+.hero-stage .progress-content {
+  padding: 10px 0;
+}
+.hero-stage .progress-ring {
+  width: clamp(66px, 6.5vw, 92px);
+  height: clamp(66px, 6.5vw, 92px);
+  font-size: clamp(15px, 1.35vw, 19px);
+}
+.hero-stage .progress-ring:before {
+  inset: 8px;
+}
+.hero-stage .progress-count {
+  font-size: clamp(20px, 1.8vw, 25px);
+}
+.hero-stage .progress-content small {
+  font-size: clamp(9px, 0.82vw, 11px);
+}
+.hero-stage .progress-button {
+  padding: 9px 12px;
+}
+
+/* Deretan tombol dan ilustrasi buku berada sejajar.
+   Buku mengisi ruang di bawah kartu progres, sesuai desain acuan. */
+.feature-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(180px, 19vw, 258px);
+  align-items: center;
+  gap: clamp(10px, 1.2vw, 18px);
+  margin: 0 0 16px;
+  min-width: 0;
+}
+.feature-row .quick-links {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(3px, 0.55vw, 9px);
+}
+.feature-row .quick-card {
+  min-width: 0;
+  width: 100%;
+}
+.feature-row .quick-card img {
+  display: block;
+  width: 100%;
+  height: clamp(78px, 7.2vw, 112px);
+  object-fit: contain;
+  object-position: center;
+}
+.feature-decoration {
+  min-width: 0;
+  min-height: clamp(82px, 7.2vw, 112px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 7px 0 0;
+}
+.book-decor {
+  display: block;
+  width: min(100%, 178px);
+  height: clamp(92px, 8.8vw, 142px);
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 6px 7px rgba(73, 79, 128, 0.12));
+}
+.materials-section {
+  padding-top: 0;
+}
+
+/* Laptop kecil dan tablet landscape */
+@media (max-width: 1250px) {
+  .hero-stage {
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 10px;
+  }
+  .hero-stage > .progress-card {
+    padding: 11px 12px;
+  }
+  .hero-stage .progress-ring {
+    width: 70px;
+    height: 70px;
+    font-size: 15px;
+  }
+  .hero-stage .progress-ring:before {
+    inset: 7px;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 10px;
+  }
+  .feature-row .quick-card img {
+    height: clamp(72px, 7.8vw, 96px);
+  }
+  .book-decor {
+    width: min(100%, 158px);
+    height: clamp(88px, 9vw, 120px);
+  }
+}
+
+/* Tablet: tombol dibuat 3 x 2 dan buku mengisi kolom samping. */
+@media (max-width: 980px) and (min-width: 721px) {
+  .hero-stage {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    gap: 8px;
+  }
+  .hero-stage > .progress-card {
+    padding: 9px;
+    border-radius: 19px;
+  }
+  .hero-stage .progress-title {
+    font-size: 12px;
+  }
+  .hero-stage .progress-title img {
+    width: 21px;
+    height: 21px;
+  }
+  .hero-stage .progress-content {
+    padding: 7px 0;
+  }
+  .hero-stage .progress-ring {
+    width: 58px;
+    height: 58px;
+    font-size: 13px;
+  }
+  .hero-stage .progress-ring:before {
+    inset: 6px;
+  }
+  .hero-stage .progress-count {
+    font-size: 18px;
+  }
+  .hero-stage .progress-content small {
+    font-size: 8px;
+  }
+  .hero-stage .progress-button {
+    font-size: 10px;
+    padding: 7px;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 160px;
+    gap: 7px;
+  }
+  .feature-row .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px 5px;
+  }
+  .feature-row .quick-card img {
+    height: clamp(64px, 8vw, 78px);
+  }
+  .feature-decoration {
+    min-height: 100%;
+    padding-right: 0;
+  }
+  .book-decor {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+/* HP: banner utuh, progres di bawahnya, tombol 3 x 2,
+   dan ilustrasi buku tetap terlihat di sisi kanan tombol. */
+@media (max-width: 720px) {
+  .hero-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    margin-bottom: 8px;
+  }
+  .hero {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .hero-art {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .hero-stage > .progress-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 3px 10px;
+    padding: 9px 12px;
+    border-radius: 18px;
+  }
+  .hero-stage .progress-title {
+    grid-column: 1/-1;
+    font-size: 12px;
+  }
+  .hero-stage .progress-title img {
+    width: 21px;
+    height: 21px;
+  }
+  .hero-stage .progress-content {
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 3px 0;
+  }
+  .hero-stage .progress-ring {
+    width: 54px;
+    height: 54px;
+    font-size: 13px;
+  }
+  .hero-stage .progress-ring:before {
+    inset: 6px;
+  }
+  .hero-stage .progress-count {
+    font-size: 18px;
+  }
+  .hero-stage .progress-content small {
+    font-size: 9px;
+  }
+  .hero-stage .progress-button {
+    width: auto;
+    min-width: 118px;
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(86px, 25vw, 116px);
+    align-items: stretch;
+    gap: 4px;
+    margin: 0 0 14px;
+  }
+  .feature-row .quick-links {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px 4px;
+    margin: 0;
+  }
+  .feature-row .quick-card img {
+    height: clamp(66px, 20vw, 88px);
+  }
+  .feature-decoration {
+    min-height: 100%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .book-decor {
+    width: 100%;
+    height: clamp(100px, 38vw, 150px);
+  }
+  .materials-section {
+    padding-top: 0;
+  }
+}
+@media (max-width: 390px) {
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 82px;
+  }
+  .feature-row .quick-card img {
+    height: 68px;
+  }
+  .book-decor {
+    height: 112px;
+  }
+  .hero-stage .progress-button {
+    min-width: 105px;
+  }
+}
+
+/* Revisi logo sidebar: gunakan kembali logo lengkap asli.
+   Tulisan BangunRuang sudah menjadi bagian dari gambar logo,
+   sehingga tidak ditampilkan lagi sebagai teks HTML terpisah. */
+.brand {
+  margin-bottom: 14px;
+  min-height: 0;
+}
+.brand img {
+  display: block;
+  width: min(100%, 158px);
+  height: 132px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+@media (max-width: 1250px) {
+  .brand img {
+    width: min(100%, 148px);
+    height: 124px;
+  }
+}
+@media (max-width: 980px) and (min-width: 721px) {
+  .brand img {
+    width: min(100%, 132px);
+    height: 110px;
+  }
+}
+@media (max-width: 720px) {
+  .brand img {
+    width: min(100%, 148px);
+    height: 122px;
+  }
+}
+@media (max-height: 700px) and (min-width: 721px) {
+  .brand img {
+    width: min(100%, 126px);
+    height: 105px;
+  }
+}
+
+/* =========================================================
+   PENYESUAIAN KOMPOSISI TERBARU
+   - Banner berada sendiri di bagian atas, sedikit diperkecil.
+   - Gelombang mengikuti lebar banner.
+   - Progres dipindahkan ke sisi enam tombol.
+   - Buku berada di bawah kartu progres.
+   ========================================================= */
+.hero-stage {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 clamp(8px, 1vw, 14px) !important;
+  padding: 0;
+  min-width: 0;
+}
+.hero {
+  width: 96%;
+  max-width: 1450px;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 auto;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative;
+  isolation: isolate;
+}
+.hero-art {
+  position: relative !important;
+  inset: auto !important;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+.hero::before,
+.hero::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.hero::before {
+  height: clamp(12px, 1.5vw, 20px);
+}
+.hero::after {
+  height: clamp(8px, 1.05vw, 14px);
+}
+
+.feature-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 19vw, 270px) !important;
+  align-items: center;
+  gap: clamp(9px, 1.2vw, 18px);
+  width: 100%;
+  margin: 0 0 16px !important;
+  min-width: 0;
+}
+.feature-row > .quick-links {
+  width: 100% !important;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 3px !important;
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  align-items: center;
+  gap: clamp(3px, 0.55vw, 9px);
+}
+.feature-row .quick-card {
+  min-width: 0;
+  width: 100%;
+}
+.feature-row .quick-card img {
+  display: block;
+  width: 100%;
+  height: clamp(82px, 7.4vw, 116px) !important;
+  object-fit: contain;
+  object-position: center;
+}
+.feature-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2px;
+}
+.feature-side > .progress-card {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  min-width: 0;
+  padding: clamp(10px, 1vw, 15px) clamp(11px, 1.15vw, 17px) !important;
+  background: rgba(255, 255, 255, 0.93) !important;
+  border: 2px solid rgba(255, 255, 255, 0.98) !important;
+  border-radius: 23px !important;
+  box-shadow: 0 8px 22px rgba(64, 135, 101, 0.14) !important;
+  z-index: 1;
+}
+.feature-side .progress-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(12px, 1vw, 15px) !important;
+}
+.feature-side .progress-title img {
+  width: clamp(21px, 1.8vw, 27px) !important;
+  height: clamp(21px, 1.8vw, 27px) !important;
+}
+.feature-side .progress-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 7px 0 !important;
+  gap: 8px;
+}
+.feature-side .progress-ring {
+  width: clamp(58px, 5.8vw, 78px) !important;
+  height: clamp(58px, 5.8vw, 78px) !important;
+  font-size: clamp(13px, 1.25vw, 17px) !important;
+}
+.feature-side .progress-ring:before {
+  inset: 7px !important;
+}
+.feature-side .progress-count {
+  font-size: clamp(18px, 1.7vw, 23px) !important;
+}
+.feature-side .progress-content small {
+  font-size: clamp(8px, 0.75vw, 10px) !important;
+}
+.feature-side .progress-button {
+  width: 100%;
+  padding: 7px 10px !important;
+  font-size: clamp(10px, 0.85vw, 12px) !important;
+}
+.feature-side .feature-decoration {
+  display: flex;
+  min-height: 0;
+  height: clamp(66px, 6.4vw, 96px);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.feature-side .book-decor {
+  display: block;
+  width: min(100%, 132px);
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Laptop kecil dan tablet landscape */
+@media (max-width: 1250px) {
+  .hero {
+    width: 97%;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 220px !important;
+    gap: 9px;
+  }
+  .feature-row .quick-card img {
+    height: clamp(76px, 8vw, 100px) !important;
+  }
+  .feature-side .progress-ring {
+    width: 64px !important;
+    height: 64px !important;
+  }
+  .feature-side .feature-decoration {
+    height: 76px;
+  }
+}
+/* Tablet: enam tombol tersusun 3 x 2, progres tetap di kolom samping. */
+@media (max-width: 980px) and (min-width: 721px) {
+  .hero {
+    width: 100%;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 180px !important;
+    gap: 8px;
+  }
+  .feature-row > .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2px 5px;
+  }
+  .feature-row .quick-card img {
+    height: clamp(64px, 8vw, 78px) !important;
+  }
+  .feature-side > .progress-card {
+    padding: 9px !important;
+    border-radius: 18px !important;
+  }
+  .feature-side .progress-title {
+    font-size: 12px !important;
+  }
+  .feature-side .progress-content {
+    padding: 6px 0 !important;
+  }
+  .feature-side .progress-ring {
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 13px !important;
+  }
+  .feature-side .progress-count {
+    font-size: 17px !important;
+  }
+  .feature-side .progress-button {
+    font-size: 10px !important;
+    padding: 6px !important;
+  }
+  .feature-side .feature-decoration {
+    height: 78px;
+  }
+  .feature-side .book-decor {
+    width: 112px;
+  }
+}
+/* HP: tombol 3 x 2, progres di samping ilustrasi buku pada baris bawah. */
+@media (max-width: 720px) {
+  .hero-stage {
+    margin-bottom: 7px !important;
+  }
+  .hero {
+    width: 100%;
+    border-radius: 0 !important;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 7px;
+    margin-bottom: 14px !important;
+  }
+  .feature-row > .quick-links {
+    width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2px 4px;
+    padding: 0 !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(66px, 20vw, 88px) !important;
+  }
+  .feature-side {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(84px, 25vw, 116px);
+    align-items: center;
+    gap: 5px;
+  }
+  .feature-side > .progress-card {
+    padding: 8px 10px !important;
+    border-radius: 17px !important;
+  }
+  .feature-side .progress-title {
+    font-size: 11px !important;
+  }
+  .feature-side .progress-title img {
+    width: 19px !important;
+    height: 19px !important;
+  }
+  .feature-side .progress-content {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 3px 0 !important;
+  }
+  .feature-side .progress-ring {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 12px !important;
+  }
+  .feature-side .progress-ring:before {
+    inset: 5px !important;
+  }
+  .feature-side .progress-count {
+    font-size: 16px !important;
+  }
+  .feature-side .progress-content small {
+    font-size: 8px !important;
+  }
+  .feature-side .progress-button {
+    font-size: 9px !important;
+    padding: 6px !important;
+  }
+  .feature-side .feature-decoration {
+    height: 100%;
+    min-height: 90px;
+  }
+  .feature-side .book-decor {
+    width: 100%;
+    height: clamp(90px, 28vw, 125px);
+  }
+}
+@media (max-width: 390px) {
+  .feature-row .quick-card img {
+    height: 66px !important;
+  }
+  .feature-side {
+    grid-template-columns: minmax(0, 1fr) 82px;
+  }
+  .feature-side .book-decor {
+    height: 100px;
+  }
+}
+
+/* =========================================================
+   REVISI FINAL KOMPOSISI BERANDA
+   Fokus: banner lebih proporsional dan terpusat;
+   progres + buku mengisi kolom kosong di kanan tombol.
+   Bagian lain sengaja tidak disentuh.
+   ========================================================= */
+
+/* Banner sedikit diperkecil dan dipusatkan di area konten utama. */
+.hero-stage {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto clamp(8px, 1vw, 13px) !important;
+  padding: 0 !important;
+}
+.hero {
+  width: 90% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.hero-art {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Gelombang hanya mengikuti lebar banner, tidak melebar ke area lain. */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.hero::before {
+  z-index: 2;
+  height: clamp(12px, 1.45vw, 19px);
+  background: rgba(255, 255, 255, 0.78);
+  clip-path: polygon(
+    0 45%,
+    12% 72%,
+    25% 43%,
+    39% 72%,
+    53% 40%,
+    68% 72%,
+    82% 43%,
+    100% 66%,
+    100% 100%,
+    0 100%
+  );
+}
+.hero::after {
+  z-index: 3;
+  height: clamp(8px, 1.05vw, 14px);
+  background: linear-gradient(
+    90deg,
+    rgba(179, 242, 198, 0.9),
+    rgba(210, 249, 232, 0.92),
+    rgba(177, 237, 207, 0.9)
+  );
+  clip-path: polygon(
+    0 42%,
+    14% 76%,
+    28% 46%,
+    43% 80%,
+    57% 43%,
+    72% 76%,
+    87% 46%,
+    100% 70%,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Enam tombol tetap satu baris; kolom kanan khusus progres dan buku. */
+.feature-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 19vw, 258px) !important;
+  align-items: center !important;
+  gap: clamp(10px, 1.1vw, 16px) !important;
+  width: 100% !important;
+  margin: 0 0 17px !important;
+  min-width: 0 !important;
+}
+.feature-row > .quick-links {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  align-items: center !important;
+  gap: clamp(3px, 0.5vw, 8px) !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 2px !important;
+}
+.feature-row .quick-card {
+  display: block;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.feature-row .quick-card img {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(82px, 7.2vw, 108px) !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Kolom kanan: kartu progres di atas, buku tepat di bawahnya. */
+.feature-side {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.feature-side > .progress-card {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: clamp(10px, 1vw, 14px) clamp(11px, 1.1vw, 15px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.98) !important;
+  border-radius: 22px !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 7px 19px rgba(64, 135, 101, 0.13) !important;
+}
+.feature-side .progress-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: clamp(12px, 1vw, 15px) !important;
+}
+.feature-side .progress-title img {
+  width: clamp(21px, 1.8vw, 26px) !important;
+  height: clamp(21px, 1.8vw, 26px) !important;
+}
+.feature-side .progress-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  gap: 8px !important;
+  padding: 7px 0 !important;
+}
+.feature-side .progress-ring {
+  width: clamp(58px, 5.6vw, 76px) !important;
+  height: clamp(58px, 5.6vw, 76px) !important;
+  font-size: clamp(13px, 1.2vw, 17px) !important;
+}
+.feature-side .progress-ring:before {
+  inset: 7px !important;
+}
+.feature-side .progress-count {
+  font-size: clamp(18px, 1.65vw, 23px) !important;
+}
+.feature-side .progress-content small {
+  font-size: clamp(8px, 0.75vw, 10px) !important;
+}
+.feature-side .progress-button {
+  width: 100% !important;
+  padding: 8px 10px !important;
+  font-size: clamp(10px, 0.85vw, 12px) !important;
+}
+.feature-side .feature-decoration {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: clamp(78px, 7.2vw, 104px) !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+.feature-side .book-decor {
+  display: block !important;
+  width: min(100%, 150px) !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Laptop kecil: banner tetap terpusat, kolom kanan tidak menekan tombol. */
+@media (max-width: 1250px) and (min-width: 981px) {
+  .hero {
+    width: 92% !important;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 218px !important;
+    gap: 9px !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(76px, 7.8vw, 96px) !important;
+  }
+  .feature-side .feature-decoration {
+    height: 82px !important;
+  }
+  .feature-side .book-decor {
+    width: 132px !important;
+  }
+}
+
+/* Tablet: tombol 3 x 2, progres dan buku tetap tersusun di kolom kanan. */
+@media (max-width: 980px) and (min-width: 721px) {
+  .hero {
+    width: 96% !important;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 176px !important;
+    gap: 8px !important;
+  }
+  .feature-row > .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 3px 5px !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(66px, 8vw, 80px) !important;
+  }
+  .feature-side > .progress-card {
+    padding: 9px !important;
+    border-radius: 18px !important;
+  }
+  .feature-side .progress-title {
+    font-size: 12px !important;
+  }
+  .feature-side .progress-content {
+    padding: 5px 0 !important;
+  }
+  .feature-side .progress-ring {
+    width: 54px !important;
+    height: 54px !important;
+    font-size: 13px !important;
+  }
+  .feature-side .progress-count {
+    font-size: 17px !important;
+  }
+  .feature-side .progress-button {
+    font-size: 10px !important;
+    padding: 6px !important;
+  }
+  .feature-side .feature-decoration {
+    height: 76px !important;
+  }
+  .feature-side .book-decor {
+    width: 112px !important;
+  }
+}
+
+/* HP: banner memenuhi lebar layar; tombol 3 x 2.
+   Progres dan buku ditata berdampingan agar tetap ringkas. */
+@media (max-width: 720px) {
+  .hero-stage {
+    display: flex !important;
+    width: 100% !important;
+    margin: 0 0 8px !important;
+  }
+  .hero {
+    width: 100% !important;
+  }
+  .feature-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) clamp(82px, 25vw, 112px) !important;
+    gap: 5px !important;
+    margin: 0 0 14px !important;
+  }
+  .feature-row > .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2px 4px !important;
+    padding: 0 !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(66px, 20vw, 88px) !important;
+  }
+  .feature-side {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-content: center !important;
+    gap: 2px !important;
+  }
+  .feature-side > .progress-card {
+    padding: 7px 8px !important;
+    border-radius: 15px !important;
+  }
+  .feature-side .progress-title {
+    font-size: 10px !important;
+    gap: 5px !important;
+  }
+  .feature-side .progress-title img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .feature-side .progress-content {
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    padding: 3px 0 !important;
+  }
+  .feature-side .progress-ring {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 10px !important;
+  }
+  .feature-side .progress-ring:before {
+    inset: 4px !important;
+  }
+  .feature-side .progress-count {
+    font-size: 14px !important;
+  }
+  .feature-side .progress-content small {
+    font-size: 7px !important;
+  }
+  .feature-side .progress-button {
+    font-size: 8px !important;
+    padding: 5px !important;
+  }
+  .feature-side .feature-decoration {
+    height: clamp(58px, 18vw, 78px) !important;
+  }
+  .feature-side .book-decor {
+    width: min(100%, 88px) !important;
+    height: 100% !important;
+  }
+}
+@media (max-width: 390px) {
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 78px !important;
+  }
+  .feature-row .quick-card img {
+    height: 64px !important;
+  }
+  .feature-side .progress-title {
+    font-size: 9px !important;
+  }
+  .feature-side .progress-ring {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .feature-side .progress-count {
+    font-size: 12px !important;
+  }
+  .feature-side .book-decor {
+    width: 76px !important;
+  }
+}
+
+/* =========================================================
+   KOMPOSISI BERANDA SESUAI DESAIN ACUAN
+   Desktop: banner + progres dalam satu baris.
+   Baris berikutnya: enam tombol + ilustrasi buku di kolom kanan.
+   ========================================================= */
+.hero-stage {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) clamp(205px, 20vw, 250px) !important;
+  align-items: center !important;
+  gap: clamp(10px, 1.1vw, 16px) !important;
+  width: 100% !important;
+  margin: 0 0 2px !important;
+  padding: 0 !important;
+}
+.hero-stage > .hero {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.hero-stage > .hero .hero-art {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+.hero-stage > .hero::before,
+.hero-stage > .hero::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  pointer-events: none !important;
+}
+.hero-stage > .hero::before {
+  z-index: 2 !important;
+  height: clamp(10px, 1.35vw, 17px) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  clip-path: polygon(
+    0 45%,
+    12% 72%,
+    25% 43%,
+    39% 72%,
+    53% 40%,
+    68% 72%,
+    82% 43%,
+    100% 66%,
+    100% 100%,
+    0 100%
+  ) !important;
+}
+.hero-stage > .hero::after {
+  z-index: 3 !important;
+  height: clamp(7px, 1vw, 12px) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(179, 242, 198, 0.9),
+    rgba(210, 249, 232, 0.92),
+    rgba(177, 237, 207, 0.9)
+  ) !important;
+  clip-path: polygon(
+    0 42%,
+    14% 76%,
+    28% 46%,
+    43% 80%,
+    57% 43%,
+    72% 76%,
+    87% 46%,
+    100% 70%,
+    100% 100%,
+    0 100%
+  ) !important;
+}
+.hero-stage > .hero-progress {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  align-self: center !important;
+  padding: clamp(13px, 1.25vw, 18px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.98) !important;
+  border-radius: clamp(19px, 2vw, 26px) !important;
+  background: rgba(255, 255, 255, 0.93) !important;
+  box-shadow: 0 8px 22px rgba(64, 135, 101, 0.14) !important;
+  z-index: 4 !important;
+}
+.hero-stage > .hero-progress .progress-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: clamp(13px, 1.05vw, 16px) !important;
+}
+.hero-stage > .hero-progress .progress-title img {
+  width: clamp(22px, 1.9vw, 28px) !important;
+  height: clamp(22px, 1.9vw, 28px) !important;
+}
+.hero-stage > .hero-progress .progress-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  gap: 8px !important;
+  padding: clamp(9px, 1vw, 14px) 0 !important;
+}
+.hero-stage > .hero-progress .progress-ring {
+  flex: 0 0 auto !important;
+  width: clamp(70px, 7vw, 96px) !important;
+  height: clamp(70px, 7vw, 96px) !important;
+  font-size: clamp(16px, 1.45vw, 20px) !important;
+}
+.hero-stage > .hero-progress .progress-ring:before {
+  inset: 9px !important;
+}
+.hero-stage > .hero-progress .progress-count {
+  font-size: clamp(21px, 1.9vw, 27px) !important;
+}
+.hero-stage > .hero-progress .progress-content small {
+  font-size: clamp(9px, 0.85vw, 11px) !important;
+}
+.hero-stage > .hero-progress .progress-button {
+  display: block !important;
+  width: 100% !important;
+  padding: clamp(8px, 0.8vw, 11px) 10px !important;
+  font-size: clamp(11px, 0.9vw, 13px) !important;
+}
+
+/* Tombol berada tepat di bawah banner; buku mengisi ruang kanan. */
+.feature-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) clamp(205px, 20vw, 250px) !important;
+  align-items: center !important;
+  gap: clamp(10px, 1.1vw, 16px) !important;
+  width: 100% !important;
+  margin: 0 0 clamp(12px, 1.4vw, 20px) !important;
+  padding: 0 !important;
+}
+.feature-row > .quick-links {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  align-items: center !important;
+  gap: clamp(2px, 0.45vw, 7px) !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.feature-row .quick-card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.feature-row .quick-card img {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(82px, 7.7vw, 112px) !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+.feature-row > .feature-side {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+}
+.feature-row .feature-decoration {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: clamp(86px, 8.5vw, 125px) !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+.feature-row .book-decor {
+  display: block !important;
+  width: min(100%, 165px) !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Laptop kecil dan tablet landscape. */
+@media (max-width: 1250px) and (min-width: 981px) {
+  .hero-stage,
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 205px !important;
+    gap: 9px !important;
+  }
+  .hero-stage > .hero-progress {
+    padding: 12px !important;
+  }
+  .hero-stage > .hero-progress .progress-ring {
+    width: 72px !important;
+    height: 72px !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(76px, 7.7vw, 96px) !important;
+  }
+  .feature-row .book-decor {
+    width: 145px !important;
+  }
+}
+
+/* Tablet: banner tetap berdampingan dengan progres; tombol tersusun 3 x 2. */
+@media (max-width: 980px) and (min-width: 721px) {
+  .hero-stage {
+    grid-template-columns: minmax(0, 1fr) 172px !important;
+    gap: 8px !important;
+  }
+  .hero-stage > .hero-progress {
+    padding: 9px !important;
+    border-radius: 18px !important;
+  }
+  .hero-stage > .hero-progress .progress-title {
+    font-size: 12px !important;
+  }
+  .hero-stage > .hero-progress .progress-title img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .hero-stage > .hero-progress .progress-content {
+    padding: 6px 0 !important;
+  }
+  .hero-stage > .hero-progress .progress-ring {
+    width: 55px !important;
+    height: 55px !important;
+    font-size: 13px !important;
+  }
+  .hero-stage > .hero-progress .progress-ring:before {
+    inset: 6px !important;
+  }
+  .hero-stage > .hero-progress .progress-count {
+    font-size: 17px !important;
+  }
+  .hero-stage > .hero-progress .progress-content small {
+    font-size: 8px !important;
+  }
+  .hero-stage > .hero-progress .progress-button {
+    font-size: 9px !important;
+    padding: 6px !important;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 172px !important;
+    gap: 8px !important;
+  }
+  .feature-row > .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2px 5px !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(64px, 8vw, 78px) !important;
+  }
+  .feature-row .feature-decoration {
+    height: 100px !important;
+  }
+  .feature-row .book-decor {
+    width: 125px !important;
+  }
+}
+
+/* HP: banner di atas, progres ringkas di bawahnya, tombol 3 x 2. */
+@media (max-width: 720px) {
+  .hero-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 7px !important;
+    margin-bottom: 8px !important;
+  }
+  .hero-stage > .hero {
+    width: 100% !important;
+  }
+  .hero-stage > .hero-progress {
+    width: min(100%, 360px) !important;
+    align-self: flex-end !important;
+    padding: 9px 11px !important;
+    border-radius: 17px !important;
+  }
+  .hero-stage > .hero-progress .progress-title {
+    font-size: 12px !important;
+  }
+  .hero-stage > .hero-progress .progress-title img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .hero-stage > .hero-progress .progress-content {
+    justify-content: center !important;
+    padding: 5px 0 !important;
+  }
+  .hero-stage > .hero-progress .progress-ring {
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 13px !important;
+  }
+  .hero-stage > .hero-progress .progress-ring:before {
+    inset: 6px !important;
+  }
+  .hero-stage > .hero-progress .progress-count {
+    font-size: 17px !important;
+  }
+  .hero-stage > .hero-progress .progress-content small {
+    font-size: 8px !important;
+  }
+  .hero-stage > .hero-progress .progress-button {
+    font-size: 10px !important;
+    padding: 6px !important;
+  }
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 92px !important;
+    gap: 5px !important;
+    align-items: center !important;
+  }
+  .feature-row > .quick-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2px 4px !important;
+  }
+  .feature-row .quick-card img {
+    height: clamp(62px, 19vw, 82px) !important;
+  }
+  .feature-row .feature-decoration {
+    height: 88px !important;
+  }
+  .feature-row .book-decor {
+    width: 88px !important;
+  }
+}
+@media (max-width: 390px) {
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr) 76px !important;
+  }
+  .feature-row .quick-card img {
+    height: 60px !important;
+  }
+  .feature-row .book-decor {
+    width: 74px !important;
+  }
+}
+
+/* =========================================================
+   BANNER STICKY — BERANDA
+   Banner dipisahkan dari deretan tombol dan tetap terlihat
+   di bagian atas saat konten Beranda digulir.
+   ========================================================= */
+.dashboard-view .hero-stage {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 80 !important;
+  isolation: isolate;
+  padding: 7px 0 9px !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  background: rgba(218, 244, 255, 0.88) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 7px 18px rgba(58, 111, 151, 0.09);
+}
+.dashboard-view .hero-stage > .hero {
+  align-self: center;
+}
+@media (max-width: 720px) {
+  .dashboard-view .hero-stage {
+    padding: 5px 0 7px !important;
+    margin-bottom: 7px !important;
+    border-radius: 0 0 14px 14px;
+  }
+}
+
+/* =========================================================
+   HEADER + BANNER TETAP DI ATAS (REVISI 24-11-2026)
+   Header pencarian/kontrol tetap terlihat. Banner berada tepat
+   di bawah header, transparan, sedangkan konten di bawahnya scroll.
+   ========================================================= */
+.main-content > .topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 300 !important;
+  isolation: isolate;
+  background: rgba(224, 247, 255, 0.78) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 5px 16px rgba(55, 111, 150, 0.08);
+}
+.dashboard-view .hero-stage {
+  position: sticky !important;
+  top: 67px !important;
+  z-index: 240 !important;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.dashboard-view .hero-stage > .hero {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+@media (max-width: 1250px) {
+  .dashboard-view .hero-stage { top: 59px !important; }
+}
+@media (max-width: 720px) {
+  .main-content > .topbar {
+    background: rgba(224, 247, 255, 0.9) !important;
+    border-radius: 0 0 14px 14px;
+  }
+  .dashboard-view .hero-stage { top: 59px !important; }
+}
+
+
+/* =========================================================
+   FINAL FIX — BERANDA: HEADER TRANSPARAN + BANNER STICKY
+   - Bar biru di belakang pencarian/kontrol dihilangkan.
+   - Tombol Beranda tetap berada di area konten normal (scroll).
+   - Hanya area banner yang sticky di bawah topbar.
+   - Tidak mengubah halaman Materi.
+   ========================================================= */
+
+/* Topbar tetap terlihat, tetapi tidak memiliki bidang biru di belakangnya.
+   Latar putih pada search, notifikasi, tema, dan profil tetap dipertahankan. */
+.main-content > .topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 300 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Sticky hanya diterapkan pada panggung banner Beranda.
+   .feature-row (tombol) berada di luar area ini sehingga ikut scroll biasa. */
+.dashboard-view .hero-stage {
+  position: sticky !important;
+  top: 67px !important;
+  z-index: 240 !important;
+  isolation: isolate;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  padding: 0 0 8px !important;
+  margin: 0 0 8px !important;
+}
+
+/* Pastikan gambar banner tetap transparan dan tidak mendapat panel tambahan. */
+.dashboard-view .hero-stage > .hero,
+.dashboard-view .hero-stage > .hero .hero-art {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Sesuaikan jarak sticky dengan tinggi topbar pada ukuran layar berbeda. */
+@media (max-width: 1250px) {
+  .dashboard-view .hero-stage {
+    top: 59px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .main-content > .topbar {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .dashboard-view .hero-stage {
+    top: 59px !important;
+    padding: 0 0 6px !important;
+    margin-bottom: 7px !important;
+  }
 }

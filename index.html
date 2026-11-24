@@ -12,6 +12,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/materi.css" />
+    <link rel="stylesheet" href="css/eksplorasi3d.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
   </head>
   <body>
     <div class="page-bg" aria-hidden="true"></div>
@@ -21,8 +27,10 @@
 
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="#" data-page="Beranda">
-        <img src="assets/images/logo_utama.png" alt="Logo BangunRuang" />
-        <span>BangunRuang</span>
+        <img
+          src="assets/images/logo_cube_sidebar.png"
+          alt="Logo BangunRuang lengkap"
+        />
       </a>
       <nav class="main-nav" aria-label="Navigasi utama">
         <button class="nav-link active" data-page="Beranda">
@@ -94,120 +102,453 @@
         </button>
       </header>
 
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="hero-mark">
+      <div class="dashboard-view" id="dashboardView">
+        <section
+          class="hero-stage"
+          aria-label="Banner utama dan progres belajar"
+        >
+          <section class="hero" aria-label="Banner utama BangunRuang">
             <img
-              src="assets/images/BangunRuang_3D Learning_Badge.png"
-              alt="BangunRuang"
+              class="hero-art"
+              src="assets/images/hero_banner_dashboard.png"
+              alt="BangunRuang dengan ilustrasi siswa dan bangun ruang"
             />
+          </section>
+          <aside
+            class="progress-card hero-progress"
+            aria-label="Progres belajar"
+          >
+            <div class="progress-title">
+              <img src="assets/images/icon progresbelajar.png" alt="" />
+              <strong>Progres Belajar</strong>
+            </div>
+            <div class="progress-content">
+              <div class="progress-ring"><span>75%</span></div>
+              <div>
+                <strong class="progress-count">6/8</strong
+                ><small>Materi Selesai</small>
+              </div>
+            </div>
+            <button class="progress-button" data-page="Progres Belajar">
+              Lihat Progres <span>›</span>
+            </button>
+          </aside>
+        </section>
+
+        <section class="feature-row" aria-label="Menu cepat dan ilustrasi">
+          <div class="quick-links" aria-label="Menu cepat">
+            <button class="quick-card quick-materi" data-page="Materi">
+              <img src="assets/images/button_materi.png" alt="Materi" />
+            </button>
+            <button class="quick-card quick-explore" data-page="Eksplorasi 3D">
+              <img
+                src="assets/images/button_eksplorasi_3d.png"
+                alt="Eksplorasi 3D"
+              />
+            </button>
+            <button class="quick-card quick-video" data-page="Video">
+              <img src="assets/images/button_video.png" alt="Video" />
+            </button>
+            <button class="quick-card quick-latihan" data-page="Latihan Soal">
+              <img src="assets/images/button_latihan.png" alt="Latihan" />
+            </button>
+            <button class="quick-card quick-kuis" data-page="Kuis">
+              <img src="assets/images/button_kuis.png" alt="Kuis" />
+            </button>
+            <button class="quick-card quick-games" data-page="Games">
+              <img src="assets/images/button_games.png" alt="Games" />
+            </button>
           </div>
-          <h1>Bangun<span>Ruang</span></h1>
-          <p class="hero-subtitle">Media Pembelajaran Bangun Ruang</p>
-          <p class="hero-description">
-            Yuk, jelajahi dunia bangun ruang dengan cara yang seru, mudah, dan
-            menyenangkan!
+          <div class="feature-side" aria-hidden="true">
+            <div class="feature-decoration">
+              <img class="book-decor" src="assets/images/ic_book.png" alt="" />
+            </div>
+          </div>
+        </section>
+
+        <section class="materials-section" id="materialsSection">
+          <div class="section-heading">
+            <div class="heading-title">
+              <img
+                class="mini-cube"
+                src="assets/images/logo_cube_only.png"
+                alt=""
+              />
+              <div><h2>Materi Bangun Ruang</h2></div>
+            </div>
+            <button class="see-all" data-page="Materi">
+              Lihat Semua Materi <span>➜</span>
+            </button>
+          </div>
+          <div class="material-grid" id="materialGrid">
+            <button class="material-card" data-material="Kubus">
+              <img src="assets/images/button_kubus.png" alt="Kubus" />
+            </button>
+            <button class="material-card" data-material="Balok">
+              <img src="assets/images/button_balok.png" alt="Balok" />
+            </button>
+            <button class="material-card" data-material="Prisma">
+              <img src="assets/images/button_prisma.png" alt="Prisma" />
+            </button>
+            <button class="material-card" data-material="Limas">
+              <img src="assets/images/button_limas.png" alt="Limas" />
+            </button>
+            <button class="material-card" data-material="Tabung">
+              <img src="assets/images/button_tabung.png" alt="Tabung" />
+            </button>
+            <button class="material-card" data-material="Kerucut">
+              <img src="assets/images/button_kerucut.png" alt="Kerucut" />
+            </button>
+            <button class="material-card" data-material="Bola">
+              <img src="assets/images/button_bola.png" alt="Bola" />
+            </button>
+          </div>
+          <p class="empty-state" id="emptyState" hidden>
+            Materi tidak ditemukan. Coba kata kunci lain, ya!
           </p>
-          <button class="primary-cta" data-page="Materi">
-            Mulai Belajar <span>➜</span>
-          </button>
-        </div>
-        <div class="hero-shapes" aria-hidden="true">
-          <div class="shape-cube"></div>
-          <div class="shape-cylinder"></div>
-          <div class="shape-cone"></div>
-          <div class="shape-sphere"></div>
-          <div class="shape-block"></div>
-        </div>
-        <aside class="progress-card">
-          <div class="progress-title">
-            <img src="assets/images/icon progresbelajar.png" alt="" />
-            <strong>Progres Belajar</strong>
-          </div>
-          <div class="progress-content">
-            <div class="progress-ring"><span>75%</span></div>
-            <div>
-              <strong class="progress-count">6/8</strong
-              ><small>Materi Selesai</small>
-            </div>
-          </div>
-          <button class="progress-button" data-page="Progres Belajar">
-            Lihat Progres <span>›</span>
-          </button>
-        </aside>
-      </section>
+        </section>
 
-      <section class="quick-links" aria-label="Menu cepat">
-        <button class="quick-card quick-materi" data-page="Materi">
-          <img src="assets/images/button_materi.png" alt="Materi" />
-        </button>
-        <button class="quick-card quick-explore" data-page="Eksplorasi 3D">
+        <footer class="footer-note">
+          Belajar jadi lebih seru bersama <strong>BangunRuang</strong> ✨
+        </footer>
+      </div>
+
+      <section
+        class="materi-view"
+        id="materiView"
+        aria-label="Daftar materi bangun ruang"
+      >
+        <div class="materi-banner-wrap">
           <img
-            src="assets/images/button_eksplorasi_3d.png"
-            alt="Eksplorasi 3D"
+            class="materi-banner"
+            src="assets/images/materi/banner_materi.png"
+            alt="Materi Bangun Ruang — pilih materi yang ingin kamu pelajari"
           />
-        </button>
-        <button class="quick-card quick-video" data-page="Video">
-          <img src="assets/images/button_video.png" alt="Video" />
-        </button>
-        <button class="quick-card quick-latihan" data-page="Latihan Soal">
-          <img src="assets/images/button_latihan.png" alt="Latihan" />
-        </button>
-        <button class="quick-card quick-kuis" data-page="Kuis">
-          <img src="assets/images/button_kuis.png" alt="Kuis" />
-        </button>
-        <button class="quick-card quick-games" data-page="Games">
-          <img src="assets/images/button_games.png" alt="Games" />
-        </button>
-      </section>
-
-      <section class="materials-section" id="materialsSection">
-        <div class="section-heading">
-          <div class="heading-title">
-            <span class="mini-cube">◆</span>
-            <div>
-              <h2>Materi Bangun Ruang</h2>
-              <p>Kenali bentuk, sifat, dan rumusnya!</p>
-            </div>
-          </div>
-          <button class="see-all" data-page="Materi">
-            Lihat Semua Materi <span>➜</span>
+        </div>
+        <div class="materi-grid" id="materiGrid">
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Kubus"
+            aria-label="Pelajari materi Kubus"
+          >
+            <img
+              src="assets/images/materi/01_Kubus.png"
+              alt="Kubus — Pelajari Materi"
+            />
+          </button>
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Balok"
+            aria-label="Pelajari materi Balok"
+          >
+            <img
+              src="assets/images/materi/02_Balok.png"
+              alt="Balok — Pelajari Materi"
+            />
+          </button>
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Prisma"
+            aria-label="Pelajari materi Prisma"
+          >
+            <img
+              src="assets/images/materi/03_Prisma.png"
+              alt="Prisma — Pelajari Materi"
+            />
+          </button>
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Limas"
+            aria-label="Pelajari materi Limas"
+          >
+            <img
+              src="assets/images/materi/04_Limas.png"
+              alt="Limas — Pelajari Materi"
+            />
+          </button>
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Tabung"
+            aria-label="Pelajari materi Tabung"
+          >
+            <img
+              src="assets/images/materi/05_Tabung.png"
+              alt="Tabung — Pelajari Materi"
+            />
+          </button>
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Kerucut"
+            aria-label="Pelajari materi Kerucut"
+          >
+            <img
+              src="assets/images/materi/06_Kerucut.png"
+              alt="Kerucut — Pelajari Materi"
+            />
+          </button>
+          <button
+            class="materi-topic"
+            type="button"
+            data-materi-topic="Bola"
+            aria-label="Pelajari materi Bola"
+          >
+            <img
+              src="assets/images/materi/07_Bola.png"
+              alt="Bola — Pelajari Materi"
+            />
           </button>
         </div>
-        <div class="material-grid" id="materialGrid">
-          <button class="material-card" data-material="Kubus">
-            <img src="assets/images/button_kubus.png" alt="Kubus" />
-          </button>
-          <button class="material-card" data-material="Balok">
-            <img src="assets/images/button_balok.png" alt="Balok" />
-          </button>
-          <button class="material-card" data-material="Prisma">
-            <img src="assets/images/button_prisma.png" alt="Prisma" />
-          </button>
-          <button class="material-card" data-material="Limas">
-            <img src="assets/images/button_limas.png" alt="Limas" />
-          </button>
-          <button class="material-card" data-material="Tabung">
-            <img src="assets/images/button_tabung.png" alt="Tabung" />
-          </button>
-          <button class="material-card" data-material="Kerucut">
-            <img src="assets/images/button_kerucut.png" alt="Kerucut" />
-          </button>
-          <button class="material-card" data-material="Bola">
-            <img src="assets/images/button_bola.png" alt="Bola" />
-          </button>
-        </div>
-        <p class="empty-state" id="emptyState" hidden>
+        <p class="materi-empty" id="materiEmpty" hidden>
           Materi tidak ditemukan. Coba kata kunci lain, ya!
         </p>
       </section>
 
-      <footer class="footer-note">
-        Belajar jadi lebih seru bersama <strong>BangunRuang</strong> ✨
-      </footer>
+      <section
+        class="explore-view"
+        id="exploreView"
+        aria-label="Eksplorasi 3D Bangun Ruang"
+      >
+        <div class="explore-banner">
+          <img
+            src="assets/images/Eksplorasi3D/banner_eksplorasi3D.png"
+            alt="Eksplorasi 3D Bangun Ruang"
+          />
+        </div>
+
+        <div class="explore-layout">
+          <aside class="explore-panel shape-panel">
+            <div class="explore-panel-title">
+              <img src="assets/images/Eksplorasi3D/01_cube.png" alt="" />
+              <span>Pilih Bangun Ruang</span>
+            </div>
+            <div class="shape-list" id="shapeList">
+              <button
+                class="shape-option active"
+                data-shape="kubus"
+                type="button"
+              >
+                <img
+                  src="assets/images/Eksplorasi3D/01_Kubus.png"
+                  alt=""
+                /><span>Kubus</span><b>✓</b>
+              </button>
+              <button class="shape-option" data-shape="balok" type="button">
+                <img
+                  src="assets/images/Eksplorasi3D/02_Balok.png"
+                  alt=""
+                /><span>Balok</span><b>✓</b>
+              </button>
+              <button class="shape-option" data-shape="prisma" type="button">
+                <img
+                  src="assets/images/Eksplorasi3D/03_Prisma.png"
+                  alt=""
+                /><span>Prisma</span><b>✓</b>
+              </button>
+              <button class="shape-option" data-shape="limas" type="button">
+                <img
+                  src="assets/images/Eksplorasi3D/04_Limas.png"
+                  alt=""
+                /><span>Limas</span><b>✓</b>
+              </button>
+              <button class="shape-option" data-shape="tabung" type="button">
+                <img
+                  src="assets/images/Eksplorasi3D/05_Tabung.png"
+                  alt=""
+                /><span>Tabung</span><b>✓</b>
+              </button>
+              <button class="shape-option" data-shape="kerucut" type="button">
+                <img
+                  src="assets/images/Eksplorasi3D/06_Kerucut.png"
+                  alt=""
+                /><span>Kerucut</span><b>✓</b>
+              </button>
+              <button class="shape-option" data-shape="bola" type="button">
+                <img src="assets/images/Eksplorasi3D/07_Bola.png" alt="" /><span
+                  >Bola</span
+                ><b>✓</b>
+              </button>
+            </div>
+          </aside>
+
+          <section
+            class="explore-stage-card"
+            aria-label="Area objek tiga dimensi"
+          >
+            <div class="stage-heading">
+              <img
+                id="stageShapeIcon"
+                src="assets/images/Eksplorasi3D/01_Kubus.png"
+                alt=""
+              />
+              <span id="stageShapeName">Kubus</span>
+              <button
+                class="stage-fullscreen"
+                id="stageFullscreen"
+                type="button"
+                aria-label="Layar penuh"
+              >
+                ⛶
+              </button>
+            </div>
+            <div class="model-stage" id="modelStage">
+              <div class="model-loading" id="modelLoading">
+                Menyiapkan objek 3D...
+              </div>
+              <model-viewer
+                id="shapeViewer"
+                src="assets/models/bangun-ruang/kubus.glb"
+                alt="Model 3D kubus"
+                camera-controls
+                touch-action="pan-y"
+                interaction-prompt="none"
+                shadow-intensity="0.85"
+                exposure="1.15"
+                environment-image="neutral"
+                camera-orbit="35deg 72deg 3.1m"
+                min-camera-orbit="auto 20deg 1.8m"
+                max-camera-orbit="auto 110deg 6m"
+                field-of-view="32deg"
+                auto-rotate
+                auto-rotate-delay="0"
+                rotation-per-second="24deg"
+              ></model-viewer>
+              <div class="stage-hint">
+                <span>↻</span> Seret objek untuk memutar • Scroll untuk
+                memperbesar
+              </div>
+            </div>
+            <div class="stage-controls" aria-label="Kontrol objek 3D">
+              <button
+                class="stage-control control-rotate active"
+                data-control="rotate"
+                type="button"
+              >
+                <img
+                  src="assets/images/Eksplorasi3D/11_refresh.png"
+                  alt=""
+                /><span>Putar</span>
+              </button>
+              <button
+                class="stage-control"
+                data-control="zoom-in"
+                type="button"
+              >
+                <img
+                  src="assets/images/Eksplorasi3D/08_zoom_in.png"
+                  alt=""
+                /><span>Perbesar</span>
+              </button>
+              <button
+                class="stage-control"
+                data-control="zoom-out"
+                type="button"
+              >
+                <img
+                  src="assets/images/Eksplorasi3D/09_zoom_out.png"
+                  alt=""
+                /><span>Perkecil</span>
+              </button>
+              <button class="stage-control" data-control="move" type="button">
+                <img src="assets/images/Eksplorasi3D/10_move.png" alt="" /><span
+                  >Geser</span
+                >
+              </button>
+              <button
+                class="stage-control control-reset"
+                data-control="reset"
+                type="button"
+              >
+                <img
+                  src="assets/images/Eksplorasi3D/11_refresh.png"
+                  alt=""
+                /><span>Reset</span>
+              </button>
+            </div>
+          </section>
+
+          <aside class="explore-side">
+            <section class="explore-panel info-panel">
+              <div class="explore-panel-title info-title">
+                <img src="assets/images/Eksplorasi3D/02_clipboard.png" alt="" />
+                <span>Informasi <span id="infoShapeName">Kubus</span></span>
+              </div>
+              <p class="shape-description" id="shapeDescription">
+                Kubus adalah bangun ruang yang memiliki 6 sisi berbentuk persegi
+                dengan ukuran yang sama.
+              </p>
+              <div class="stat-row">
+                <img
+                  src="assets/images/Eksplorasi3D/03_layers.png"
+                  alt=""
+                /><strong id="statFacesLabel">Jumlah Sisi</strong><b>:</b
+                ><span id="statFaces">6</span>
+              </div>
+              <div class="stat-row">
+                <img
+                  src="assets/images/Eksplorasi3D/04_wire_cube.png"
+                  alt=""
+                /><strong>Jumlah Rusuk</strong><b>:</b
+                ><span id="statEdges">12</span>
+              </div>
+              <div class="stat-row">
+                <img
+                  src="assets/images/Eksplorasi3D/05_node.png"
+                  alt=""
+                /><strong>Jumlah Titik Sudut</strong><b>:</b
+                ><span id="statVertices">8</span>
+              </div>
+            </section>
+
+            <section class="explore-panel guide-panel">
+              <div class="explore-panel-title guide-title">
+                <img src="assets/images/Eksplorasi3D/06_gamepad.png" alt="" />
+                <span>Petunjuk Eksplorasi</span>
+              </div>
+              <div class="guide-grid">
+                <div>
+                  <img src="assets/images/Eksplorasi3D/07_mouse.png" alt="" /><b
+                    >Seret</b
+                  ><small>untuk memutar</small>
+                </div>
+                <div>
+                  <img
+                    src="assets/images/Eksplorasi3D/08_zoom_in.png"
+                    alt=""
+                  /><b>Perbesar</b><small>objek</small>
+                </div>
+                <div>
+                  <img
+                    src="assets/images/Eksplorasi3D/09_zoom_out.png"
+                    alt=""
+                  /><b>Perkecil</b><small>objek</small>
+                </div>
+                <div>
+                  <img src="assets/images/Eksplorasi3D/10_move.png" alt="" /><b
+                    >Geser</b
+                  ><small>posisi</small>
+                </div>
+                <div>
+                  <img
+                    src="assets/images/Eksplorasi3D/11_refresh.png"
+                    alt=""
+                  /><b>Kembalikan</b><small>ke awal</small>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="js/app.js"></script>
+    <script src="js/materi.js"></script>
+    <script src="js/eksplorasi3d.js"></script>
   </body>
 </html>

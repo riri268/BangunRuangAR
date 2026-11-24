@@ -1,0 +1,277 @@
+/* Halaman Materi Bangun Ruang — terpisah dari style beranda */
+body.page-materi .page-bg {
+  background: url("../assets/images/materi/background_materi.png") center center / cover no-repeat fixed;
+}
+body.page-materi .page-bg::after { display: none; }
+body.page-materi .dashboard-view { display: none !important; }
+.materi-view {
+  display: none;
+  width: 100%;
+  padding: 0 0 34px;
+  animation: materiFadeIn .28s ease both;
+}
+body.page-materi .materi-view { display: block; }
+@keyframes materiFadeIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.materi-banner-wrap {
+  width: 100%;
+  margin: 0 auto clamp(12px, 1.8vw, 25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.materi-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 255px;
+  object-fit: contain;
+  object-position: center;
+}
+.materi-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  column-gap: clamp(7px, 1vw, 14px);
+  row-gap: clamp(12px, 1.6vw, 22px);
+  width: 100%;
+  padding: 0 clamp(4px, 1vw, 14px);
+}
+.materi-topic {
+  grid-column: span 4;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+  transition: transform .2s ease, filter .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.materi-topic:nth-child(n + 4) { grid-column: span 3; }
+.materi-topic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 7px rgba(47, 75, 124, .13));
+}
+.materi-topic:hover {
+  transform: translateY(-4px) scale(1.012);
+  filter: brightness(1.025);
+}
+.materi-topic:focus-visible {
+  outline: 3px solid #6bbcf5;
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+.materi-topic[hidden] { display: none !important; }
+.materi-empty {
+  margin: 18px auto;
+  width: min(100%, 520px);
+  padding: 15px 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 20px;
+  color: #263b78;
+  background: rgba(255,255,255,.8);
+  font-weight: 800;
+  box-shadow: 0 5px 18px rgba(60,88,139,.1);
+}
+@media (min-width: 1500px) {
+  .materi-banner { max-height: 285px; }
+  .materi-grid { column-gap: 16px; row-gap: 24px; }
+}
+@media (max-width: 1100px) {
+  .materi-banner { max-height: 220px; }
+  .materi-grid { column-gap: 8px; row-gap: 12px; }
+  .materi-topic { border-radius: 18px; }
+}
+@media (max-width: 820px) {
+  body.page-materi .main-content {
+    padding-right: 14px;
+  }
+  .materi-banner-wrap { margin-bottom: 12px; }
+  .materi-banner { max-height: none; }
+  .materi-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 7px;
+    row-gap: 10px;
+    padding: 0 2px;
+  }
+  .materi-topic,
+  .materi-topic:nth-child(n + 4) { grid-column: span 2; }
+  .materi-topic:nth-child(n + 4) { grid-column: span 3; }
+}
+@media (max-width: 560px) {
+  body.page-materi .main-content {
+    margin-left: 0;
+    padding: 10px 12px 24px;
+  }
+  body.page-materi .topbar {
+    height: 48px;
+    margin-bottom: 9px;
+    gap: 7px;
+  }
+  body.page-materi .search-box { width: min(100%, 230px); }
+  body.page-materi .profile-name { display: none; }
+  .materi-banner-wrap { margin-bottom: 8px; }
+  .materi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    padding: 0;
+  }
+  .materi-topic,
+  .materi-topic:nth-child(n + 4) { grid-column: span 1; }
+  .materi-topic img { width: 100%; }
+}
+@media (max-width: 360px) {
+  body.page-materi .main-content { padding-left: 9px; padding-right: 9px; }
+  .materi-grid { gap: 6px; }
+}
+
+/* =========================================================
+   BANNER STICKY — HALAMAN MATERI
+   Banner menjadi lapisan tersendiri di atas daftar tombol.
+   Daftar materi tetap bergerak normal ketika halaman digulir.
+   ========================================================= */
+body.page-materi .materi-banner-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  padding: 7px 0 10px;
+  margin-top: 0;
+  margin-bottom: clamp(12px, 1.8vw, 25px);
+  background: rgba(218, 244, 255, 0.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 7px 18px rgba(58, 111, 151, 0.09);
+}
+body.page-materi .materi-banner {
+  max-height: 235px;
+}
+@media (min-width: 1500px) {
+  body.page-materi .materi-banner { max-height: 255px; }
+}
+@media (max-width: 820px) {
+  body.page-materi .materi-banner-wrap {
+    padding: 5px 0 8px;
+    margin-bottom: 12px;
+    border-radius: 0 0 14px 14px;
+  }
+  body.page-materi .materi-banner { max-height: 190px; }
+}
+@media (max-width: 560px) {
+  body.page-materi .materi-banner-wrap {
+    padding: 4px 0 7px;
+    margin-bottom: 9px;
+  }
+  body.page-materi .materi-banner { max-height: 120px; }
+}
+
+/* Header global tetap terlihat; banner Materi menempel tepat di bawahnya.
+   Background banner tetap transparan sehingga background halaman terlihat. */
+body.page-materi .main-content > .topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 300 !important;
+  background: rgba(224, 247, 255, 0.78) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 5px 16px rgba(55, 111, 150, 0.08);
+}
+body.page-materi .materi-banner-wrap {
+  position: sticky !important;
+  top: 67px !important;
+  z-index: 240 !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body.page-materi .materi-banner {
+  background: transparent !important;
+}
+@media (max-width: 1250px) {
+  body.page-materi .materi-banner-wrap { top: 59px !important; }
+}
+@media (max-width: 560px) {
+  body.page-materi .main-content > .topbar {
+    background: rgba(224, 247, 255, 0.9) !important;
+    border-radius: 0 0 14px 14px;
+  }
+  body.page-materi .materi-banner-wrap { top: 57px !important; }
+}
+
+/* =========================================================
+   POSISI TOMBOL MATERI — LAYAR LAPTOP/DESKTOP SAJA
+   Baris 1: Kubus, Balok, Prisma berada di tengah.
+   Baris 2: Limas, Tabung, Kerucut, Bola sejajar.
+   Aturan tablet dan HP serta elemen lain tetap dipertahankan.
+   ========================================================= */
+@media (min-width: 821px) {
+  body.page-materi .materi-grid {
+    grid-template-columns: repeat(16, minmax(0, 1fr)) !important;
+    align-items: center;
+  }
+
+  body.page-materi .materi-grid > .materi-topic:nth-child(1) {
+    grid-column: 3 / span 4 !important;
+  }
+  body.page-materi .materi-grid > .materi-topic:nth-child(2) {
+    grid-column: 7 / span 4 !important;
+  }
+  body.page-materi .materi-grid > .materi-topic:nth-child(3) {
+    grid-column: 11 / span 4 !important;
+  }
+  body.page-materi .materi-grid > .materi-topic:nth-child(n + 4) {
+    grid-column: span 4 !important;
+  }
+}
+
+/* =========================================================
+   REVISI TERAKHIR — HILANGKAN BIDANG BIRU DI BELAKANG TOPBAR
+   Hanya latar pembungkus pencarian dan deretan ikon yang dihilangkan.
+   Bentuk tombol pencarian, notifikasi, tema, profil, posisi, dan sticky
+   tetap dipertahankan.
+   ========================================================= */
+body.page-materi .main-content > .topbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+body.page-materi .main-content > .topbar::before,
+body.page-materi .main-content > .topbar::after {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+@media (max-width: 560px) {
+  body.page-materi .main-content > .topbar {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
