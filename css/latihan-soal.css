@@ -1,0 +1,1058 @@
+/* =========================================================
+   HALAMAN LATIHAN SOAL — BangunRuang
+   CSS terpisah; tidak mengubah styling halaman lain.
+   ========================================================= */
+body.page-latihan-soal .dashboard-view,
+body.page-latihan-soal .materi-view,
+body.page-latihan-soal .explore-view,
+body.page-latihan-soal .video-view { display: none !important; }
+
+body.page-latihan-soal .latihan-view {
+  display: block;
+}
+.latihan-view {
+  display: none;
+  width: 100%;
+  padding: 0 0 30px;
+  color: #101d58;
+  animation: latihanFadeIn .28s ease both;
+}
+@keyframes latihanFadeIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+body.page-latihan-soal .page-bg {
+  background: url("../assets/images/latihansoal/backgrounds/background_latihansoal.png") center top / cover no-repeat fixed;
+}
+body.page-latihan-soal .page-bg::after { display: none; }
+
+.latihan-banner {
+  width: 100%;
+  height: clamp(155px, 16.8vw, 250px);
+  margin: -7px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.latihan-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  filter: drop-shadow(0 5px 10px rgba(42, 92, 155, .12));
+}
+.latihan-intro {
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: minmax(145px, 220px) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 12px clamp(18px, 2.1vw, 34px);
+  margin: 0 0 13px;
+  border: 2px solid rgba(255,255,255,.98);
+  border-radius: 27px;
+  background: linear-gradient(105deg, rgba(224,241,255,.94), rgba(239,246,255,.97));
+  box-shadow: 0 7px 17px rgba(50, 125, 190, .16), inset 0 0 0 1px rgba(153,204,255,.2);
+}
+.latihan-intro-art {
+  min-height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid rgba(124,151,213,.45);
+  padding-right: 15px;
+}
+.latihan-intro-art img {
+  width: clamp(105px, 10vw, 160px);
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 4px rgba(58,80,145,.12));
+}
+.latihan-intro-copy {
+  font-size: clamp(13px, 1.12vw, 18px);
+  line-height: 1.45;
+  font-weight: 800;
+  letter-spacing: -.15px;
+}
+.latihan-intro-copy p { margin: 0; }
+.latihan-intro-copy strong {
+  display: inline-block;
+  color: #fff;
+  background: linear-gradient(100deg, #a52bf2, #641de2);
+  padding: 1px 11px 3px;
+  border-radius: 13px;
+  white-space: nowrap;
+}
+.latihan-builder {
+  padding: clamp(12px, 1.2vw, 18px);
+  border: 2px solid rgba(255,255,255,.98);
+  border-radius: 29px;
+  background: linear-gradient(145deg, rgba(255,255,255,.91), rgba(249,248,255,.94));
+  box-shadow: 0 10px 25px rgba(74,95,160,.14), inset 0 0 0 1px rgba(177,192,255,.26);
+}
+.latihan-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 5px 25px 5px 15px;
+  margin: 0 0 12px;
+  border-radius: 30px;
+  color: #fff;
+  background: linear-gradient(105deg, #9636ef, #4320b5);
+  box-shadow: 0 5px 10px rgba(105,45,205,.22), inset 0 2px 2px rgba(255,255,255,.26);
+}
+.latihan-section-title .title-cube {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px rgba(19,67,150,.2));
+}
+.latihan-section-title h1 {
+  margin: 0;
+  font-size: clamp(17px, 1.55vw, 25px);
+  line-height: 1.1;
+  font-weight: 1000;
+}
+.latihan-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0,1fr));
+  gap: clamp(8px, .8vw, 13px);
+  align-items: stretch;
+}
+.latihan-topic {
+  grid-column: span 3;
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 19px;
+  background: transparent;
+  line-height: 0;
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.latihan-topic:nth-child(5) { grid-column: 2 / span 3; }
+.latihan-topic:nth-child(6) { grid-column: 6 / span 3; }
+.latihan-topic:nth-child(7) { grid-column: 10 / span 3; }
+.latihan-topic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 680 / 240;
+  object-fit: contain;
+  border-radius: 18px;
+  filter: drop-shadow(0 3px 4px rgba(67,117,176,.10));
+  transition: filter .18s ease;
+}
+.latihan-topic:hover { transform: translateY(-3px); }
+.latihan-topic:focus-visible { outline: 3px solid #7c37ee; outline-offset: 3px; }
+.latihan-topic.is-selected img {
+  filter: drop-shadow(0 0 0 #9b32f4) drop-shadow(0 0 3px rgba(157,42,244,.85)) drop-shadow(0 4px 5px rgba(85,55,165,.2));
+}
+.latihan-topic.is-selected::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 2px solid #a32cff;
+  border-radius: 17px;
+  pointer-events: none;
+}
+.topic-check {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(145deg,#c64cff,#7222dc);
+  box-shadow: 0 2px 7px rgba(94,34,176,.28);
+  font-size: 17px;
+  font-weight: 1000;
+  opacity: 0;
+  transform: scale(.7);
+  transition: .18s ease;
+}
+.latihan-topic.is-selected .topic-check { opacity: 1; transform: scale(1); }
+
+.latihan-settings {
+  display: grid;
+  grid-template-columns: minmax(180px, .95fr) minmax(190px, 1.1fr) minmax(210px, 1.2fr) minmax(220px, 1.25fr);
+  align-items: center;
+  gap: clamp(10px, 1.3vw, 22px);
+  margin-top: 16px;
+  padding: 12px 13px;
+  border: 2px solid rgba(211,204,255,.95);
+  border-radius: 25px;
+  background: linear-gradient(100deg, rgba(249,247,255,.97), rgba(255,255,255,.95));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.95);
+}
+.settings-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  padding: 5px 14px;
+  border-radius: 24px;
+  color: #fff;
+  background: linear-gradient(105deg,#9838f2,#4a20bd);
+  box-shadow: 0 4px 9px rgba(93,43,188,.2), inset 0 2px 2px rgba(255,255,255,.25);
+  font-size: clamp(15px,1.35vw,21px);
+  font-weight: 1000;
+  white-space: nowrap;
+}
+.settings-label img { width: 37px; height: 37px; object-fit: contain; }
+.setting-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  min-height: 52px;
+  padding-left: clamp(8px,1.2vw,18px);
+  border-left: 2px solid rgba(132,112,220,.65);
+}
+.setting-field > img { width: 34px; height: 34px; object-fit: contain; flex: 0 0 34px; }
+.setting-copy { display: flex; flex-direction: column; gap: 4px; min-width: 0; width: 100%; }
+.setting-copy strong { font-size: clamp(12px, .95vw, 15px); font-weight: 900; white-space: nowrap; }
+.setting-copy select {
+  width: min(100%, 180px);
+  height: 38px;
+  padding: 0 12px;
+  border: 1.5px solid #aab8ed;
+  border-radius: 13px;
+  color: #14245f;
+  background: linear-gradient(180deg,#fff,#f5f7ff);
+  box-shadow: inset 0 1px 3px rgba(71,90,155,.08);
+  font-size: 15px;
+  font-weight: 900;
+  outline: none;
+}
+.setting-copy select:focus { border-color: #8737e9; box-shadow: 0 0 0 3px rgba(135,55,233,.13); }
+.latihan-start {
+  min-height: 54px;
+  border: 0;
+  border-radius: 30px;
+  padding: 8px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  background: linear-gradient(105deg,#9c36f1 0%,#6420dc 58%,#4217b9 100%);
+  box-shadow: 0 5px 11px rgba(96,38,191,.24), inset 0 2px 2px rgba(255,255,255,.3);
+  font-size: clamp(16px,1.55vw,24px);
+  font-weight: 1000;
+  white-space: nowrap;
+  transition: transform .18s ease, filter .18s ease;
+}
+.latihan-start:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.latihan-start span { font-size: 25px; }
+.latihan-hint {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 9px 2px 0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: #59628e;
+  background: linear-gradient(90deg,rgba(229,218,255,.8),rgba(216,207,255,.82));
+  font-size: clamp(11px,.95vw,14px);
+  font-weight: 700;
+  text-align: center;
+}
+.latihan-hint span { color: #7c2ee7; font-size: 21px; font-weight: 900; }
+.latihan-selection-note { margin: 7px 0 0; text-align: right; color: #7c83a8; font-size: 11px; font-weight: 800; }
+
+/* Ruang pengerjaan soal */
+.latihan-workspace, .latihan-result {
+  margin-top: 14px;
+  padding: clamp(16px,2vw,28px);
+  border: 2px solid rgba(255,255,255,.98);
+  border-radius: 28px;
+  background: linear-gradient(145deg,rgba(255,255,255,.96),rgba(246,247,255,.97));
+  box-shadow: 0 10px 25px rgba(74,95,160,.15);
+}
+.question-topline, .question-progress-row, .question-actions, .result-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.back-to-builder {
+  border: 0; border-radius: 18px; padding: 9px 14px;
+  color: #5521bd; background: #eee6ff; font-weight: 900;
+}
+.question-topic { color: #6725d1; font-weight: 1000; }
+.question-progress-row { margin: 17px 0; }
+.question-progress-row > div:first-child { display:flex; flex-direction:column; gap:3px; }
+.question-progress-row strong { font-size: 17px; }
+.question-progress-row span { color:#7882a9; font-size:12px; font-weight:800; }
+.question-progress { width: min(48%,400px); height: 10px; border-radius: 20px; background:#e6e9fb; overflow:hidden; }
+.question-progress span { display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#a13af2,#4b21c5); transition:width .25s ease; }
+.question-card { max-width: 920px; margin: 0 auto; padding:clamp(18px,2.4vw,34px); border:1px solid #d9ddff; border-radius:24px; background:linear-gradient(145deg,#fff,#f5f8ff); box-shadow:0 7px 18px rgba(70,95,165,.1); }
+.question-kicker { display:flex; justify-content:space-between; align-items:center; color:#8b39e7; font-size:11px; font-weight:1000; letter-spacing:1px; }
+.question-kicker span:last-child { display:grid; place-items:center; width:34px;height:34px;border-radius:50%;color:#fff;background:linear-gradient(140deg,#a83cf1,#5120bd);font-size:13px; }
+.question-card h2 { margin:17px 0 20px; color:#15235f; font-size:clamp(18px,1.7vw,25px); line-height:1.45; }
+.answer-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.answer-option { min-height:58px; display:flex; align-items:center; gap:12px; padding:11px 14px; border:1.5px solid #c8d9ff; border-radius:16px; color:#1b2c68; background:linear-gradient(120deg,#f4faff,#e9f2ff); text-align:left; font-weight:850; transition:.15s ease; }
+.answer-option:hover:not(:disabled) { border-color:#8c3be8; transform:translateY(-2px); }
+.answer-option .answer-letter { width:30px;height:30px;display:grid;place-items:center;flex:0 0 30px;border-radius:10px;color:#fff;background:#4d9fe9;font-weight:1000; }
+.answer-option.correct { border-color:#31b87b;background:#e7fff3; }
+.answer-option.correct .answer-letter { background:#21a66a; }
+.answer-option.incorrect { border-color:#f08a9d;background:#fff0f3; }
+.answer-option.incorrect .answer-letter { background:#e35c78; }
+.answer-option:disabled { cursor:default; }
+.answer-feedback { margin-top:16px; padding:14px 16px; border-radius:16px; background:#e9fff4; border:1px solid #b8efd3; color:#155c43; }
+.answer-feedback.is-wrong { background:#fff2f4; border-color:#ffd0d8; color:#8b3146; }
+.answer-feedback strong { font-size:16px; }
+.answer-feedback p { margin:5px 0 0; line-height:1.55; font-weight:700; }
+.question-actions { margin-top:17px; color:#7781a7; font-size:12px; font-weight:800; }
+.question-actions button, .result-actions button { border:0;border-radius:22px;padding:12px 20px;color:#fff;background:linear-gradient(100deg,#9636ef,#4b20bd);font-weight:950;box-shadow:0 4px 9px rgba(93,43,188,.2); }
+.question-actions button:disabled { opacity:.45; cursor:not-allowed; }
+.latihan-result { text-align:center; }
+.result-icon { font-size:58px; }
+.result-eyebrow { margin:5px 0;color:#9139e9;font-size:12px;font-weight:1000;letter-spacing:2px; }
+.latihan-result h2 { margin:7px 0;color:#17235f;font-size:clamp(20px,2vw,28px); }
+.result-score { margin:15px auto 8px;width:110px;height:110px;display:grid;place-items:center;border-radius:50%;color:#fff;background:linear-gradient(145deg,#a83cf2,#4d1cbb);font-size:34px;font-weight:1000;box-shadow:0 8px 18px rgba(96,38,191,.25); }
+.latihan-result > p:not(.result-eyebrow) { color:#657096;font-weight:750; }
+.result-actions { justify-content:center; flex-wrap:wrap; margin:17px 0; }
+.result-review { max-width:850px;margin:18px auto 0;text-align:left; }
+.review-item { padding:12px 14px;margin:8px 0;border-radius:14px;background:#f0f4ff;border:1px solid #dbe3ff; }
+.review-item strong { display:block;margin-bottom:4px;color:#18265f; }
+.review-item p { margin:0;color:#657096;font-size:13px;font-weight:700;line-height:1.5; }
+
+@media (max-width: 1250px) {
+  .latihan-settings { grid-template-columns: minmax(160px,.85fr) minmax(165px,1fr) minmax(180px,1fr) minmax(190px,1.15fr); gap:9px; }
+  .settings-label { font-size:16px; padding-inline:10px; }
+  .settings-label img { width:31px;height:31px; }
+  .setting-field { gap:6px; padding-left:9px; }
+  .setting-field > img { width:28px;height:28px;flex-basis:28px; }
+}
+@media (max-width: 980px) {
+  .latihan-banner { height:clamp(135px,21vw,205px); }
+  .latihan-intro { grid-template-columns:130px minmax(0,1fr); gap:12px; }
+  .latihan-topic-grid { grid-template-columns:repeat(6,minmax(0,1fr)); }
+  .latihan-topic, .latihan-topic:nth-child(n) { grid-column:span 2; }
+  .latihan-topic:nth-child(7) { grid-column:3 / span 2; }
+  .latihan-settings { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .settings-label { justify-content:flex-start; }
+  .latihan-start { min-height:48px; }
+}
+@media (max-width: 620px) {
+  .latihan-view { padding-bottom:18px; }
+  .latihan-banner { height:auto; max-height:145px; margin:0 0 8px; }
+  .latihan-banner img { height:auto; max-height:145px; }
+  .latihan-intro { grid-template-columns:74px minmax(0,1fr); gap:9px; padding:10px 12px; border-radius:19px; }
+  .latihan-intro-art { min-height:58px; padding-right:7px; }
+  .latihan-intro-art img { width:68px;height:58px; }
+  .latihan-intro-copy { font-size:11px; line-height:1.42; }
+  .latihan-intro-copy strong { white-space:normal; padding-inline:5px; }
+  .latihan-builder { padding:10px; border-radius:20px; }
+  .latihan-section-title { min-height:39px; margin-bottom:9px; padding:4px 16px 4px 9px; gap:7px; }
+  .latihan-section-title .title-cube { width:27px;height:27px;font-size:22px; }
+  .latihan-section-title h1 { font-size:15px; }
+  .latihan-topic-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+  .latihan-topic, .latihan-topic:nth-child(n) { grid-column:auto; }
+  .latihan-topic:last-child { grid-column:1 / -1; width:calc(50% - 4px); justify-self:center; }
+  .latihan-topic img { border-radius:12px; }
+  .topic-check { top:5px;right:5px;width:20px;height:20px;font-size:12px; }
+  .latihan-topic.is-selected::after { inset:2px;border-radius:11px;border-width:1.5px; }
+  .latihan-settings { grid-template-columns:1fr 1fr; gap:9px; margin-top:10px; padding:9px; border-radius:18px; }
+  .settings-label { grid-column:1 / -1; min-height:40px; justify-content:center; font-size:15px; }
+  .settings-label img { width:28px;height:28px; }
+  .setting-field { border-left:0; padding:0 3px; gap:5px; }
+  .setting-field > img { width:25px;height:25px;flex-basis:25px; }
+  .setting-copy strong { font-size:10px; }
+  .setting-copy select { height:34px; padding:0 7px; font-size:12px; }
+  .latihan-start { grid-column:1 / -1; min-height:44px; font-size:16px; }
+  .latihan-hint { font-size:10px; line-height:1.35; }
+  .latihan-selection-note { font-size:9px; }
+  .answer-list { grid-template-columns:1fr; gap:8px; }
+  .question-progress-row { align-items:flex-start; flex-direction:column; }
+  .question-progress { width:100%; }
+  .question-actions { align-items:stretch; flex-direction:column; }
+  .question-actions button { width:100%; }
+}
+
+
+/* Revisi ruang konten: memberi jarak aman dari sidebar tanpa mengubah halaman lain */
+body.page-latihan-soal .latihan-view {
+  box-sizing: border-box;
+  width: calc(100% - 12px);
+  padding-left: 12px;
+}
+
+/* Penetapan target belajar sebagai dukungan self-regulated learning */
+.latihan-goal {
+  display: grid;
+  grid-template-columns: minmax(220px, .85fr) minmax(260px, 1.15fr);
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 13px;
+  padding: 12px 17px;
+  border: 1.5px solid rgba(177, 196, 255, .78);
+  border-radius: 19px;
+  background: linear-gradient(105deg, rgba(239,247,255,.96), rgba(248,242,255,.96));
+  box-shadow: 0 5px 13px rgba(77, 106, 166, .09);
+}
+.latihan-goal label { display:flex; align-items:center; gap:10px; min-width:0; }
+.goal-icon { width:39px;height:39px;display:grid;place-items:center;flex:0 0 39px;border-radius:13px;background:#eee4ff;font-size:22px; }
+.goal-copy { display:flex;flex-direction:column;gap:3px; }
+.goal-copy strong { color:#202b70;font-size:14px;font-weight:1000; }
+.goal-copy small { color:#68749e;font-size:11px;font-weight:700;line-height:1.35; }
+.latihan-goal input {
+  width:100%;min-width:0;height:42px;padding:0 14px;
+  border:1.5px solid #c7d5f6;border-radius:13px;outline:0;
+  color:#17245f;background:rgba(255,255,255,.94);font:700 13px Nunito,sans-serif;
+}
+.latihan-goal input:focus { border-color:#9138e8;box-shadow:0 0 0 3px rgba(145,56,232,.12); }
+.latihan-goal input::placeholder { color:#8994b4; }
+
+/* Ilustrasi soal dan penanda indikator visual-spasial */
+.question-context {
+  margin:-8px 0 13px;padding:9px 13px;border-left:4px solid #8c39e8;
+  border-radius:0 12px 12px 0;background:#f2edff;color:#6332a5;
+  font-size:12px;font-weight:900;line-height:1.45;
+}
+.question-visual {
+  width:min(100%,460px);margin:0 auto 18px;padding:8px;
+  border:1px solid #d9e6ff;border-radius:20px;
+  background:linear-gradient(145deg,#f7fbff,#f8f3ff);
+}
+.question-visual svg { display:block;width:100%;height:auto;max-height:260px; }
+.question-kicker span:first-child { letter-spacing:.8px; }
+
+/* Refleksi setelah latihan: monitoring dan evaluasi diri siswa */
+.reflection-panel {
+  max-width:850px;margin:18px auto 12px;padding:17px 19px;text-align:left;
+  border:1.5px solid #d8ccff;border-radius:20px;
+  background:linear-gradient(135deg,#f8f5ff,#f1f8ff);
+}
+.reflection-heading { display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px; }
+.reflection-heading strong { color:#5521bd;font-size:17px;font-weight:1000; }
+.reflection-heading span { color:#7881a5;font-size:11px;font-weight:800; }
+.reflection-panel label { display:block;margin:10px 0 6px;color:#25316c;font-size:12px;font-weight:900; }
+.reflection-panel select,.reflection-panel textarea {
+  display:block;width:100%;padding:10px 12px;border:1.5px solid #cbd7f5;border-radius:12px;
+  outline:0;color:#1d2a65;background:#fff;font:700 13px Nunito,sans-serif;
+}
+.reflection-panel textarea { resize:vertical;min-height:76px;line-height:1.5; }
+.reflection-panel select:focus,.reflection-panel textarea:focus { border-color:#8e39e8;box-shadow:0 0 0 3px rgba(142,57,232,.12); }
+.save-reflection { margin-top:10px;padding:10px 17px;border:0;border-radius:20px;color:#fff;background:linear-gradient(100deg,#9636ef,#4b20bd);font:900 13px Nunito,sans-serif;cursor:pointer; }
+.reflection-saved { margin:8px 0 0;color:#23764f;font-size:12px;font-weight:800; }
+
+@media (max-width:980px) {
+  body.page-latihan-soal .latihan-view { width:100%;padding-left:8px; }
+  .latihan-goal { grid-template-columns:1fr;gap:9px; }
+}
+@media (max-width:620px) {
+  body.page-latihan-soal .latihan-view { width:100%;padding-left:0; }
+  .latihan-goal { padding:10px 11px;border-radius:15px; }
+  .goal-copy strong { font-size:12px; }
+  .goal-copy small { font-size:10px; }
+  .latihan-goal input { height:39px;font-size:11px; }
+  .question-visual { padding:5px;border-radius:15px; }
+  .question-context { font-size:10px; }
+  .reflection-panel { padding:12px;border-radius:15px; }
+  .reflection-heading strong { font-size:15px; }
+  .reflection-panel label { font-size:11px; }
+}
+
+
+/* =========================================================
+   STAGE 3D INTERAKTIF LATIHAN SOAL — visual pastel BangunRuang
+   Terisolasi pada area .question-visual agar halaman lain tetap aman.
+   ========================================================= */
+.question-visual:has(.question-3d-stage) {
+  width: min(100%, 680px);
+  padding: 0;
+  overflow: hidden;
+  border: 1.5px solid rgba(151, 174, 255, .65);
+  border-radius: 25px;
+  background: #eaf5ff;
+  box-shadow: 0 12px 28px rgba(83, 111, 196, .16), inset 0 1px 0 #fff;
+}
+.question-3d-stage {
+  position: relative;
+  min-height: 330px;
+  padding: 14px 18px 12px;
+  overflow: hidden;
+  isolation: isolate;
+  background-image:
+    linear-gradient(180deg, rgba(235,247,255,.16), rgba(244,237,255,.18)),
+    url("../assets/images/latihansoal/backgrounds/stage_latihansoal_3d.png");
+  background-size: cover;
+  background-position: center 54%;
+  background-repeat: no-repeat;
+}
+.question-3d-stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 63%, rgba(255,255,255,.08), transparent 58%);
+  pointer-events: none;
+}
+.question-stage-label {
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1px;
+  padding: 7px 15px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 30px;
+  color: #4c35a4;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 4px 14px rgba(94,112,187,.13), inset 0 1px 0 #fff;
+  font-size: 11px;
+  font-weight: 1000;
+  letter-spacing: 1.25px;
+  backdrop-filter: blur(8px);
+}
+.question-stage-label span { color: #f6b82e; margin: 0 5px; }
+.question-model-viewer {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 258px;
+  margin: -2px auto 0;
+  --poster-color: transparent;
+  background: transparent;
+  outline: none;
+  touch-action: pan-y;
+}
+.question-stage-sparkle {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 2px 9px rgba(127,100,220,.5);
+  pointer-events: none;
+  animation: questionSparkle 2.8s ease-in-out infinite;
+}
+.question-stage-sparkle.sparkle-one { top: 24%; left: 13%; font-size: 26px; }
+.question-stage-sparkle.sparkle-two { top: 42%; right: 12%; color: #ffe27a; font-size: 32px; animation-delay: .8s; }
+@keyframes questionSparkle {
+  0%,100% { transform: scale(.8) rotate(0); opacity: .65; }
+  50% { transform: scale(1.15) rotate(18deg); opacity: 1; }
+}
+.question-stage-caption {
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+  margin: -2px auto 9px;
+  padding: 6px 13px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 30px;
+  color: #47558c;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 3px 10px rgba(85,102,168,.1);
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+  backdrop-filter: blur(7px);
+}
+.question-stage-caption span { margin-right: 5px; }
+.question-stage-actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.question-stage-actions button {
+  min-height: 34px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 24px;
+  color: #fff;
+  background: linear-gradient(105deg,#7b61e9,#4b7de8);
+  box-shadow: 0 4px 10px rgba(77,88,183,.2), inset 0 1px 0 rgba(255,255,255,.3);
+  font: 900 11px Nunito, sans-serif;
+  cursor: pointer;
+  transition: transform .16s ease, filter .16s ease;
+}
+.question-stage-actions button:last-child {
+  color: #51409e;
+  background: linear-gradient(105deg,#fff,#f0eaff);
+}
+.question-stage-actions button:hover { transform: translateY(-2px); filter: brightness(1.04); }
+.question-stage-actions button:focus-visible {
+  outline: 3px solid #ffc94f;
+  outline-offset: 2px;
+}
+@media (max-width: 640px) {
+  .question-visual:has(.question-3d-stage) { border-radius: 19px; }
+  .question-3d-stage { min-height: 285px; padding: 11px 10px 10px; background-position: center 55%; }
+  .question-model-viewer { height: clamp(205px, 62vw, 250px); }
+  .question-stage-label { font-size: 10px; padding: 6px 12px; }
+  .question-stage-caption { font-size: 9px; padding: 5px 10px; }
+  .question-stage-actions button { min-height: 32px; padding: 6px 11px; font-size: 10px; }
+  .question-stage-sparkle.sparkle-one { left: 7%; }
+  .question-stage-sparkle.sparkle-two { right: 7%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .question-stage-sparkle { animation: none; }
+}
+
+/* =========================================================
+   STAGE LABORATORIUM 3D — aset PNG khusus Latihan Soal
+   Semua selector dibatasi pada .question-visual / stage.
+   ========================================================= */
+body.page-latihan-soal .question-visual:has(.question-3d-stage) {
+  width: min(100%, 1080px);
+  max-width: 1080px;
+  border: 2px solid rgba(255,255,255,.98);
+  border-radius: 28px;
+  background: #a9cfff;
+  box-shadow: 0 16px 32px rgba(72,91,174,.18), 0 0 0 1px rgba(166,185,255,.42);
+}
+body.page-latihan-soal .question-3d-stage {
+  min-height: clamp(390px, 36vw, 490px);
+  padding: 18px 22px 16px;
+  background-image: linear-gradient(180deg,rgba(237,245,255,.02),rgba(245,239,255,.06)),
+    url("../assets/images/latihansoal/backgrounds/stage_latihansoal_3d.png");
+  background-size: cover;
+  background-position: center 54%;
+  border-radius: 26px;
+}
+body.page-latihan-soal .question-stage-label {
+  margin: 0 auto 2px;
+  padding: 9px 20px;
+  color: #48239b;
+  font-size: 12px;
+  background: rgba(255,255,255,.9);
+  border: 2px solid rgba(255,255,255,.98);
+  box-shadow: 0 6px 17px rgba(60,71,148,.18);
+}
+body.page-latihan-soal .question-model-viewer {
+  width: min(60%, 570px);
+  height: clamp(260px, 25vw, 340px);
+  margin: 2px auto 0;
+  transform: translateY(8px);
+  filter: drop-shadow(0 12px 12px rgba(57,75,151,.12));
+  --poster-color: transparent;
+}
+body.page-latihan-soal .question-stage-caption {
+  bottom: 8px;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(45,58,126,.7);
+  font-size: 11px;
+  font-weight: 900;
+}
+body.page-latihan-soal .question-stage-actions {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 8px auto 0;
+}
+body.page-latihan-soal .question-stage-actions button,
+body.page-latihan-soal .question-model-switch button {
+  min-height: 40px;
+  padding: 8px 17px;
+  border: 1.5px solid rgba(255,255,255,.98);
+  border-radius: 24px;
+  color: #38258f;
+  background: linear-gradient(145deg,#fff,#e9edff);
+  box-shadow: 0 5px 13px rgba(57,74,154,.16);
+  font: 900 11px Nunito, sans-serif;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+body.page-latihan-soal .question-stage-actions button:hover,
+body.page-latihan-soal .question-model-switch button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(57,74,154,.2);
+}
+body.page-latihan-soal .question-model-switch {
+  position: absolute;
+  z-index: 5;
+  top: 17%;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 18px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 7px 18px rgba(59,77,155,.15);
+  backdrop-filter: blur(8px);
+}
+body.page-latihan-soal .question-model-switch button {
+  min-height: 37px;
+  padding: 7px 12px;
+  font-size: 10px;
+}
+body.page-latihan-soal .question-model-switch button.is-active {
+  color: #fff;
+  background: linear-gradient(135deg,#a34cf2,#6941d5);
+  border-color: #fff;
+}
+body.page-latihan-soal .question-stage-decor {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 10px rgba(63,77,145,.16));
+}
+body.page-latihan-soal .question-stage-decor.decor-books {
+  width: clamp(70px,10vw,125px);
+  height: auto;
+  left: 2%;
+  bottom: 8%;
+}
+body.page-latihan-soal .question-stage-decor.decor-plant {
+  width: clamp(65px,8vw,100px);
+  height: auto;
+  left: 10%;
+  bottom: 16%;
+}
+body.page-latihan-soal .question-stage-decor.decor-ruler {
+  width: clamp(70px,9vw,112px);
+  height: auto;
+  right: 2%;
+  bottom: 16%;
+}
+body.page-latihan-soal .question-stage-sparkle { z-index: 3; }
+@media (max-width: 760px) {
+  body.page-latihan-soal .question-3d-stage {
+    min-height: 365px;
+    padding: 12px 8px 12px;
+    border-radius: 20px;
+    background-position: center 52%;
+  }
+  body.page-latihan-soal .question-model-viewer {
+    width: 78%;
+    height: 245px;
+    transform: translateY(13px);
+  }
+  body.page-latihan-soal .question-model-switch {
+    top: 17%; left: 7px; gap: 5px; padding: 5px;
+  }
+  body.page-latihan-soal .question-model-switch button { min-height: 32px; padding: 5px 8px; font-size: 9px; }
+  body.page-latihan-soal .question-stage-actions { gap: 5px; margin-top: 6px; }
+  body.page-latihan-soal .question-stage-actions button { min-height: 34px; padding: 6px 10px; font-size: 9px; }
+  body.page-latihan-soal .question-stage-decor.decor-books { width: 66px; left: 0; bottom: 9%; }
+  body.page-latihan-soal .question-stage-decor.decor-plant { width: 55px; left: 7%; bottom: 17%; }
+  body.page-latihan-soal .question-stage-decor.decor-ruler { width: 65px; right: 0; bottom: 17%; }
+  body.page-latihan-soal .question-stage-caption { font-size: 9px; bottom: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-latihan-soal .question-stage-actions button,
+  body.page-latihan-soal .question-model-switch button { transition: none; }
+}
+
+
+
+/* =========================================================
+   REDESAIN KARTU LATIHAN SOAL — hanya halaman Latihan Soal
+   Layout sedang: visual 3D di kiri, jawaban di kanan.
+   ========================================================= */
+body.page-latihan-soal .question-card {
+  width: min(100%, 1160px);
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: clamp(16px, 2vw, 25px);
+  border: 1.5px solid rgba(194, 205, 255, .9);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(255,221,239,.58), transparent 28%),
+    radial-gradient(circle at 95% 2%, rgba(190,224,255,.7), transparent 30%),
+    linear-gradient(135deg,#fffaff 0%,#f2f7ff 48%,#f8f0ff 100%);
+  box-shadow: 0 12px 30px rgba(85,91,174,.12), inset 0 1px 0 #fff;
+}
+body.page-latihan-soal .question-kicker {
+  align-items: center;
+  margin-bottom: 5px;
+}
+body.page-latihan-soal .question-kicker span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(100deg,#a53bf0,#6126ce);
+  letter-spacing: .65px;
+}
+body.page-latihan-soal .question-kicker span:first-child::before {
+  content: "✦";
+  color: #ffe16c;
+}
+body.page-latihan-soal .question-card h2 {
+  max-width: 100%;
+  margin: 12px 0 11px;
+  color: #17276d;
+  font-size: clamp(17px,1.55vw,22px);
+  line-height: 1.42;
+}
+body.page-latihan-soal .question-context {
+  margin: 0 0 15px;
+  padding: 9px 13px;
+  border-left: 4px solid #963cf0;
+  border-radius: 0 14px 14px 0;
+  color: #5c2ca8;
+  background: linear-gradient(90deg,#f0e6ff,#e9efff);
+  font-size: 11px;
+}
+body.page-latihan-soal .question-layout {
+  display: grid;
+  grid-template-columns: minmax(0,1.08fr) minmax(280px,.92fr);
+  align-items: stretch;
+  gap: 16px;
+}
+body.page-latihan-soal .question-visual {
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1.5px solid rgba(174,190,255,.85);
+  border-radius: 23px;
+  background: linear-gradient(145deg,#d8ebff,#e9ddff);
+  box-shadow: 0 8px 19px rgba(91,103,183,.12);
+}
+body.page-latihan-soal .question-visual[hidden] { display:none; }
+body.page-latihan-soal .question-answer-panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: clamp(12px,1.5vw,18px);
+  border: 1px solid rgba(210,215,255,.9);
+  border-radius: 22px;
+  background: linear-gradient(150deg,rgba(255,255,255,.86),rgba(240,239,255,.92));
+}
+body.page-latihan-soal .answer-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 11px;
+}
+body.page-latihan-soal .answer-option {
+  min-height: 58px;
+  padding: 10px 13px;
+  border: 1.5px solid #c5d8ff;
+  border-radius: 17px;
+  color: #1d2c70;
+  background: linear-gradient(110deg,#f1f8ff,#e7efff);
+  box-shadow: 0 3px 9px rgba(93,119,185,.07);
+  font-size: 14px;
+  font-weight: 900;
+}
+body.page-latihan-soal .answer-option:nth-child(2) {
+  border-color: #d5c5ff;
+  background: linear-gradient(110deg,#f7f1ff,#eee7ff);
+}
+body.page-latihan-soal .answer-option:nth-child(3) {
+  border-color: #b8e9dc;
+  background: linear-gradient(110deg,#effff9,#e3f9f1);
+}
+body.page-latihan-soal .answer-option:nth-child(4) {
+  border-color: #ffd6c7;
+  background: linear-gradient(110deg,#fff6f0,#ffede6);
+}
+body.page-latihan-soal .answer-option .answer-letter {
+  width: 36px;
+  height: 36px;
+  flex-basis: 36px;
+  border-radius: 12px;
+  background: linear-gradient(145deg,#55b5f3,#3987df);
+  box-shadow: 0 3px 7px rgba(58,130,213,.18);
+}
+body.page-latihan-soal .answer-option:nth-child(2) .answer-letter {
+  background: linear-gradient(145deg,#a66af2,#7438d1);
+}
+body.page-latihan-soal .answer-option:nth-child(3) .answer-letter {
+  background: linear-gradient(145deg,#45c99a,#1b9e76);
+}
+body.page-latihan-soal .answer-option:nth-child(4) .answer-letter {
+  background: linear-gradient(145deg,#ffad83,#ed795f);
+}
+body.page-latihan-soal .answer-option.correct {
+  border-color: #20b875;
+  background: linear-gradient(110deg,#eafff3,#d9ffea);
+}
+body.page-latihan-soal .answer-option.incorrect {
+  border-color: #ef8197;
+  background: linear-gradient(110deg,#fff0f3,#ffe2e8);
+}
+body.page-latihan-soal .answer-feedback {
+  margin-top: 2px;
+  padding: 12px 14px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+body.page-latihan-soal .question-actions {
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(191,196,239,.65);
+}
+body.page-latihan-soal .question-actions button {
+  min-height: 43px;
+  padding: 10px 22px;
+  border-radius: 24px;
+  background: linear-gradient(100deg,#a43cf0,#6424ca);
+}
+
+/* Stage 3D sedang dan fokus pada satu model sesuai tipe soal */
+body.page-latihan-soal .question-3d-stage {
+  position: relative;
+  display: flex;
+  min-height: 320px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 13px 14px 12px;
+  overflow: hidden;
+  border-radius: 22px;
+  isolation: isolate;
+  background-image:
+    linear-gradient(180deg,rgba(230,242,255,.08),rgba(246,236,255,.1)),
+    url("../assets/images/latihansoal/backgrounds/stage_latihansoal_3d.png");
+  background-size: cover;
+  background-position: center 57%;
+  background-repeat: no-repeat;
+}
+body.page-latihan-soal .question-3d-stage::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.18),transparent 62%);
+}
+body.page-latihan-soal .question-stage-heading {
+  position:relative;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  min-height:35px;
+}
+body.page-latihan-soal .question-stage-label {
+  width:max-content;
+  max-width:calc(100% - 55px);
+  margin:0;
+  padding:7px 14px;
+  border:1px solid rgba(255,255,255,.98);
+  border-radius:22px;
+  color:#4b269f;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 4px 12px rgba(77,72,160,.14);
+  font-size:10px;
+  font-weight:1000;
+  letter-spacing:.65px;
+  text-align:center;
+}
+body.page-latihan-soal .question-stage-topic-art {
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 5px rgba(70,62,139,.18));
+}
+body.page-latihan-soal .question-model-viewer {
+  position:relative;
+  z-index:2;
+  display:block;
+  width: min(90%, 440px);
+  height: clamp(190px,18vw,235px);
+  flex:1 1 auto;
+  margin: 0 auto;
+  background:transparent;
+  --poster-color:transparent;
+  filter:drop-shadow(0 9px 10px rgba(59,67,141,.15));
+}
+body.page-latihan-soal .question-3d-stage.is-net-question .question-model-viewer {
+  width:min(96%,470px);
+  height:clamp(210px,22vw,275px);
+}
+body.page-latihan-soal .question-stage-caption {
+  position:relative;
+  z-index:3;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 7px;
+  padding:5px 10px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:18px;
+  color:#3c4d91;
+  background:rgba(255,255,255,.78);
+  text-shadow:none;
+  box-shadow:0 3px 8px rgba(72,82,150,.1);
+  font-size:9px;
+  font-weight:900;
+  text-align:center;
+}
+body.page-latihan-soal .question-stage-actions {
+  position:relative;
+  z-index:4;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:0 auto;
+}
+body.page-latihan-soal .question-stage-actions button {
+  min-height:32px;
+  padding:6px 11px;
+  border:1px solid rgba(255,255,255,.98);
+  border-radius:20px;
+  color:#432a9a;
+  background:linear-gradient(145deg,#fff,#eeeaff);
+  box-shadow:0 3px 8px rgba(70,75,157,.15);
+  font:900 10px Nunito,sans-serif;
+}
+body.page-latihan-soal .question-stage-actions button:first-child {
+  color:#fff;
+  background:linear-gradient(120deg,#9b42ed,#5c38ce);
+}
+body.page-latihan-soal .question-stage-actions button:hover {
+  transform:translateY(-1px);
+}
+@media (max-width: 900px) {
+  body.page-latihan-soal .question-layout {
+    grid-template-columns:minmax(0,1fr) minmax(250px,.9fr);
+    gap:11px;
+  }
+  body.page-latihan-soal .question-3d-stage { min-height:305px; }
+  body.page-latihan-soal .question-model-viewer { height:220px; }
+}
+@media (max-width: 700px) {
+  body.page-latihan-soal .question-card { padding:13px; border-radius:20px; }
+  body.page-latihan-soal .question-layout { grid-template-columns:1fr; gap:11px; }
+  body.page-latihan-soal .question-3d-stage { min-height:280px; }
+  body.page-latihan-soal .question-model-viewer { width:92%; height:215px; }
+  body.page-latihan-soal .question-3d-stage.is-net-question .question-model-viewer { width:98%; height:225px; }
+  body.page-latihan-soal .question-answer-panel { padding:11px; }
+  body.page-latihan-soal .answer-list { grid-template-columns:1fr 1fr; gap:8px; }
+  body.page-latihan-soal .answer-option { min-height:52px; gap:8px; padding:8px; font-size:12px; }
+  body.page-latihan-soal .answer-option .answer-letter { width:30px;height:30px;flex-basis:30px; }
+}
+@media (max-width: 440px) {
+  body.page-latihan-soal .answer-list { grid-template-columns:1fr; }
+  body.page-latihan-soal .question-stage-actions button { padding-inline:9px; }
+}

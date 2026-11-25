@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/materi.css" />
     <link rel="stylesheet" href="css/eksplorasi3d.css" />
+    <link rel="stylesheet" href="css/video.css" />
+    <link rel="stylesheet" href="css/latihan-soal.css" />
+    <link rel="stylesheet" href="css/kuis.css" />
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
@@ -544,11 +547,793 @@
           </aside>
         </div>
       </section>
+
+      <section
+        class="video-view"
+        id="videoView"
+        aria-label="Video Pembelajaran Bangun Ruang"
+      >
+        <div class="video-banner">
+          <img
+            src="assets/images/video/banner_video.png"
+            alt="Video Pembelajaran Bangun Ruang"
+          />
+        </div>
+
+        <div class="video-layout">
+          <section class="video-main-column" aria-label="Pemutar video">
+            <div class="video-player-card">
+              <div class="video-screen" id="videoScreen">
+                <img
+                  class="video-poster"
+                  id="videoPoster"
+                  src="assets/images/video/thumbnail_mengenal_bangun_ruang.png"
+                  alt="Sampul video Mengenal Bangun Ruang"
+                />
+                <iframe
+                  class="video-youtube-frame"
+                  id="youtubeFrame"
+                  title="Video pembelajaran Bangun Ruang"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  hidden
+                ></iframe>
+                <button
+                  class="video-big-play"
+                  id="videoBigPlay"
+                  type="button"
+                  aria-label="Putar video"
+                >
+                  <span>▶</span>
+                </button>
+                <div
+                  class="video-preview-controls"
+                  id="videoPreviewControls"
+                  aria-label="Kontrol pemutar video"
+                >
+                  <button
+                    type="button"
+                    class="preview-control preview-play"
+                    id="previewPlay"
+                    aria-label="Putar video"
+                  >
+                    ▶
+                  </button>
+                  <button
+                    type="button"
+                    class="preview-control"
+                    aria-label="Lewati"
+                  >
+                    ▸
+                  </button>
+                  <span class="preview-volume">◖))</span>
+                  <span class="preview-time">0:00 / 5:24</span>
+                  <span class="preview-track"><i></i></span>
+                  <span class="preview-cc">CC</span>
+                  <span class="preview-settings">⚙</span>
+                  <span class="preview-fullscreen">⛶</span>
+                </div>
+                <div class="video-screen-caption">
+                  <span class="caption-dot"></span
+                  ><span id="videoScreenCaption">Mengenal Bangun Ruang</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="video-details-card">
+              <div class="video-detail-heading">
+                <span class="video-play-mark">▶</span>
+                <div class="video-title-copy">
+                  <h2 id="videoTitle">Mengenal Bangun Ruang</h2>
+                  <p id="videoSubtitle">
+                    Video Pembelajaran Matematika • Kelas VII
+                  </p>
+                  <small id="videoSource">Sumber: SayaBisa</small>
+                </div>
+              </div>
+              <div class="video-actions">
+                <button
+                  type="button"
+                  class="video-action"
+                  id="videoLike"
+                  aria-pressed="false"
+                >
+                  ♡ <span>Suka</span>
+                </button>
+                <button type="button" class="video-action" id="videoShare">
+                  ↗ <span>Bagikan</span>
+                </button>
+                <button
+                  type="button"
+                  class="video-action"
+                  id="videoOpenYoutube"
+                >
+                  ▶ <span>YouTube</span>
+                </button>
+                <button
+                  type="button"
+                  class="video-action"
+                  id="videoSave"
+                  aria-pressed="false"
+                >
+                  ♧ <span>Simpan</span>
+                </button>
+              </div>
+            </div>
+            <div class="video-note" role="note">
+              <span>💡</span>
+              <p>
+                Pilih video pada daftar di samping untuk mempelajari setiap
+                bangun ruang. Video diputar langsung dari YouTube.
+              </p>
+            </div>
+          </section>
+
+          <aside
+            class="video-playlist-card"
+            aria-label="Daftar video pembelajaran"
+          >
+            <div class="video-playlist-title">
+              <span>▶</span><strong>Daftar Video</strong>
+            </div>
+            <label class="video-filter"
+              ><span>⌕</span
+              ><input
+                id="videoSearch"
+                type="search"
+                placeholder="Cari video bangun ruang..."
+                autocomplete="off"
+            /></label>
+            <div class="video-list" id="videoList">
+              <button
+                class="video-list-item active"
+                type="button"
+                data-video-id="intro"
+                aria-pressed="true"
+              >
+                <span class="video-thumb intro-thumb"
+                  ><img
+                    src="assets/images/video/thumbnail_mengenal_bangun_ruang.png"
+                    alt=""
+                  /><span class="video-duration">05:24</span></span
+                >
+                <span class="video-item-copy"
+                  ><strong>Mengenal Bangun Ruang</strong
+                  ><small>Pengantar • SayaBisa</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="kubus"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img
+                    src="assets/images/video/thumbnail_Kubus.png"
+                    alt=""
+                  /><span class="video-duration">04:37</span></span
+                >
+                <span class="video-item-copy"
+                  ><strong>Kubus</strong
+                  ><small>Sifat, jaring-jaring, dan rumus</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="balok"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img
+                    src="assets/images/video/thumbnail_balok.png"
+                    alt=""
+                  /><span class="video-duration">05:02</span></span
+                >
+                <span class="video-item-copy"
+                  ><strong>Balok</strong
+                  ><small>Sifat, jaring-jaring, dan rumus</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="prisma"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img
+                    src="assets/images/video/thumbnail_Prisma.png"
+                    alt=""
+                  /><span class="video-duration">04:49</span></span
+                >
+                <span class="video-item-copy"
+                  ><strong>Prisma</strong
+                  ><small>Luas permukaan dan volume</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="limas"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img
+                    src="assets/images/video/thumbnail_Limas.png"
+                    alt=""
+                  /><span class="video-duration">04:56</span></span
+                >
+                <span class="video-item-copy"
+                  ><strong>Limas</strong
+                  ><small>Luas permukaan dan volume</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="tabung"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img src="assets/images/video/thumbnail_Tabung.png" alt=""
+                /></span>
+                <span class="video-item-copy"
+                  ><strong>Tabung</strong
+                  ><small>Bangun ruang sisi lengkung</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="kerucut"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img src="assets/images/video/thumbnail_Kerucut.png" alt=""
+                /></span>
+                <span class="video-item-copy"
+                  ><strong>Kerucut</strong><small>Sifat dan rumus</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+              <button
+                class="video-list-item"
+                type="button"
+                data-video-id="bola"
+                aria-pressed="false"
+              >
+                <span class="video-thumb"
+                  ><img src="assets/images/video/thumbnail_Bola.png" alt=""
+                /></span>
+                <span class="video-item-copy"
+                  ><strong>Bola</strong><small>Sifat dan rumus</small></span
+                ><span class="video-item-play">▶</span>
+              </button>
+            </div>
+            <p class="video-list-footnote">
+              Video berasal dari kanal YouTube pembelajaran.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="kuis-view" id="kuisView" aria-label="Kuis Bangun Ruang">
+        <div class="kuis-banner">
+          <img
+            src="assets/images/kuis/banner_kuis.png"
+            alt="Kuis — Uji Pemahamanmu!"
+          />
+        </div>
+
+        <section class="kuis-intro" aria-label="Informasi kuis">
+          <div class="kuis-intro-icon">
+            <img src="assets/images/kuis/icon_target.png" alt="" />
+          </div>
+          <p>
+            Kuis Bangun Ruang adalah tes interaktif untuk mengukur pemahamanmu
+            setelah mempelajari materi. Kerjakan dengan teliti, dapatkan skor
+            terbaik, dan lihat <strong>pembahasannya.</strong>
+          </p>
+        </section>
+
+        <div class="kuis-home-layout" id="kuisHome">
+          <section class="kuis-choice-panel">
+            <div class="kuis-panel-heading heading-blue">
+              <img src="assets/images/kuis/icon_gamepad.png" alt="" />
+              <h2>Pilih Kuis</h2>
+            </div>
+            <div class="kuis-card-grid">
+              <article class="kuis-type-card card-cyan">
+                <div class="kuis-card-art">
+                  <img src="assets/images/kuis/icon_kuispermateri.png" alt="" />
+                </div>
+                <h3>Kuis Per Materi</h3>
+                <p>
+                  Uji pemahaman pada satu bangun ruang yang sudah kamu pelajari.
+                </p>
+                <button
+                  type="button"
+                  class="kuis-start start-blue"
+                  data-quiz="materi"
+                >
+                  Mulai <span>›</span>
+                </button>
+              </article>
+              <article class="kuis-type-card card-pink">
+                <div class="kuis-card-art">
+                  <img src="assets/images/kuis/icon_kuiscampuran.png" alt="" />
+                </div>
+                <h3>Kuis Campuran</h3>
+                <p>
+                  Gabungkan berbagai materi bangun ruang dalam satu tantangan.
+                </p>
+                <button
+                  type="button"
+                  class="kuis-start start-pink"
+                  data-quiz="campuran"
+                >
+                  Mulai <span>›</span>
+                </button>
+              </article>
+              <article class="kuis-type-card card-yellow">
+                <div class="kuis-card-art">
+                  <img src="assets/images/kuis/icontantangan.png" alt="" />
+                </div>
+                <h3>Kuis Tantangan</h3>
+                <p>
+                  Soal penalaran dan penerapan dengan tingkat kesulitan lebih
+                  tinggi.
+                </p>
+                <button
+                  type="button"
+                  class="kuis-start start-yellow"
+                  data-quiz="tantangan"
+                >
+                  Mulai <span>›</span>
+                </button>
+              </article>
+            </div>
+          </section>
+          <aside class="kuis-benefit-panel">
+            <div class="kuis-panel-heading heading-teal">
+              <img src="assets/images/kuis/icon_bar_chart.png" alt="" />
+              <h2>Manfaat Kuis</h2>
+            </div>
+            <ul class="kuis-benefits">
+              <li><span>✓</span> Mengukur pemahaman materi</li>
+              <li><span>✓</span> Melatih ketelitian dan logika</li>
+              <li>
+                <span>✓</span> Mengetahui bagian yang perlu dipelajari kembali
+              </li>
+              <li><span>✓</span> Dilengkapi pembahasan yang jelas</li>
+            </ul>
+            <img
+              class="kuis-books-decor"
+              src="assets/images/kuis/icon_books_ruler.png"
+              alt="Buku dan penggaris"
+            />
+          </aside>
+        </div>
+
+        <section class="kuis-setup" id="kuisSetup" hidden>
+          <button type="button" class="kuis-back" id="kuisBack">
+            ‹ Kembali ke Pilihan Kuis
+          </button>
+          <div class="kuis-setup-card">
+            <div class="kuis-setup-art">
+              <img
+                id="kuisSetupIcon"
+                src="assets/images/kuis/icon_kuispermateri.png"
+                alt=""
+              />
+            </div>
+            <div class="kuis-setup-copy">
+              <span class="kuis-eyebrow">PERSIAPAN KUIS</span>
+              <h2 id="kuisSetupTitle">Kuis Per Materi</h2>
+              <p id="kuisSetupDescription">Pilih materi yang ingin kamu uji.</p>
+              <label for="kuisTopic">Materi bangun ruang</label>
+              <select id="kuisTopic">
+                <option value="Kubus">Kubus</option>
+                <option value="Balok">Balok</option>
+                <option value="Prisma">Prisma</option>
+                <option value="Limas">Limas</option>
+                <option value="Tabung">Tabung</option>
+                <option value="Kerucut">Kerucut</option>
+                <option value="Bola">Bola</option>
+              </select>
+              <div class="kuis-info-chips">
+                <span>⏱ 10 menit</span><span id="kuisCountLabel">5 soal</span
+                ><span>20 poin/soal</span>
+              </div>
+              <button type="button" class="kuis-confirm" id="kuisConfirm">
+                Mulai Kuis Sekarang <span>➜</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="kuis-play" id="kuisPlay" hidden aria-live="polite">
+          <div class="kuis-play-top">
+            <button type="button" class="kuis-back" id="kuisQuit">
+              ‹ Keluar dari Kuis
+            </button>
+            <div class="kuis-play-meta">
+              <span id="kuisPlayName">Kuis Per Materi</span
+              ><strong id="kuisTimer">10:00</strong>
+            </div>
+          </div>
+          <div class="kuis-progress-track"><span id="kuisProgress"></span></div>
+          <article class="kuis-question-card">
+            <div class="kuis-question-head">
+              <span id="kuisQuestionTopic">KUBUS</span
+              ><b id="kuisQuestionCount">Soal 1 dari 5</b>
+            </div>
+            <div class="kuis-level-pill" id="kuisLevel">Level Kognitif C1</div>
+            <h2 id="kuisQuestionText">Pertanyaan akan ditampilkan di sini.</h2>
+            <div class="kuis-answers" id="kuisAnswers"></div>
+            <div class="kuis-feedback" id="kuisFeedback" hidden></div>
+            <div class="kuis-question-actions">
+              <span>✨ Pilih satu jawaban yang paling tepat</span
+              ><button type="button" id="kuisNext" disabled>
+                Soal Berikutnya ➜
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <section class="kuis-result" id="kuisResult" hidden>
+          <div class="kuis-result-trophy">
+            <img src="assets/images/kuis/icontantangan.png" alt="" />
+          </div>
+          <span class="kuis-eyebrow">KUIS SELESAI</span>
+          <h2 id="kuisResultTitle">Hebat! Kamu sudah menyelesaikan kuis.</h2>
+          <div class="kuis-score" id="kuisScore">0</div>
+          <p id="kuisResultSummary">Terus belajar dan tingkatkan hasilmu.</p>
+          <div class="kuis-result-actions">
+            <button type="button" id="kuisReview">Lihat Pembahasan</button
+            ><button type="button" id="kuisRetry">Ulangi Kuis</button
+            ><button type="button" id="kuisHomeButton">
+              Kembali ke Menu Kuis
+            </button>
+          </div>
+          <div class="kuis-review-list" id="kuisReviewList" hidden></div>
+        </section>
+      </section>
+
+      <section
+        class="latihan-view"
+        id="latihanView"
+        aria-label="Latihan soal bangun ruang"
+      >
+        <div class="latihan-banner">
+          <img
+            src="assets/images/latihansoal/banners/banner_latihansoal.png"
+            alt="Latihan Soal — Asah Pemahaman, Kuasai Bangun Ruang!"
+          />
+        </div>
+
+        <section class="latihan-intro" aria-label="Informasi latihan soal">
+          <div class="latihan-intro-art">
+            <img
+              src="assets/images/latihansoal/icons/ic_bukulatihansoal.png"
+              alt=""
+            />
+          </div>
+          <div class="latihan-intro-copy">
+            <p>
+              Ini adalah area latihan soal untuk memahami dan memperkuat konsep
+              bangun ruang.
+            </p>
+            <p>
+              Setelah menjawab, kamu akan mendapatkan
+              <strong>pembahasan dan penjelasan</strong> untuk setiap soal, agar
+              kamu semakin paham.
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="latihan-builder"
+          id="latihanBuilder"
+          aria-label="Pengaturan latihan"
+        >
+          <div class="latihan-section-title">
+            <img
+              class="title-cube"
+              src="assets/images/logo_cube_only.png"
+              alt=""
+            />
+            <h1>Pilih Materi Latihan</h1>
+          </div>
+          <div class="latihan-topic-grid" id="latihanTopicGrid">
+            <button
+              class="latihan-topic is-selected"
+              type="button"
+              data-latihan-topic="kubus"
+              aria-pressed="true"
+            >
+              <img
+                src="assets/images/latihansoal/labels/01soal_kubus.png"
+                alt="Kubus — latihan sifat, unsur, luas permukaan, dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="latihan-topic"
+              type="button"
+              data-latihan-topic="balok"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/images/latihansoal/labels/02soal_balok.png"
+                alt="Balok — latihan sifat, unsur, luas permukaan, dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="latihan-topic"
+              type="button"
+              data-latihan-topic="prisma"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/images/latihansoal/labels/03soal_prisma.png"
+                alt="Prisma — latihan sifat, luas permukaan, dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="latihan-topic"
+              type="button"
+              data-latihan-topic="limas"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/images/latihansoal/labels/04soal_limas.png"
+                alt="Limas — latihan sifat, luas permukaan, dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="latihan-topic"
+              type="button"
+              data-latihan-topic="tabung"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/images/latihansoal/labels/05soal_tabung.png"
+                alt="Tabung — latihan luas permukaan dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="latihan-topic"
+              type="button"
+              data-latihan-topic="kerucut"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/images/latihansoal/labels/06soal_kerucut.png"
+                alt="Kerucut — latihan luas permukaan dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="latihan-topic"
+              type="button"
+              data-latihan-topic="bola"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/images/latihansoal/labels/07soal_bola.png"
+                alt="Bola — latihan luas permukaan dan volume"
+              />
+              <span class="topic-check" aria-hidden="true">✓</span>
+            </button>
+          </div>
+
+          <div class="latihan-goal">
+            <label for="latihanGoal">
+              <span class="goal-icon" aria-hidden="true">🎯</span>
+              <span class="goal-copy">
+                <strong>Tentukan target belajarmu</strong>
+                <small
+                  >Tuliskan hal yang ingin kamu kuasai dari latihan ini.</small
+                >
+              </span>
+            </label>
+            <input
+              id="latihanGoal"
+              type="text"
+              maxlength="120"
+              placeholder="Contoh: Saya ingin memahami jaring-jaring kubus dan balok."
+            />
+          </div>
+
+          <div class="latihan-settings">
+            <div class="settings-label">
+              <img
+                src="assets/images/latihansoal/icons/01_pengaturan.png"
+                alt=""
+              />
+              <span>Atur Latihan</span>
+            </div>
+            <label class="setting-field">
+              <img
+                src="assets/images/latihansoal/icons/02_jumlah_soal.png"
+                alt=""
+              />
+              <span class="setting-copy"
+                ><strong>Jumlah Soal</strong>
+                <select id="latihanQuestionCount" aria-label="Jumlah soal">
+                  <option value="5">5 soal</option>
+                  <option value="10">10 soal</option>
+                  <option value="15">15 soal</option>
+                </select>
+              </span>
+            </label>
+            <label class="setting-field">
+              <img
+                src="assets/images/latihansoal/icons/03_tingkat_kesulitan.png"
+                alt=""
+              />
+              <span class="setting-copy"
+                ><strong>Tingkat Kesulitan</strong>
+                <select id="latihanDifficulty" aria-label="Tingkat kesulitan">
+                  <option value="mudah">Mudah</option>
+                  <option value="sedang" selected>Sedang</option>
+                  <option value="sulit">Sulit</option>
+                </select>
+              </span>
+            </label>
+            <button class="latihan-start" id="latihanStart" type="button">
+              <span aria-hidden="true">▶</span> Mulai Latihan
+            </button>
+          </div>
+          <div class="latihan-hint">
+            <span>ⓘ</span> Amati ilustrasi 3D, jawab secara mandiri, lalu
+            pelajari
+            <strong>pembahasan setelah setiap soal.</strong>
+          </div>
+          <p
+            class="latihan-selection-note"
+            id="latihanSelectionNote"
+            aria-live="polite"
+          >
+            1 materi dipilih · 5 soal tersedia
+          </p>
+        </section>
+
+        <section
+          class="latihan-workspace"
+          id="latihanWorkspace"
+          hidden
+          aria-label="Pengerjaan latihan soal"
+        >
+          <div class="question-topline">
+            <button class="back-to-builder" id="latihanBack" type="button">
+              ← Kembali ke pengaturan
+            </button>
+            <span class="question-topic" id="questionTopic">Kubus</span>
+          </div>
+          <div class="question-progress-row">
+            <div>
+              <strong id="questionCounter">Soal 1 dari 5</strong
+              ><span id="questionLevel">Tingkat Sedang</span>
+            </div>
+            <div class="question-progress">
+              <span id="questionProgressFill"></span>
+            </div>
+          </div>
+          <article class="question-card">
+            <div class="question-kicker">
+              <span>LATIHAN BANGUN RUANG</span
+              ><span id="questionNumberBadge">01</span>
+            </div>
+            <h2 id="questionText">Pertanyaan akan ditampilkan di sini.</h2>
+            <p class="question-context" id="questionContext"></p>
+            <div class="question-layout">
+              <div class="question-visual" id="questionVisual" hidden></div>
+              <div class="question-answer-panel">
+                <div class="answer-list" id="answerList"></div>
+                <div
+                  class="answer-feedback"
+                  id="answerFeedback"
+                  hidden
+                  aria-live="polite"
+                >
+                  <strong id="feedbackTitle"></strong>
+                  <p id="feedbackExplanation"></p>
+                </div>
+              </div>
+            </div>
+            <div class="question-actions">
+              <span id="questionScoreHint"
+                >Pilih satu jawaban yang paling tepat.</span
+              >
+              <button id="questionNext" type="button" disabled>
+                Soal Berikutnya →
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <section
+          class="latihan-result"
+          id="latihanResult"
+          hidden
+          aria-label="Hasil latihan"
+        >
+          <div class="result-icon">🏆</div>
+          <p class="result-eyebrow">LATIHAN SELESAI</p>
+          <h2>Hebat! Kamu sudah menyelesaikan latihan.</h2>
+          <div class="result-score" id="resultScore">0</div>
+          <p id="resultSummary">
+            Terus berlatih agar semakin memahami bangun ruang.
+          </p>
+          <section
+            class="reflection-panel"
+            aria-label="Refleksi belajar mandiri"
+          >
+            <div class="reflection-heading">
+              <strong>Refleksi Belajar</strong>
+              <span>Evaluasi proses belajarmu sendiri</span>
+            </div>
+            <label for="reflectionConfidence"
+              >Seberapa yakin kamu memahami materi setelah latihan?</label
+            >
+            <select id="reflectionConfidence">
+              <option value="">Pilih tingkat keyakinan</option>
+              <option value="Sangat yakin">Sangat yakin</option>
+              <option value="Cukup yakin">Cukup yakin</option>
+              <option value="Belum yakin">Belum yakin</option>
+            </select>
+            <label for="reflectionText"
+              >Apa yang sudah kamu pahami dan bagian mana yang masih perlu
+              dipelajari?</label
+            >
+            <textarea
+              id="reflectionText"
+              rows="3"
+              maxlength="500"
+              placeholder="Tuliskan refleksi singkatmu di sini..."
+            ></textarea>
+            <button type="button" id="saveReflection" class="save-reflection">
+              Simpan Refleksi
+            </button>
+            <p
+              id="reflectionSaved"
+              class="reflection-saved"
+              aria-live="polite"
+            ></p>
+          </section>
+          <div class="result-actions">
+            <button type="button" id="latihanReview">
+              Lihat Ringkasan Jawaban
+            </button>
+            <button type="button" id="latihanRetry">Ulangi Latihan</button>
+          </div>
+          <div class="result-review" id="resultReview" hidden></div>
+        </section>
+      </section>
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="js/app.js"></script>
     <script src="js/materi.js"></script>
     <script src="js/eksplorasi3d.js"></script>
+    <script src="js/video.js"></script>
+    <script src="js/latihan-soal.js"></script>
+    <script src="js/kuis.js"></script>
   </body>
 </html>

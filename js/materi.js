@@ -5,7 +5,8 @@
   const emptyState = document.getElementById("materiEmpty");
 
   function filterMateri() {
-    if (!searchInput || !document.body.classList.contains("page-materi")) return;
+    if (!searchInput || !document.body.classList.contains("page-materi"))
+      return;
     const query = searchInput.value.trim().toLocaleLowerCase("id");
     let shown = 0;
 

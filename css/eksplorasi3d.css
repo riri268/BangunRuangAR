@@ -331,3 +331,46 @@ body.page-explorasi3d .topbar { margin-bottom: 10px; }
   -webkit-user-select: none;
 }
 #shapeViewer.is-panning:active { cursor: grabbing; }
+
+/* =========================================================
+   REVISI KHUSUS EKSPLORASI 3D — 25 NOV 2026
+   - Banner dipadatkan agar ruang kosong vertikal berkurang.
+   - Area tiga panel digeser sedikit ke kanan pada desktop.
+   - Tidak mengubah ukuran/sidebar/topbar atau halaman lain.
+   ========================================================= */
+@media (min-width: 981px) {
+  body.page-explorasi3d .explore-banner {
+    height: clamp(185px, 16vw, 250px);
+    margin-top: -8px;
+    margin-bottom: clamp(10px, 1vw, 14px);
+  }
+
+  body.page-explorasi3d .explore-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 48%;
+  }
+
+  body.page-explorasi3d .explore-layout {
+    width: calc(100% - 14px);
+    margin-left: 14px;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 980px) {
+  body.page-explorasi3d .explore-banner {
+    height: clamp(170px, 24vw, 225px);
+    margin-bottom: 10px;
+  }
+  body.page-explorasi3d .explore-banner img {
+    object-fit: cover;
+    object-position: center 48%;
+  }
+  body.page-explorasi3d .explore-layout {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
