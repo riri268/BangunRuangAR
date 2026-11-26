@@ -315,162 +315,300 @@
 
       <section class="kubus-view" id="kubusView" aria-label="Materi Kubus">
         <div class="kubus-page-shell">
-          <button class="kubus-back-button" id="kubusBack" type="button">
-            <span aria-hidden="true">←</span> Kembali ke Materi
-          </button>
-
-          <section class="kubus-hero-card">
-            <div class="kubus-hero-copy">
-              <span class="kubus-eyebrow"
-                ><span>✦</span> PETUALANGAN BANGUN RUANG</span
+          <div class="kubus-banner-wrap">
+            <img
+              class="kubus-banner"
+              src="assets/images/materi/banner_kubus.png"
+              alt="Kubus — Ayo, eksplorasi kubus bersama!"
+            />
+          </div>
+          <nav class="kubus-step-nav" aria-label="Tahapan belajar Kubus">
+            <button
+              class="kubus-step is-active"
+              type="button"
+              data-kubus-step="observe"
+            >
+              <img src="assets/images/materi/icons/01_target.png" alt="" /><span
+                >Ayo Mengamati!</span
               >
-              <h1>Yuk, Kenalan dengan <em>Kubus!</em></h1>
-              <p class="kubus-hero-lead">
-                Pernah bermain Rubik atau melempar dadu? Benda-benda itu punya
-                bentuk yang menarik untuk kita pelajari. Ayo mulai petualangan
-                mengenal kubus!
-              </p>
-              <div class="kubus-hero-actions">
-                <button
-                  class="kubus-primary-button"
-                  id="kubusStartLearning"
-                  type="button"
+            </button>
+            <button class="kubus-step" type="button" data-kubus-step="shape">
+              <img src="assets/images/materi/icons/02_cube.png" alt="" /><span
+                >Amati Bentuknya!</span
+              >
+            </button>
+            <button class="kubus-step" type="button" data-kubus-step="build">
+              <img src="assets/images/materi/icons/04_plus.png" alt="" /><span
+                >Bongkar &amp; Bentuk!</span
+              >
+            </button>
+            <button class="kubus-step" type="button" data-kubus-step="formula">
+              <span class="kubus-sigma" aria-hidden="true">∑</span
+              ><span>Pahami Rumus!</span>
+            </button>
+            <button class="kubus-step" type="button" data-kubus-step="quiz">
+              <img
+                src="assets/images/materi/icons/05_gamepad.png"
+                alt=""
+              /><span>Uji Pemahamanmu!</span>
+            </button>
+          </nav>
+          <main class="kubus-observe-layout">
+            <section class="kubus-left-column">
+              <article class="kubus-welcome-panel">
+                <div class="kubus-ribbon-title">
+                  <img src="assets/images/materi/icons/05_gamepad.png" alt="" />
+                  <h1>Ayo Mengamati!</h1>
+                </div>
+                <div class="kubus-welcome-content">
+                  <img
+                    class="kubus-student"
+                    src="assets/images/siswi.png"
+                    alt="Siswi mengajak mengamati"
+                  />
+                  <div class="kubus-speech">
+                    Pernahkah kamu melihat benda-benda di sekitarmu yang
+                    berbentuk seperti ini?
+                  </div>
+                </div>
+              </article>
+              <article class="kubus-goal-panel">
+                <div class="kubus-ribbon-title kubus-goal-ribbon">
+                  <img
+                    src="assets/images/materi/icons/07_clipboard.png"
+                    alt=""
+                  />
+                  <h2>Tujuan Pembelajaran</h2>
+                </div>
+                <p class="kubus-goal-lead">
+                  Setelah mempelajari materi ini, kamu diharapkan mampu:
+                </p>
+                <ul class="kubus-goal-list">
+                  <li>
+                    <span class="kubus-check">✓</span
+                    ><span
+                      >Mengidentifikasi kubus dan benda-benda di sekitar yang
+                      berbentuk kubus.</span
+                    >
+                  </li>
+                  <li>
+                    <span class="kubus-check">✓</span
+                    ><span
+                      >Menentukan unsur-unsur kubus (sisi, rusuk, dan titik
+                      sudut).</span
+                    >
+                  </li>
+                  <li>
+                    <span class="kubus-check">✓</span
+                    ><span>Menjelaskan sifat-sifat kubus.</span>
+                  </li>
+                </ul>
+              </article>
+            </section>
+            <section class="kubus-right-column">
+              <article class="kubus-observation-panel">
+                <header class="kubus-observation-heading">
+                  <div class="kubus-ribbon-title kubus-small-ribbon">
+                    <img
+                      src="assets/images/materi/icons/06_lampu_petunjuk.png"
+                      alt=""
+                    />
+                    <h2>Ayo Amati!</h2>
+                  </div>
+                  <p>Perhatikan beberapa benda di bawah ini!</p>
+                </header>
+                <div class="kubus-objects-stage">
+                  <img
+                    src="assets/images/materi/objek_pengamatan_kubus.png"
+                    alt="Rubik, kotak hadiah, dan dadu berbentuk kubus"
+                  />
+                  <div class="kubus-object-labels">
+                    <span>Rubik</span><span>Kotak Hadiah</span><span>Dadu</span>
+                  </div>
+                  <div class="kubus-question">
+                    <span class="kubus-question-icon">?</span
+                    ><strong
+                      >Apa kesamaan bentuk dari benda-benda tersebut?</strong
+                    >
+                  </div>
+                </div>
+              </article>
+              <button
+                class="kubus-video-button"
+                id="kubusWatchVideo"
+                type="button"
+              >
+                <img
+                  src="assets/images/materi/icons/08_video.png"
+                  alt=""
+                /><span>Tonton Video Pengantar</span>
+              </button>
+            </section>
+          </main>
+
+          <main class="kubus-shape-layout" id="kubusShapeView" hidden>
+            <section class="kubus-model-card">
+              <header class="kubus-model-heading">
+                <div class="kubus-ribbon-title">
+                  <img src="assets/images/materi/icons/02_cube.png" alt="" />
+                  <h1>Ayo Amati Bentuk Kubus!</h1>
+                </div>
+                <p>Pilih bagian kubus atau sentuh langsung model 3D-nya.</p>
+              </header>
+              <div class="kubus-interactive-stage">
+                <model-viewer
+                  id="kubusInteractiveModel"
+                  src="assets/models/materi/kubus/kubus_materi_interaktif.glb"
+                  alt="Model kubus interaktif dengan sisi, rusuk, dan titik sudut"
+                  camera-controls
+                  touch-action="pan-y"
+                  interaction-prompt="none"
+                  auto-rotate
+                  auto-rotate-delay="0"
+                  rotation-per-second="16deg"
+                  camera-orbit="35deg 72deg 3.4m"
+                  field-of-view="32deg"
+                  min-camera-orbit="auto 20deg 2.2m"
+                  max-camera-orbit="auto 110deg 6m"
+                  shadow-intensity="0.8"
+                  exposure="1.1"
+                  environment-image="neutral"
                 >
-                  Mulai Belajar <span aria-hidden="true">➜</span>
+                </model-viewer>
+                <div class="kubus-model-hint">
+                  ↻ Seret untuk memutar · Scroll atau cubit untuk zoom · Sentuh
+                  bagian kubus untuk memilih
+                </div>
+              </div>
+              <div class="kubus-model-controls">
+                <button type="button" data-kubus-zoom="in">＋ Perbesar</button>
+                <button type="button" data-kubus-zoom="out">－ Perkecil</button>
+                <button type="button" data-kubus-zoom="reset">↺ Reset</button>
+              </div>
+            </section>
+            <aside class="kubus-explore-card">
+              <div class="kubus-ribbon-title kubus-info-ribbon">
+                <img
+                  src="assets/images/materi/icons/06_lampu_petunjuk.png"
+                  alt=""
+                />
+                <h2>Jelajahi Bagian Kubus</h2>
+              </div>
+              <p class="kubus-explore-intro">
+                Pilih salah satu tombol berikut, lalu sentuh bagian yang ingin
+                kamu pelajari.
+              </p>
+              <div
+                class="kubus-part-tabs"
+                role="group"
+                aria-label="Pilih unsur kubus"
+              >
+                <button type="button" class="is-active" data-kubus-part="face">
+                  <span class="kubus-part-icon face-icon">▦</span
+                  ><span>Sisi</span><small>6 bagian</small>
                 </button>
-                <span class="kubus-time-note"
-                  >⏱ Belajar santai, selangkah demi selangkah</span
-                >
+                <button type="button" data-kubus-part="edge">
+                  <span class="kubus-part-icon edge-icon">━</span
+                  ><span>Rusuk</span><small>12 bagian</small>
+                </button>
+                <button type="button" data-kubus-part="vertex">
+                  <span class="kubus-part-icon vertex-icon">●</span
+                  ><span>Titik Sudut</span><small>8 bagian</small>
+                </button>
               </div>
-            </div>
-            <div class="kubus-hero-visual" aria-label="Ilustrasi kubus">
-              <div class="kubus-sparkle sparkle-one">✦</div>
-              <div class="kubus-sparkle sparkle-two">✧</div>
-              <img
-                src="assets/images/materi/PaketE/01-unsur-kubus-lengkap.png"
-                alt="Ilustrasi bentuk kubus dengan sisi, rusuk, dan titik sudut"
-              />
-              <span class="kubus-floating-label">Ayo eksplorasi!</span>
-            </div>
-            <div class="kubus-hero-cloud cloud-one"></div>
-            <div class="kubus-hero-cloud cloud-two"></div>
-          </section>
-
-          <section class="kubus-goal-card" aria-labelledby="kubusGoalTitle">
-            <div class="kubus-section-heading">
-              <span class="kubus-heading-icon">🎯</span>
-              <div>
-                <span class="kubus-section-kicker">SEBELUM KITA MULAI</span>
-                <h2 id="kubusGoalTitle">Apa yang akan kamu pelajari?</h2>
-              </div>
-            </div>
-            <p class="kubus-goal-intro">
-              Setelah mempelajari materi ini, kamu diharapkan dapat:
-            </p>
-            <div class="kubus-goal-grid">
-              <article class="kubus-goal-item">
-                <span class="goal-number">01</span>
-                <span class="goal-icon">🔎</span>
-                <strong>Mengenali kubus</strong>
-                <p>
-                  Mengidentifikasi benda-benda berbentuk kubus di sekitar kita.
+              <article class="kubus-selected-info" aria-live="polite">
+                <div class="kubus-selected-kicker" id="kubusSelectedKicker">
+                  BAGIAN YANG DIPILIH
+                </div>
+                <h2 id="kubusSelectedTitle">Sisi Kubus</h2>
+                <p id="kubusSelectedText">
+                  Kubus memiliki 6 sisi. Setiap sisi berbentuk persegi dan
+                  memiliki ukuran yang sama.
                 </p>
+                <div class="kubus-count-pill" id="kubusSelectedCount">
+                  1 dari 6 sisi dipilih
+                </div>
               </article>
-              <article class="kubus-goal-item">
-                <span class="goal-number">02</span>
-                <span class="goal-icon">🧊</span>
-                <strong>Memahami unsur kubus</strong>
-                <p>Mengenal sisi, rusuk, dan titik sudut pada kubus.</p>
-              </article>
-              <article class="kubus-goal-item">
-                <span class="goal-number">03</span>
-                <span class="goal-icon">📐</span>
-                <strong>Mengeksplorasi bentuk</strong>
-                <p>
-                  Mengamati bentuk kubus dari berbagai arah dan representasi.
-                </p>
-              </article>
-            </div>
-          </section>
-
-          <section
-            class="kubus-observe-card"
-            aria-labelledby="kubusObserveTitle"
-          >
-            <div class="kubus-observe-copy">
-              <span class="kubus-section-kicker">AYO MENGAMATI</span>
-              <h2 id="kubusObserveTitle">
-                Di sekitarmu, ada banyak benda berbentuk kubus!
-              </h2>
-              <p>
-                Coba perhatikan benda-benda berikut. Menurutmu, apa persamaan
-                bentuknya? Apakah semua sisinya terlihat sama besar?
-              </p>
-              <div class="kubus-observe-tip">
+              <div class="kubus-learning-tip">
                 <span>💡</span>
-                <span
-                  ><strong>Tantangan kecil:</strong> Temukan satu benda
-                  berbentuk kubus di rumah atau di kelasmu.</span
-                >
+                <p>
+                  Coba pilih bagian yang berbeda. Perhatikan warna sorotan pada
+                  model 3D dan amati perbedaannya!
+                </p>
               </div>
-            </div>
-            <div class="kubus-object-grid">
-              <figure class="kubus-object">
-                <img
-                  src="assets/images/materi/PaketC/01-rubik.png"
-                  alt="Rubik berbentuk kubus"
-                />
-                <figcaption>Rubik</figcaption>
-              </figure>
-              <figure class="kubus-object">
-                <img
-                  src="assets/images/materi/PaketC/02-dadu.png"
-                  alt="Dadu berbentuk kubus"
-                />
-                <figcaption>Dadu</figcaption>
-              </figure>
-              <figure class="kubus-object">
-                <img
-                  src="assets/images/materi/PaketC/03-kotak-hadiah.png"
-                  alt="Kotak hadiah berbentuk kubus"
-                />
-                <figcaption>Kotak hadiah</figcaption>
-              </figure>
-              <figure class="kubus-object">
-                <img
-                  src="assets/images/materi/PaketC/04-kotak-penyimpanan.png"
-                  alt="Kotak penyimpanan berbentuk kubus"
-                />
-                <figcaption>Kotak penyimpanan</figcaption>
-              </figure>
-            </div>
-          </section>
+            </aside>
+          </main>
 
-          <section class="kubus-ready-card">
-            <div class="kubus-ready-mascot">
-              <img
-                src="assets/images/materi/PaketB/robot-mascot.png"
-                alt="Maskot robot mengajak belajar"
-              />
-            </div>
-            <div class="kubus-ready-copy">
-              <span class="kubus-section-kicker"
-                >SIAP MEMULAI PETUALANGAN?</span
-              >
-              <h2>Hebat! Sekarang kita pelajari kubus lebih dekat.</h2>
-              <p>
-                Mulai dari mengenali bagian-bagiannya, lalu lanjutkan dengan
-                eksplorasi bentuk tiga dimensi.
-              </p>
+          <main class="kubus-build-layout" id="kubusBuildView" hidden>
+            <section class="kubus-build-model-card">
+              <header class="kubus-model-heading">
+                <div class="kubus-ribbon-title kubus-build-ribbon">
+                  <img src="assets/images/materi/icons/04_plus.png" alt="" />
+                  <h1>Bongkar &amp; Bentuk Kubus!</h1>
+                </div>
+                <p>Amati bagaimana enam sisi kubus dapat terbuka, terpisah, lalu disusun kembali.</p>
+              </header>
+              <div class="kubus-build-stage" id="kubusBuildStage" data-build-state="whole">
+                <div class="kubus-build-glow" aria-hidden="true"></div>
+                <div class="kubus-build-scene" id="kubusBuildScene" role="img" aria-label="Model 3D kubus warna-warni yang dapat dibongkar dan dibentuk kembali">
+                  <div class="kubus-build-object" id="kubusBuildObject">
+                    <button class="build-face build-front" data-build-face="Depan" aria-label="Sisi depan" type="button"><span>DEPAN</span></button>
+                    <button class="build-face build-back" data-build-face="Belakang" aria-label="Sisi belakang" type="button"><span>BELAKANG</span></button>
+                    <button class="build-face build-right" data-build-face="Kanan" aria-label="Sisi kanan" type="button"><span>KANAN</span></button>
+                    <button class="build-face build-left" data-build-face="Kiri" aria-label="Sisi kiri" type="button"><span>KIRI</span></button>
+                    <button class="build-face build-top" data-build-face="Atas" aria-label="Sisi atas" type="button"><span>ATAS</span></button>
+                    <button class="build-face build-bottom" data-build-face="Bawah" aria-label="Sisi bawah" type="button"><span>BAWAH</span></button>
+                  </div>
+                </div>
+                <div class="kubus-build-caption" id="kubusBuildCaption">Kubus utuh — terdiri dari 6 sisi berbentuk persegi</div>
+              </div>
+              <div class="kubus-build-actions" role="group" aria-label="Kontrol model kubus">
+                <button class="build-action-pink is-active" type="button" data-build-action="whole" aria-pressed="true"><span class="build-action-icon" aria-hidden="true">🧊</span><span>Kubus Utuh</span></button>
+                <button class="build-action-blue" type="button" data-build-action="explode" aria-pressed="false"><span class="build-action-icon" aria-hidden="true">✨</span><span>Bongkar Kubus</span></button>
+                <button class="build-action-yellow" type="button" data-build-action="net" aria-pressed="false"><span class="build-action-icon" aria-hidden="true">▦</span><span>Jaring-jaring</span></button>
+                <button class="build-action-green" type="button" data-build-action="rebuild" aria-pressed="false"><span class="build-action-icon" aria-hidden="true">🔄</span><span>Susun Kembali</span></button>
+              </div>
+              <p class="kubus-build-hint"><span>💡</span> Seret model untuk memutar. Tekan salah satu sisi untuk mengetahui namanya.</p>
+            </section>
+            <aside class="kubus-build-info-card">
+              <div class="kubus-ribbon-title kubus-info-ribbon">
+                <img src="assets/images/materi/icons/06_lampu_petunjuk.png" alt="" />
+                <h2>Bagaimana Kubus Tersusun?</h2>
+              </div>
+              <p class="kubus-build-intro">Coba tombol animasi untuk melihat perubahan bentuk kubus.</p>
+              <article class="kubus-build-detail" aria-live="polite">
+                <span class="kubus-build-kicker" id="kubusBuildKicker">BENTUK AWAL</span>
+                <h2 id="kubusBuildTitle">Kubus Utuh</h2>
+                <p id="kubusBuildText">Kubus tersusun dari enam sisi berbentuk persegi yang saling bertemu pada rusuknya.</p>
+                <div class="kubus-build-fact" id="kubusBuildFact">6 sisi • 12 rusuk • 8 titik sudut</div>
+              </article>
+              <div class="kubus-build-mini-legend">
+                <div><i class="legend-pink"></i><span>Sisi depan</span></div>
+                <div><i class="legend-blue"></i><span>Sisi samping</span></div>
+                <div><i class="legend-yellow"></i><span>Sisi atas</span></div>
+                <div><i class="legend-green"></i><span>Sisi bawah</span></div>
+              </div>
+              <div class="kubus-learning-tip"><span>🌟</span><p>Ingat! Walaupun dibongkar, keenam sisi tetap memiliki bentuk dan ukuran yang sama.</p></div>
+            </aside>
+          </main>
+
+          <div class="kubus-bottom-navigation">
+            <div class="kubus-progress-dots" aria-label="Tahap 1 dari 4">
+              <span class="active"></span><span></span><span></span
+              ><span></span>
             </div>
             <button
-              class="kubus-primary-button kubus-next-button"
+              class="kubus-next-arrow"
               id="kubusContinue"
               type="button"
+              aria-label="Lanjut ke Amati Bentuknya"
             >
-              Ayo, Lanjutkan <span aria-hidden="true">➜</span>
+              ➜
             </button>
-          </section>
+          </div>
+          <button class="kubus-back-button" id="kubusBack" type="button">
+            ‹ Kembali ke Materi
+          </button>
         </div>
       </section>
 
