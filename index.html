@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/materi.css" />
+    <link rel="stylesheet" href="css/materi-kubus.css" />
     <link rel="stylesheet" href="css/eksplorasi3d.css" />
     <link rel="stylesheet" href="css/video.css" />
     <link rel="stylesheet" href="css/latihan-soal.css" />
@@ -310,6 +311,167 @@
         <p class="materi-empty" id="materiEmpty" hidden>
           Materi tidak ditemukan. Coba kata kunci lain, ya!
         </p>
+      </section>
+
+      <section class="kubus-view" id="kubusView" aria-label="Materi Kubus">
+        <div class="kubus-page-shell">
+          <button class="kubus-back-button" id="kubusBack" type="button">
+            <span aria-hidden="true">←</span> Kembali ke Materi
+          </button>
+
+          <section class="kubus-hero-card">
+            <div class="kubus-hero-copy">
+              <span class="kubus-eyebrow"
+                ><span>✦</span> PETUALANGAN BANGUN RUANG</span
+              >
+              <h1>Yuk, Kenalan dengan <em>Kubus!</em></h1>
+              <p class="kubus-hero-lead">
+                Pernah bermain Rubik atau melempar dadu? Benda-benda itu punya
+                bentuk yang menarik untuk kita pelajari. Ayo mulai petualangan
+                mengenal kubus!
+              </p>
+              <div class="kubus-hero-actions">
+                <button
+                  class="kubus-primary-button"
+                  id="kubusStartLearning"
+                  type="button"
+                >
+                  Mulai Belajar <span aria-hidden="true">➜</span>
+                </button>
+                <span class="kubus-time-note"
+                  >⏱ Belajar santai, selangkah demi selangkah</span
+                >
+              </div>
+            </div>
+            <div class="kubus-hero-visual" aria-label="Ilustrasi kubus">
+              <div class="kubus-sparkle sparkle-one">✦</div>
+              <div class="kubus-sparkle sparkle-two">✧</div>
+              <img
+                src="assets/images/materi/PaketE/01-unsur-kubus-lengkap.png"
+                alt="Ilustrasi bentuk kubus dengan sisi, rusuk, dan titik sudut"
+              />
+              <span class="kubus-floating-label">Ayo eksplorasi!</span>
+            </div>
+            <div class="kubus-hero-cloud cloud-one"></div>
+            <div class="kubus-hero-cloud cloud-two"></div>
+          </section>
+
+          <section class="kubus-goal-card" aria-labelledby="kubusGoalTitle">
+            <div class="kubus-section-heading">
+              <span class="kubus-heading-icon">🎯</span>
+              <div>
+                <span class="kubus-section-kicker">SEBELUM KITA MULAI</span>
+                <h2 id="kubusGoalTitle">Apa yang akan kamu pelajari?</h2>
+              </div>
+            </div>
+            <p class="kubus-goal-intro">
+              Setelah mempelajari materi ini, kamu diharapkan dapat:
+            </p>
+            <div class="kubus-goal-grid">
+              <article class="kubus-goal-item">
+                <span class="goal-number">01</span>
+                <span class="goal-icon">🔎</span>
+                <strong>Mengenali kubus</strong>
+                <p>
+                  Mengidentifikasi benda-benda berbentuk kubus di sekitar kita.
+                </p>
+              </article>
+              <article class="kubus-goal-item">
+                <span class="goal-number">02</span>
+                <span class="goal-icon">🧊</span>
+                <strong>Memahami unsur kubus</strong>
+                <p>Mengenal sisi, rusuk, dan titik sudut pada kubus.</p>
+              </article>
+              <article class="kubus-goal-item">
+                <span class="goal-number">03</span>
+                <span class="goal-icon">📐</span>
+                <strong>Mengeksplorasi bentuk</strong>
+                <p>
+                  Mengamati bentuk kubus dari berbagai arah dan representasi.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section
+            class="kubus-observe-card"
+            aria-labelledby="kubusObserveTitle"
+          >
+            <div class="kubus-observe-copy">
+              <span class="kubus-section-kicker">AYO MENGAMATI</span>
+              <h2 id="kubusObserveTitle">
+                Di sekitarmu, ada banyak benda berbentuk kubus!
+              </h2>
+              <p>
+                Coba perhatikan benda-benda berikut. Menurutmu, apa persamaan
+                bentuknya? Apakah semua sisinya terlihat sama besar?
+              </p>
+              <div class="kubus-observe-tip">
+                <span>💡</span>
+                <span
+                  ><strong>Tantangan kecil:</strong> Temukan satu benda
+                  berbentuk kubus di rumah atau di kelasmu.</span
+                >
+              </div>
+            </div>
+            <div class="kubus-object-grid">
+              <figure class="kubus-object">
+                <img
+                  src="assets/images/materi/PaketC/01-rubik.png"
+                  alt="Rubik berbentuk kubus"
+                />
+                <figcaption>Rubik</figcaption>
+              </figure>
+              <figure class="kubus-object">
+                <img
+                  src="assets/images/materi/PaketC/02-dadu.png"
+                  alt="Dadu berbentuk kubus"
+                />
+                <figcaption>Dadu</figcaption>
+              </figure>
+              <figure class="kubus-object">
+                <img
+                  src="assets/images/materi/PaketC/03-kotak-hadiah.png"
+                  alt="Kotak hadiah berbentuk kubus"
+                />
+                <figcaption>Kotak hadiah</figcaption>
+              </figure>
+              <figure class="kubus-object">
+                <img
+                  src="assets/images/materi/PaketC/04-kotak-penyimpanan.png"
+                  alt="Kotak penyimpanan berbentuk kubus"
+                />
+                <figcaption>Kotak penyimpanan</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="kubus-ready-card">
+            <div class="kubus-ready-mascot">
+              <img
+                src="assets/images/materi/PaketB/robot-mascot.png"
+                alt="Maskot robot mengajak belajar"
+              />
+            </div>
+            <div class="kubus-ready-copy">
+              <span class="kubus-section-kicker"
+                >SIAP MEMULAI PETUALANGAN?</span
+              >
+              <h2>Hebat! Sekarang kita pelajari kubus lebih dekat.</h2>
+              <p>
+                Mulai dari mengenali bagian-bagiannya, lalu lanjutkan dengan
+                eksplorasi bentuk tiga dimensi.
+              </p>
+            </div>
+            <button
+              class="kubus-primary-button kubus-next-button"
+              id="kubusContinue"
+              type="button"
+            >
+              Ayo, Lanjutkan <span aria-hidden="true">➜</span>
+            </button>
+          </section>
+        </div>
       </section>
 
       <section
@@ -925,73 +1087,257 @@
           </aside>
         </div>
 
-        <section class="kuis-setup" id="kuisSetup" hidden>
-          <button type="button" class="kuis-back" id="kuisBack">
-            ‹ Kembali ke Pilihan Kuis
-          </button>
-          <div class="kuis-setup-card">
-            <div class="kuis-setup-art">
+        <section
+          class="kuis-setup"
+          id="kuisSetup"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="kuisSetupTitle"
+          hidden
+        >
+          <div class="kuis-setup-shell">
+            <div class="kuis-setup-topline">
+              <button type="button" class="kuis-back" id="kuisBack">
+                ‹ Kembali ke Pilihan Kuis
+              </button>
+              <h1 class="kuis-prep-title">Persiapan Kuis</h1>
+              <span class="kuis-topline-spacer" aria-hidden="true"></span>
+            </div>
+
+            <div class="kuis-setup-card">
+              <div class="kuis-setup-stage">
+                <div class="kuis-stage-glow" aria-hidden="true"></div>
+                <div class="kuis-stage-spark spark-one" aria-hidden="true">
+                  ✦
+                </div>
+                <div class="kuis-stage-spark spark-two" aria-hidden="true">
+                  ✦
+                </div>
+                <div class="kuis-stage-platform" aria-hidden="true"></div>
+                <model-viewer
+                  id="kuisSetupModel"
+                  class="kuis-setup-model"
+                  src="assets/models/bangun-ruang/kubus.glb"
+                  alt="Model 3D kubus"
+                  camera-orbit="0deg 75deg 105%"
+                  field-of-view="30deg"
+                  camera-controls
+                  auto-rotate
+                  auto-rotate-delay="0"
+                  rotation-per-second="14deg"
+                  interaction-prompt="none"
+                  shadow-intensity="0.7"
+                  exposure="1.15"
+                  environment-image="neutral"
+                ></model-viewer>
+                <img
+                  class="kuis-stage-robot"
+                  src="assets/images/ic_robot.png"
+                  alt="Maskot robot BangunRuang"
+                />
+                <div class="kuis-stage-caption">
+                  <span class="caption-dot"></span>
+                  <span id="kuisModelCaption">Kubus 3D Interaktif</span>
+                </div>
+              </div>
+
+              <div class="kuis-setup-copy">
+                <div class="kuis-setup-heading">
+                  <img
+                    src="assets/images/kuis/tampilankuis/quiz_clipboard.png"
+                    alt=""
+                  />
+                  <div>
+                    <span class="kuis-eyebrow">AYO UJI PEMAHAMANMU</span>
+                    <h2 id="kuisSetupTitle">Kuis Per Materi</h2>
+                  </div>
+                </div>
+                <p id="kuisSetupDescription">
+                  Pilih satu bangun ruang untuk mengukur pemahamanmu. Terdiri
+                  dari 5 soal.
+                </p>
+
+                <label for="kuisTopic">Materi Bangun Ruang</label>
+                <div class="kuis-topic-select-wrap">
+                  <img
+                    id="kuisTopicIcon"
+                    src="assets/images/kuis/tampilankuis/01_Kubus.png"
+                    alt=""
+                  />
+                  <select id="kuisTopic">
+                    <option value="Kubus">Kubus</option>
+                    <option value="Balok">Balok</option>
+                    <option value="Prisma">Prisma</option>
+                    <option value="Limas">Limas</option>
+                    <option value="Tabung">Tabung</option>
+                    <option value="Kerucut">Kerucut</option>
+                    <option value="Bola">Bola</option>
+                  </select>
+                </div>
+
+                <div class="kuis-info-chips">
+                  <div class="kuis-info-chip">
+                    <img
+                      src="assets/images/kuis/tampilankuis/alarm_clock.png"
+                      alt=""
+                    />
+                    <span
+                      ><strong>10 menit</strong
+                      ><small>Waktu Pengerjaan</small></span
+                    >
+                  </div>
+                  <div class="kuis-info-chip">
+                    <img
+                      src="assets/images/kuis/tampilankuis/checklist_notepad.png"
+                      alt=""
+                    />
+                    <span
+                      ><strong id="kuisCountLabel">5 soal</strong
+                      ><small>Jumlah Soal</small></span
+                    >
+                  </div>
+                  <div class="kuis-info-chip">
+                    <img
+                      src="assets/images/kuis/tampilankuis/star_badge.png"
+                      alt=""
+                    />
+                    <span
+                      ><strong>20 poin</strong><small>Setiap Soal</small></span
+                    >
+                  </div>
+                </div>
+
+                <button type="button" class="kuis-confirm" id="kuisConfirm">
+                  <span class="kuis-confirm-play" aria-hidden="true">▶</span>
+                  Mulai Kuis Sekarang
+                  <span class="kuis-confirm-arrow" aria-hidden="true">➜</span>
+                </button>
+              </div>
               <img
-                id="kuisSetupIcon"
-                src="assets/images/kuis/icon_kuispermateri.png"
+                class="kuis-setup-books"
+                src="assets/images/kuis/tampilankuis/books_ruler.png"
                 alt=""
               />
             </div>
-            <div class="kuis-setup-copy">
-              <span class="kuis-eyebrow">PERSIAPAN KUIS</span>
-              <h2 id="kuisSetupTitle">Kuis Per Materi</h2>
-              <p id="kuisSetupDescription">Pilih materi yang ingin kamu uji.</p>
-              <label for="kuisTopic">Materi bangun ruang</label>
-              <select id="kuisTopic">
-                <option value="Kubus">Kubus</option>
-                <option value="Balok">Balok</option>
-                <option value="Prisma">Prisma</option>
-                <option value="Limas">Limas</option>
-                <option value="Tabung">Tabung</option>
-                <option value="Kerucut">Kerucut</option>
-                <option value="Bola">Bola</option>
-              </select>
-              <div class="kuis-info-chips">
-                <span>⏱ 10 menit</span><span id="kuisCountLabel">5 soal</span
-                ><span>20 poin/soal</span>
-              </div>
-              <button type="button" class="kuis-confirm" id="kuisConfirm">
-                Mulai Kuis Sekarang <span>➜</span>
-              </button>
-            </div>
           </div>
         </section>
 
-        <section class="kuis-play" id="kuisPlay" hidden aria-live="polite">
-          <div class="kuis-play-top">
-            <button type="button" class="kuis-back" id="kuisQuit">
-              ‹ Keluar dari Kuis
-            </button>
-            <div class="kuis-play-meta">
+        <section
+          class="kuis-play"
+          id="kuisPlay"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="kuisPlayName"
+          hidden
+          aria-live="polite"
+        >
+          <header class="quiz-stage-header">
+            <div class="quiz-stage-brand">
+              <img src="assets/images/kuis/icon_kuispermateri.png" alt="" />
+              <div>
+                <strong>BangunRuang</strong
+                ><span>Waktunya unjuk kemampuan!</span>
+              </div>
+            </div>
+            <div class="quiz-stage-title">
               <span id="kuisPlayName">Kuis Per Materi</span
-              ><strong id="kuisTimer">10:00</strong>
+              ><strong id="kuisQuestionTopic">KUBUS</strong>
+            </div>
+            <div class="quiz-stage-tools">
+              <div class="quiz-timer-box">
+                <span class="quiz-clock-icon" aria-hidden="true">⏱️</span>
+                <div>
+                  <small>Waktu tersisa</small
+                  ><strong id="kuisTimer">10:00</strong>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="quiz-tool-btn"
+                id="kuisPause"
+                aria-label="Jeda kuis"
+                title="Jeda kuis"
+              >
+                Ⅱ</button
+              ><button
+                type="button"
+                class="quiz-tool-btn quiz-exit-btn"
+                id="kuisQuit"
+                aria-label="Keluar dari kuis"
+                title="Keluar dari kuis"
+              >
+                ×
+              </button>
+            </div>
+          </header>
+          <div class="quiz-stage-progress">
+            <div class="quiz-progress-copy">
+              <span>PROGRESS KUIS</span
+              ><b id="kuisQuestionCount">Soal 1 dari 5</b
+              ><strong><span id="kuisScoreLive">0</span> poin</strong>
+            </div>
+            <div class="kuis-progress-track">
+              <span id="kuisProgress"></span>
             </div>
           </div>
-          <div class="kuis-progress-track"><span id="kuisProgress"></span></div>
           <article class="kuis-question-card">
-            <div class="kuis-question-head">
-              <span id="kuisQuestionTopic">KUBUS</span
-              ><b id="kuisQuestionCount">Soal 1 dari 5</b>
+            <div class="quiz-question-main">
+              <div class="quiz-question-copy">
+                <div class="kuis-question-head">
+                  <span class="quiz-topic-tag">✦ TANTANGAN BANGUN RUANG</span
+                  ><b id="kuisLevel" class="kuis-level-pill"
+                    >Level Kognitif C1</b
+                  >
+                </div>
+                <h2 id="kuisQuestionText">
+                  Pertanyaan akan ditampilkan di sini.
+                </h2>
+                <p class="quiz-answer-hint">
+                  Pilih satu jawaban yang paling tepat, ya!
+                </p>
+              </div>
+              <div class="quiz-shape-art">
+                <img
+                  id="kuisShapeArt"
+                  src="assets/images/latihansoal/decorations/dekor_kubus_pastel_3d.png"
+                  alt="Ilustrasi bangun ruang"
+                /><span>Kenali bentuknya!</span>
+              </div>
             </div>
-            <div class="kuis-level-pill" id="kuisLevel">Level Kognitif C1</div>
-            <h2 id="kuisQuestionText">Pertanyaan akan ditampilkan di sini.</h2>
             <div class="kuis-answers" id="kuisAnswers"></div>
             <div class="kuis-feedback" id="kuisFeedback" hidden></div>
-            <div class="kuis-question-actions">
-              <span>✨ Pilih satu jawaban yang paling tepat</span
-              ><button type="button" id="kuisNext" disabled>
-                Soal Berikutnya ➜
-              </button>
+            <div class="quiz-stage-footer">
+              <div class="quiz-mascot-tip">
+                <img
+                  src="assets/images/kuis/game/robot_mascot.png"
+                  alt="Maskot robot BangunRuang"
+                /><span>Semangat! Kamu pasti bisa menyelesaikannya.</span>
+              </div>
+              <div class="kuis-question-actions">
+                <button type="button" id="kuisNext" disabled>
+                  Soal Berikutnya <span>➜</span>
+                </button>
+              </div>
             </div>
           </article>
+          <div class="quiz-pause-screen" id="kuisPauseScreen" hidden>
+            <div class="quiz-pause-card">
+              <span class="quiz-pause-icon">Ⅱ</span>
+              <h2>Waktunya Istirahat!</h2>
+              <p>Timer kuis sedang dijeda. Tekan lanjutkan jika sudah siap.</p>
+              <button type="button" id="kuisResume">Lanjutkan Kuis</button>
+            </div>
+          </div>
         </section>
 
-        <section class="kuis-result" id="kuisResult" hidden>
+        <section
+          class="kuis-result"
+          id="kuisResult"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="kuisResultTitle"
+          hidden
+        >
           <div class="kuis-result-trophy">
             <img src="assets/images/kuis/icontantangan.png" alt="" />
           </div>
@@ -1331,6 +1677,7 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="js/app.js"></script>
     <script src="js/materi.js"></script>
+    <script src="js/materi-kubus.js"></script>
     <script src="js/eksplorasi3d.js"></script>
     <script src="js/video.js"></script>
     <script src="js/latihan-soal.js"></script>

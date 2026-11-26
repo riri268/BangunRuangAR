@@ -9,6 +9,84 @@
     play = $("kuisPlay"),
     result = $("kuisResult");
   const topicSelect = $("kuisTopic");
+  const shapeAssetInfo = {
+    Kubus: { file: "kubus.glb", icon: "01_Kubus.png" },
+    Balok: { file: "balok.glb", icon: "02_Balok.png" },
+    Prisma: { file: "prisma.glb", icon: "03_Prisma.png" },
+    Limas: { file: "limas.glb", icon: "04_Limas.png" },
+    Tabung: { file: "tabung.glb", icon: "05_Tabung.png" },
+    Kerucut: { file: "kerucut.glb", icon: "06_Kerucut.png" },
+    Bola: { file: "bola.glb", icon: "07_Bola.png" },
+  };
+  function updateSetupShape(topic) {
+    const asset = shapeAssetInfo[topic] || shapeAssetInfo.Kubus;
+    const model = $("kuisSetupModel");
+    const icon = $("kuisTopicIcon");
+    const caption = $("kuisModelCaption");
+
+    if (model) {
+      const nextSrc = `assets/models/bangun-ruang/${asset.file}`;
+
+      // Samakan aturan kamera dengan halaman Eksplorasi 3D.
+      model.setAttribute("camera-controls", "");
+      model.setAttribute("touch-action", "pan-y");
+      model.setAttribute("min-camera-orbit", "auto auto 1.9m");
+      model.setAttribute("max-camera-orbit", "auto auto 6.2m");
+      model.setAttribute("camera-orbit", "35deg 72deg 3.1m");
+      model.setAttribute("camera-target", "auto auto auto");
+      model.setAttribute("field-of-view", "32deg");
+      model.setAttribute("auto-rotate", "");
+      model.setAttribute("auto-rotate-delay", "0");
+      model.setAttribute("rotation-per-second", "24deg");
+      model.setAttribute("interaction-prompt", "none");
+      model.removeAttribute("disable-zoom");
+
+      // Normalisasi ukuran GLB dilakukan setiap kali model selesai dimuat,
+      // agar semua bangun ruang tampil pada skala yang relatif konsisten.
+      if (!model.dataset.kuisCameraReady) {
+        model.addEventListener("load", () => {
+          try {
+            const dimensions = model.getDimensions();
+            const largestSide = Math.max(
+              dimensions.x,
+              dimensions.y,
+              dimensions.z,
+            );
+            if (Number.isFinite(largestSide) && largestSide > 0) {
+              const uniformScale = Math.max(
+                0.1,
+                Math.min(10, 1.55 / largestSide),
+              );
+              model.scale = `${uniformScale} ${uniformScale} ${uniformScale}`;
+            }
+          } catch (_) {
+            // Gunakan skala bawaan GLB jika dimensi model tidak tersedia.
+          }
+
+          model.setAttribute("camera-orbit", "35deg 72deg 3.1m");
+          model.setAttribute("camera-target", "auto auto auto");
+          model.setAttribute("auto-rotate", "");
+          model.setAttribute("auto-rotate-delay", "0");
+          model.setAttribute("rotation-per-second", "24deg");
+        });
+        model.dataset.kuisCameraReady = "true";
+      }
+
+      // Reset skala sebelum mengganti objek agar skala objek sebelumnya
+      // tidak terbawa ke model berikutnya.
+      model.scale = "1 1 1";
+      if (model.getAttribute("src") !== nextSrc) {
+        model.setAttribute("src", nextSrc);
+      }
+      model.setAttribute("alt", `Model 3D ${topic}`);
+    }
+
+    if (icon) {
+      icon.src = `assets/images/kuis/tampilankuis/${asset.icon}`;
+      icon.alt = `Ikon ${topic}`;
+    }
+    if (caption) caption.textContent = `${topic} 3D Interaktif`;
+  }
   const topics = [
     "Kubus",
     "Balok",
@@ -320,7 +398,8 @@
     score = 0,
     answers = [],
     timer = null,
-    seconds = 600;
+    seconds = 600,
+    isPaused = false;
   const showToast = (msg) => {
     if (typeof window.showToast === "function") window.showToast(msg);
   };
@@ -349,15 +428,19 @@
     btn.addEventListener("click", () => {
       selectedType = btn.dataset.quiz;
       const info = typeInfo[selectedType];
-      $("kuisSetupIcon").src = info.icon;
       $("kuisSetupTitle").textContent = info.title;
       $("kuisSetupDescription").textContent = info.desc;
       $("kuisCountLabel").textContent = `${info.count} soal`;
       topicSelect.disabled = selectedType !== "materi";
       topicSelect.value = "Kubus";
+      updateSetupShape(topicSelect.value);
       showOnly(setup);
     }),
   );
+  topicSelect.addEventListener("change", () =>
+    updateSetupShape(topicSelect.value),
+  );
+  updateSetupShape(topicSelect.value);
   $("kuisBack").addEventListener("click", () => showOnly(home));
   function shuffle(arr) {
     const a = [...arr];
@@ -390,7 +473,11 @@
     score = 0;
     answers = [];
     seconds = 600;
+    isPaused = false;
     $("kuisPlayName").textContent = typeInfo[selectedType].title;
+    $("kuisScoreLive").textContent = "0";
+    $("kuisPause").textContent = "Ⅱ";
+    $("kuisPauseScreen").hidden = true;
     showOnly(play);
     renderQuestion();
     startTimer();
@@ -398,11 +485,27 @@
   $("kuisConfirm").addEventListener("click", startQuiz);
   function startTimer() {
     clearInterval(timer);
+    const timerEl = $("kuisTimer");
+    const warnings = {
+      120: "Waktu tersisa 2 menit. Periksa kembali jawabanmu, ya!",
+      60: "Satu menit lagi! Segera selesaikan kuis.",
+      30: "30 detik terakhir! Pilih jawabanmu sekarang.",
+    };
+    timerEl.classList.remove("timer-warning", "timer-critical");
+    timerEl.setAttribute("role", "status");
+    timerEl.setAttribute("aria-live", "polite");
+    timerEl.textContent = "10:00";
     timer = setInterval(() => {
+      if (isPaused) return;
       seconds--;
       const m = String(Math.floor(seconds / 60)).padStart(2, "0"),
         s = String(seconds % 60).padStart(2, "0");
-      $("kuisTimer").textContent = `${m}:${s}`;
+      timerEl.textContent = `${m}:${s}`;
+      if (seconds === 120 || seconds === 60 || seconds === 30) {
+        timerEl.classList.add("timer-warning");
+        if (seconds <= 60) timerEl.classList.add("timer-critical");
+        showToast(warnings[seconds]);
+      }
       if (seconds <= 0) {
         clearInterval(timer);
         finishQuiz(true);
@@ -414,6 +517,19 @@
     $("kuisQuestionTopic").textContent = q.topic.toUpperCase();
     $("kuisQuestionCount").textContent =
       `Soal ${index + 1} dari ${questions.length}`;
+    $("kuisScoreLive").textContent = score;
+    const shapeFiles = {
+      Kubus: "01_Kubus.png",
+      Balok: "02_Balok.png",
+      Prisma: "03_Prisma.png",
+      Limas: "04_Limas.png",
+      Tabung: "05_Tabung.png",
+      Kerucut: "06_Kerucut.png",
+      Bola: "07_Bola.png",
+    };
+    $("kuisShapeArt").src =
+      `assets/images/kuis/tampilankuis/${shapeFiles[q.topic] || shapeFiles.Kubus}`;
+    $("kuisShapeArt").alt = `Ilustrasi ${q.topic}`;
     $("kuisLevel").textContent = `Level Kognitif ${q.level}`;
     $("kuisQuestionText").textContent = q.prompt;
     $("kuisProgress").style.width = `${(index / questions.length) * 100}%`;
@@ -439,6 +555,7 @@
     answers[index] = choice;
     const correct = choice === q.answer;
     if (correct) score += 20;
+    $("kuisScoreLive").textContent = score;
     [...$("kuisAnswers").children].forEach((b, i) => {
       b.disabled = true;
       if (i === q.answer) b.classList.add("correct");
@@ -459,21 +576,50 @@
   });
   function finishQuiz(timeout) {
     clearInterval(timer);
+    isPaused = false;
+    $("kuisPauseScreen").hidden = true;
+    $("kuisTimer").classList.remove("timer-warning", "timer-critical");
     showOnly(result);
+    const maxScore = questions.length * 20;
+    const percent = Math.round((score / maxScore) * 100);
     $("kuisScore").textContent = score;
     $("kuisResultTitle").textContent =
-      score >= 80
+      percent >= 80
         ? "Hebat! Pemahamanmu sangat baik!"
-        : score >= 60
+        : percent >= 60
           ? "Bagus! Terus tingkatkan pemahamanmu."
           : "Tetap semangat! Ayo pelajari kembali materinya.";
     $("kuisResultSummary").textContent =
-      `Kamu memperoleh ${score} dari ${questions.length * 20} poin.${timeout ? " Waktu pengerjaan telah habis." : ""}`;
+      `Kamu memperoleh ${score} dari ${maxScore} poin (${percent}%).${timeout ? " Waktu pengerjaan telah habis." : ""}`;
     $("kuisReviewList").hidden = true;
   }
   $("kuisQuit").addEventListener("click", () => {
+    if (
+      !window.confirm(
+        "Keluar dari kuis sekarang? Progres jawaban sesi ini tidak akan disimpan.",
+      )
+    )
+      return;
     clearInterval(timer);
+    isPaused = false;
+    $("kuisPauseScreen").hidden = true;
+    $("kuisTimer").classList.remove("timer-warning", "timer-critical");
     showOnly(home);
+  });
+  $("kuisPause").addEventListener("click", () => {
+    isPaused = !isPaused;
+    $("kuisPauseScreen").hidden = !isPaused;
+    $("kuisPause").textContent = isPaused ? "▶" : "Ⅱ";
+    $("kuisPause").setAttribute(
+      "aria-label",
+      isPaused ? "Lanjutkan kuis" : "Jeda kuis",
+    );
+  });
+  $("kuisResume").addEventListener("click", () => {
+    isPaused = false;
+    $("kuisPauseScreen").hidden = true;
+    $("kuisPause").textContent = "Ⅱ";
+    $("kuisPause").setAttribute("aria-label", "Jeda kuis");
   });
   $("kuisReview").addEventListener("click", () => {
     const box = $("kuisReviewList");
@@ -484,7 +630,15 @@
       const title = document.createElement("strong");
       title.textContent = `${i + 1}. ${q.topic} — ${q.prompt}`;
       const p = document.createElement("p");
-      p.textContent = `Jawaban benar: ${q.choices[q.answer]}. ${q.explanation}`;
+      const chosen =
+        answers[i] === undefined ? "Belum dijawab" : q.choices[answers[i]];
+      const status =
+        answers[i] === q.answer
+          ? "Jawabanmu benar."
+          : answers[i] === undefined
+            ? "Kamu belum memilih jawaban."
+            : "Jawabanmu belum tepat.";
+      p.textContent = `${status} Jawabanmu: ${chosen}. Jawaban benar: ${q.choices[q.answer]}. Pembahasan: ${q.explanation}`;
       item.append(title, p);
       box.appendChild(item);
     });
@@ -493,6 +647,9 @@
   $("kuisRetry").addEventListener("click", startQuiz);
   $("kuisHomeButton").addEventListener("click", () => {
     clearInterval(timer);
+    isPaused = false;
+    $("kuisPauseScreen").hidden = true;
+    $("kuisTimer").classList.remove("timer-warning", "timer-critical");
     showOnly(home);
   });
 })();
