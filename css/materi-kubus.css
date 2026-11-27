@@ -2302,3 +2302,391 @@ body.page-kubus .kubus-step-nav {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Integrasi Augmented Reality pada tahap Eksplorasi Kubus.
+   Gaya dibatasi pada halaman Kubus agar identitas halaman lain tetap aman. */
+body.page-kubus .kubus-ar-button {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 19px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(105deg, #9251fa, #642be9);
+  box-shadow: 0 6px 18px rgba(104,55,213,.25);
+  font: 900 13px/1.2 'Nunito', sans-serif;
+  cursor: pointer;
+  z-index: 2;
+}
+body.page-kubus .kubus-ar-button:hover { filter: brightness(1.06); transform: translateX(-50%) translateY(-1px); }
+body.page-kubus .kubus-ar-button:focus-visible { outline: 3px solid #58b8ff; outline-offset: 3px; }
+body.page-kubus .kubus-ar-note {
+  margin: 9px 4px 0;
+  color: #64719b;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  body.page-kubus .kubus-ar-button { bottom: 62px; min-height: 40px; padding: 9px 15px; font-size: 12px; }
+  body.page-kubus .kubus-ar-note { font-size: 10px; }
+}
+
+/* REVISI JARING-JARING KUBUS: pola horizontal agar seluruh sisi terlihat */
+body.page-kubus .kubus-build-stage[data-build-state="net"] .kubus-build-object {
+  transform: translateX(calc(var(--build-size) * -0.51)) scale(0.78);
+}
+body.page-kubus .kubus-build-stage[data-build-state="net"] .build-front {
+  transform: translate3d(0, 0, 0);
+}
+body.page-kubus .kubus-build-stage[data-build-state="net"] .build-left {
+  transform: translate3d(calc(var(--build-size) * -1.02), 0, 0);
+}
+body.page-kubus .kubus-build-stage[data-build-state="net"] .build-right {
+  transform: translate3d(calc(var(--build-size) * 1.02), 0, 0);
+}
+body.page-kubus .kubus-build-stage[data-build-state="net"] .build-back {
+  transform: translate3d(calc(var(--build-size) * 2.04), 0, 0);
+}
+body.page-kubus .kubus-build-stage[data-build-state="net"] .build-top {
+  transform: translate3d(0, calc(var(--build-size) * -1.02), 0);
+}
+body.page-kubus .kubus-build-stage[data-build-state="net"] .build-bottom {
+  transform: translate3d(0, calc(var(--build-size) * 1.02), 0);
+}
+@media (max-width: 600px) {
+  body.page-kubus .kubus-build-stage[data-build-state="net"] .kubus-build-object {
+    transform: translateX(calc(var(--build-size) * -0.51)) scale(0.55);
+  }
+}
+
+/* ==========================================================
+   PENYEGARAN TEMA MATERI KUBUS
+   Tanpa banner besar, pastel cerah warna-warni, tetap konsisten.
+   Semua aturan tetap dibatasi pada halaman detail Kubus.
+   ========================================================== */
+body.page-kubus .kubus-banner-wrap,
+body.page-kubus .kubus-banner {
+  display: none !important;
+}
+
+body.page-kubus .kubus-page-shell {
+  padding-top: clamp(8px, 1.2vw, 16px);
+}
+
+body.page-kubus .kubus-step-nav {
+  margin-top: 0;
+  border-color: #ffffff;
+  background: linear-gradient(105deg, #e9f7ff 0%, #f5edff 35%, #fff0f7 68%, #effff6 100%);
+  box-shadow: 0 8px 22px rgba(78, 104, 180, .16), inset 0 2px 5px rgba(255,255,255,.98);
+}
+
+body.page-kubus .kubus-step:nth-child(1) {
+  --step-accent: #258fe9;
+  --step-soft: #e2f4ff;
+}
+body.page-kubus .kubus-step:nth-child(2) {
+  --step-accent: #19b978;
+  --step-soft: #e2fff1;
+}
+body.page-kubus .kubus-step:nth-child(3) {
+  --step-accent: #f0a51c;
+  --step-soft: #fff4d9;
+}
+body.page-kubus .kubus-step:nth-child(4) {
+  --step-accent: #e85ba9;
+  --step-soft: #ffe7f4;
+}
+body.page-kubus .kubus-step {
+  border: 2px solid color-mix(in srgb, var(--step-accent) 24%, white);
+  background: linear-gradient(145deg, #ffffff, var(--step-soft));
+  box-shadow: 0 4px 10px rgba(76, 83, 150, .10);
+}
+body.page-kubus .kubus-step:not(.is-active) {
+  color: #20336f;
+}
+body.page-kubus .kubus-step.is-active {
+  border-color: #ffffff;
+  background: linear-gradient(110deg, var(--step-accent), color-mix(in srgb, var(--step-accent) 72%, #8055f5));
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--step-accent) 25%, white), 0 8px 16px color-mix(in srgb, var(--step-accent) 28%, transparent);
+}
+body.page-kubus .kubus-step:not(.is-active) .kubus-sigma {
+  color: var(--step-accent);
+}
+
+body.page-kubus .kubus-observe-layout,
+body.page-kubus .kubus-shape-layout,
+body.page-kubus .kubus-build-layout,
+body.page-kubus .kubus-formula-layout {
+  border-color: rgba(255,255,255,.98);
+  background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(239,247,255,.96) 38%, rgba(250,240,255,.96) 72%, rgba(255,247,235,.96));
+  box-shadow: 0 10px 28px rgba(75, 96, 165, .14), inset 0 2px 0 #fff;
+}
+body.page-kubus .kubus-welcome-panel {
+  background: linear-gradient(140deg, #f1eaff, #fff0f8 58%, #fff9e9);
+}
+body.page-kubus .kubus-goal-panel {
+  background: linear-gradient(140deg, #eaf8ff, #f2edff 58%, #fff0f7);
+}
+body.page-kubus .kubus-observation-panel {
+  background: linear-gradient(145deg, #effaff, #f8f0ff 55%, #fff8e9);
+}
+body.page-kubus .kubus-ribbon-title {
+  background: linear-gradient(100deg, #ff75bd, #9a54f5 55%, #4e9df5);
+  box-shadow: 0 4px 0 rgba(190, 166, 255, .58), 0 7px 15px rgba(102, 69, 190, .20);
+}
+body.page-kubus .kubus-objects-stage {
+  background: linear-gradient(145deg, #dff5ff 0%, #f1e8ff 48%, #ffe8f4 76%, #fff2d9 100%);
+}
+body.page-kubus .kubus-question {
+  border-color: #ff9ccf;
+  background: linear-gradient(100deg, rgba(255,255,255,.97), rgba(255,244,250,.96));
+}
+body.page-kubus .kubus-question-icon {
+  background: linear-gradient(145deg, #ffbf55, #ff79b8);
+}
+body.page-kubus .kubus-video-button,
+body.page-kubus .kubus-next-arrow {
+  background: linear-gradient(110deg, #ff79bb, #9b5aff 55%, #4d9df5);
+}
+body.page-kubus .kubus-interactive-stage {
+  background: radial-gradient(ellipse at 18% 18%, #fff 0%, transparent 34%), linear-gradient(135deg, #e4f7ff, #f3eaff 52%, #fff0f7);
+}
+body.page-kubus .kubus-selected-info {
+  background: linear-gradient(135deg, #fff0f7, #f1eaff 55%, #eaf8ff);
+}
+body.page-kubus .kubus-learning-tip {
+  border-color: #ffc45e;
+  background: linear-gradient(110deg, #fff9e9, #fff0f7);
+}
+
+@media (max-width: 760px) {
+  body.page-kubus .kubus-page-shell {
+    padding-top: 5px;
+  }
+  body.page-kubus .kubus-step-nav {
+    margin-bottom: 10px;
+  }
+}
+
+/* Revisi: hilangkan bidang/latar belakang di belakang tombol tahapan.
+   Warna pastel tetap hanya berada pada masing-masing tombol. */
+body.page-kubus .kubus-step-nav {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Revisi tata letak tahap Pahami Rumus: pisahkan kolom dan kartu agar tidak tampak menyatu. */
+body.page-kubus .kubus-formula-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(330px, .98fr);
+  align-items: start;
+  gap: clamp(18px, 1.8vw, 26px);
+  padding: 8px 0 22px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.page-kubus .formula-learning-column,
+body.page-kubus .formula-result-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+body.page-kubus .formula-model-card,
+body.page-kubus .formula-side-control,
+body.page-kubus .formula-choice-card,
+body.page-kubus .formula-example-card,
+body.page-kubus .formula-check-card {
+  border: 1px solid rgba(211, 220, 255, .95);
+  border-radius: 22px;
+  box-shadow: 0 7px 20px rgba(77, 91, 160, .10);
+}
+
+body.page-kubus .formula-model-card {
+  background: linear-gradient(145deg, #ffffff 0%, #eef8ff 58%, #f4efff 100%);
+}
+body.page-kubus .formula-side-control {
+  background: linear-gradient(145deg, #fffaf0 0%, #fff2f8 55%, #eff8ff 100%);
+}
+body.page-kubus .formula-choice-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f5efff 60%, #eef8ff 100%);
+}
+body.page-kubus .formula-example-card {
+  background: linear-gradient(145deg, #ffffff 0%, #fff6e8 55%, #fff0f7 100%);
+}
+body.page-kubus .formula-check-card {
+  background: linear-gradient(145deg, #ffffff, #effaf5);
+}
+
+body.page-kubus .formula-page-heading {
+  padding: 0 2px 2px;
+}
+body.page-kubus .formula-page-heading p {
+  max-width: 720px;
+}
+
+@media (max-width: 1050px) {
+  body.page-kubus .kubus-formula-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  body.page-kubus .formula-result-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 680px) {
+  body.page-kubus .kubus-formula-layout {
+    gap: 12px;
+    padding-top: 4px;
+  }
+  body.page-kubus .formula-learning-column,
+  body.page-kubus .formula-result-column {
+    display: flex;
+    gap: 12px;
+  }
+  body.page-kubus .formula-model-card,
+  body.page-kubus .formula-side-control,
+  body.page-kubus .formula-choice-card,
+  body.page-kubus .formula-example-card,
+  body.page-kubus .formula-check-card {
+    padding: 13px;
+    border-radius: 18px;
+  }
+}
+
+/* REVISI TAHAP 3 — pisahkan kartu model dan kartu informasi */
+body.page-kubus .kubus-build-layout {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  gap: clamp(14px, 1.4vw, 22px) !important;
+  align-items: stretch;
+}
+
+body.page-kubus .kubus-build-model-card,
+body.page-kubus .kubus-build-info-card {
+  border: 1px solid rgba(224, 211, 255, 0.95) !important;
+  border-radius: 26px !important;
+  background: linear-gradient(150deg, #ffffff 0%, #f8f3ff 58%, #eef8ff 100%) !important;
+  box-shadow: 0 8px 22px rgba(93, 77, 155, 0.10), inset 0 1px 0 #ffffff !important;
+}
+
+body.page-kubus .kubus-build-model-card {
+  padding: clamp(14px, 1.4vw, 20px) !important;
+}
+
+body.page-kubus .kubus-build-info-card {
+  padding: clamp(15px, 1.45vw, 21px) !important;
+}
+
+@media (max-width: 900px) {
+  body.page-kubus .kubus-build-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+
+/* Petunjuk tahap Pahami Rumus: ilustrasi siswa laki-laki + balon percakapan. */
+body.page-kubus .formula-instruction-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.4vw, 20px);
+  min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, .96);
+  border-radius: 22px;
+  background: linear-gradient(115deg, #eaf7ff 0%, #f1edff 48%, #fff0f7 100%);
+  box-shadow: 0 7px 18px rgba(87, 100, 169, .10), inset 0 1px 0 #fff;
+}
+body.page-kubus .formula-student-boy {
+  display: block;
+  flex: 0 0 clamp(104px, 12vw, 148px);
+  width: clamp(104px, 12vw, 148px);
+  height: clamp(104px, 12vw, 148px);
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 16px;
+}
+body.page-kubus .formula-instruction-bubble {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 16px 19px;
+  border: 2px solid #a9caff;
+  border-radius: 21px;
+  background: linear-gradient(145deg, #fff 0%, #f8fbff 100%);
+  box-shadow: 0 5px 13px rgba(83, 129, 205, .10);
+}
+body.page-kubus .formula-instruction-bubble::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  transform: translateY(-50%) rotate(45deg);
+  border-left: 2px solid #a9caff;
+  border-bottom: 2px solid #a9caff;
+  background: #fff;
+}
+body.page-kubus .formula-instruction-bubble p {
+  position: relative;
+  margin: 0;
+  color: #20366f;
+  font-size: clamp(13px, 1.12vw, 16px);
+  font-weight: 850;
+  line-height: 1.55;
+}
+@media (max-width: 680px) {
+  body.page-kubus .formula-instruction-card {
+    gap: 8px;
+    padding: 9px;
+    border-radius: 18px;
+  }
+  body.page-kubus .formula-student-boy {
+    flex-basis: 88px;
+    width: 88px;
+    height: 104px;
+  }
+  body.page-kubus .formula-instruction-bubble {
+    padding: 12px 13px;
+    border-radius: 16px;
+  }
+  body.page-kubus .formula-instruction-bubble::before {
+    left: -8px;
+    width: 13px;
+    height: 13px;
+  }
+  body.page-kubus .formula-instruction-bubble p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+}
+@media (max-width: 380px) {
+  body.page-kubus .formula-student-boy {
+    flex-basis: 72px;
+    width: 72px;
+    height: 92px;
+  }
+  body.page-kubus .formula-instruction-bubble { padding: 10px; }
+}

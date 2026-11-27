@@ -397,6 +397,14 @@
                     <span class="kubus-check">✓</span
                     ><span>Menjelaskan sifat-sifat kubus.</span>
                   </li>
+                  <li>
+                    <span class="kubus-check">✓</span
+                    ><span>Mengidentifikasi jaring-jaring kubus serta hubungan antara bentuk dua dimensi dan bangun ruang.</span>
+                  </li>
+                  <li>
+                    <span class="kubus-check">✓</span
+                    ><span>Menentukan luas permukaan dan volume kubus serta menyelesaikan masalah sederhana dalam kehidupan sehari-hari.</span>
+                  </li>
                 </ul>
               </article>
             </section>
@@ -453,8 +461,11 @@
               <div class="kubus-interactive-stage">
                 <model-viewer
                   id="kubusInteractiveModel"
-                  src="assets/models/materi/kubus/kubus_materi_interaktif.glb"
+                  src="assets/models/materi/kubus/kubus_materi_lavender.glb"
                   alt="Model kubus interaktif dengan sisi, rusuk, dan titik sudut"
+                  ar
+                  ar-modes="webxr scene-viewer quick-look"
+                  ar-scale="auto"
                   camera-controls
                   touch-action="pan-y"
                   interaction-prompt="none"
@@ -469,11 +480,15 @@
                   exposure="1.1"
                   environment-image="neutral"
                 >
+                  <button slot="ar-button" class="kubus-ar-button" type="button">
+                    <span aria-hidden="true">⌖</span> Lihat dalam AR
+                  </button>
                 </model-viewer>
                 <div class="kubus-model-hint">
                   ↻ Seret untuk memutar · Scroll atau cubit untuk zoom · Sentuh
                   bagian kubus untuk memilih
                 </div>
+                <p class="kubus-ar-note">Mode AR memerlukan perangkat dan browser yang mendukung. Jika tidak tersedia, kamu tetap dapat mengeksplorasi model 3D di atas.</p>
               </div>
               <div class="kubus-model-controls">
                 <button type="button" data-kubus-zoom="in">＋ Perbesar</button>
@@ -710,11 +725,18 @@
                   />
                   <h1>Yuk, Pahami Rumus Kubus!</h1>
                 </div>
-                <p>
-                  Amati bentuk kubus, ubah panjang sisinya, lalu temukan cara
-                  menghitung volumenya dan luas permukaannya.
-                </p>
               </header>
+
+              <div class="formula-instruction-card" role="note" aria-label="Petunjuk memahami rumus kubus">
+                <img
+                  class="formula-student-boy"
+                  src="assets/images/siswa.png"
+                  alt="Ilustrasi siswa laki-laki yang mengajak belajar"
+                />
+                <div class="formula-instruction-bubble">
+                  <p>Amati bentuk kubus, ubah panjang sisinya, lalu temukan cara menghitung volumenya dan luas permukaannya.</p>
+                </div>
+              </div>
 
               <div class="formula-model-card">
                 <div class="formula-card-topline">
