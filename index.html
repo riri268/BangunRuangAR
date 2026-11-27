@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/video.css" />
     <link rel="stylesheet" href="css/latihan-soal.css" />
     <link rel="stylesheet" href="css/kuis.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
@@ -346,12 +347,6 @@
               <span class="kubus-sigma" aria-hidden="true">∑</span
               ><span>Pahami Rumus!</span>
             </button>
-            <button class="kubus-step" type="button" data-kubus-step="quiz">
-              <img
-                src="assets/images/materi/icons/05_gamepad.png"
-                alt=""
-              /><span>Uji Pemahamanmu!</span>
-            </button>
           </nav>
           <main class="kubus-observe-layout">
             <section class="kubus-left-column">
@@ -546,41 +541,148 @@
                   <img src="assets/images/materi/icons/04_plus.png" alt="" />
                   <h1>Bongkar &amp; Bentuk Kubus!</h1>
                 </div>
-                <p>Amati bagaimana enam sisi kubus dapat terbuka, terpisah, lalu disusun kembali.</p>
+                <p>
+                  Amati bagaimana enam sisi kubus dapat terbuka, terpisah, lalu
+                  disusun kembali.
+                </p>
               </header>
-              <div class="kubus-build-stage" id="kubusBuildStage" data-build-state="whole">
+              <div
+                class="kubus-build-stage"
+                id="kubusBuildStage"
+                data-build-state="whole"
+              >
                 <div class="kubus-build-glow" aria-hidden="true"></div>
-                <div class="kubus-build-scene" id="kubusBuildScene" role="img" aria-label="Model 3D kubus warna-warni yang dapat dibongkar dan dibentuk kembali">
+                <div
+                  class="kubus-build-scene"
+                  id="kubusBuildScene"
+                  role="img"
+                  aria-label="Model 3D kubus warna-warni yang dapat dibongkar dan dibentuk kembali"
+                >
                   <div class="kubus-build-object" id="kubusBuildObject">
-                    <button class="build-face build-front" data-build-face="Depan" aria-label="Sisi depan" type="button"><span>DEPAN</span></button>
-                    <button class="build-face build-back" data-build-face="Belakang" aria-label="Sisi belakang" type="button"><span>BELAKANG</span></button>
-                    <button class="build-face build-right" data-build-face="Kanan" aria-label="Sisi kanan" type="button"><span>KANAN</span></button>
-                    <button class="build-face build-left" data-build-face="Kiri" aria-label="Sisi kiri" type="button"><span>KIRI</span></button>
-                    <button class="build-face build-top" data-build-face="Atas" aria-label="Sisi atas" type="button"><span>ATAS</span></button>
-                    <button class="build-face build-bottom" data-build-face="Bawah" aria-label="Sisi bawah" type="button"><span>BAWAH</span></button>
+                    <button
+                      class="build-face build-front"
+                      data-build-face="Depan"
+                      aria-label="Sisi depan"
+                      type="button"
+                    >
+                      <span>DEPAN</span>
+                    </button>
+                    <button
+                      class="build-face build-back"
+                      data-build-face="Belakang"
+                      aria-label="Sisi belakang"
+                      type="button"
+                    >
+                      <span>BELAKANG</span>
+                    </button>
+                    <button
+                      class="build-face build-right"
+                      data-build-face="Kanan"
+                      aria-label="Sisi kanan"
+                      type="button"
+                    >
+                      <span>KANAN</span>
+                    </button>
+                    <button
+                      class="build-face build-left"
+                      data-build-face="Kiri"
+                      aria-label="Sisi kiri"
+                      type="button"
+                    >
+                      <span>KIRI</span>
+                    </button>
+                    <button
+                      class="build-face build-top"
+                      data-build-face="Atas"
+                      aria-label="Sisi atas"
+                      type="button"
+                    >
+                      <span>ATAS</span>
+                    </button>
+                    <button
+                      class="build-face build-bottom"
+                      data-build-face="Bawah"
+                      aria-label="Sisi bawah"
+                      type="button"
+                    >
+                      <span>BAWAH</span>
+                    </button>
                   </div>
                 </div>
-                <div class="kubus-build-caption" id="kubusBuildCaption">Kubus utuh — terdiri dari 6 sisi berbentuk persegi</div>
+                <div class="kubus-build-caption" id="kubusBuildCaption">
+                  Kubus utuh — terdiri dari 6 sisi berbentuk persegi
+                </div>
               </div>
-              <div class="kubus-build-actions" role="group" aria-label="Kontrol model kubus">
-                <button class="build-action-pink is-active" type="button" data-build-action="whole" aria-pressed="true"><span class="build-action-icon" aria-hidden="true">🧊</span><span>Kubus Utuh</span></button>
-                <button class="build-action-blue" type="button" data-build-action="explode" aria-pressed="false"><span class="build-action-icon" aria-hidden="true">✨</span><span>Bongkar Kubus</span></button>
-                <button class="build-action-yellow" type="button" data-build-action="net" aria-pressed="false"><span class="build-action-icon" aria-hidden="true">▦</span><span>Jaring-jaring</span></button>
-                <button class="build-action-green" type="button" data-build-action="rebuild" aria-pressed="false"><span class="build-action-icon" aria-hidden="true">🔄</span><span>Susun Kembali</span></button>
+              <div
+                class="kubus-build-actions"
+                role="group"
+                aria-label="Kontrol model kubus"
+              >
+                <button
+                  class="build-action-pink is-active"
+                  type="button"
+                  data-build-action="whole"
+                  aria-pressed="true"
+                >
+                  <span class="build-action-icon" aria-hidden="true">🧊</span
+                  ><span>Kubus Utuh</span>
+                </button>
+                <button
+                  class="build-action-blue"
+                  type="button"
+                  data-build-action="explode"
+                  aria-pressed="false"
+                >
+                  <span class="build-action-icon" aria-hidden="true">✨</span
+                  ><span>Bongkar Kubus</span>
+                </button>
+                <button
+                  class="build-action-yellow"
+                  type="button"
+                  data-build-action="net"
+                  aria-pressed="false"
+                >
+                  <span class="build-action-icon" aria-hidden="true">▦</span
+                  ><span>Jaring-jaring</span>
+                </button>
+                <button
+                  class="build-action-green"
+                  type="button"
+                  data-build-action="rebuild"
+                  aria-pressed="false"
+                >
+                  <span class="build-action-icon" aria-hidden="true">🔄</span
+                  ><span>Susun Kembali</span>
+                </button>
               </div>
-              <p class="kubus-build-hint"><span>💡</span> Seret model untuk memutar. Tekan salah satu sisi untuk mengetahui namanya.</p>
+              <p class="kubus-build-hint">
+                <span>💡</span> Seret model untuk memutar. Tekan salah satu sisi
+                untuk mengetahui namanya.
+              </p>
             </section>
             <aside class="kubus-build-info-card">
               <div class="kubus-ribbon-title kubus-info-ribbon">
-                <img src="assets/images/materi/icons/06_lampu_petunjuk.png" alt="" />
+                <img
+                  src="assets/images/materi/icons/06_lampu_petunjuk.png"
+                  alt=""
+                />
                 <h2>Bagaimana Kubus Tersusun?</h2>
               </div>
-              <p class="kubus-build-intro">Coba tombol animasi untuk melihat perubahan bentuk kubus.</p>
+              <p class="kubus-build-intro">
+                Coba tombol animasi untuk melihat perubahan bentuk kubus.
+              </p>
               <article class="kubus-build-detail" aria-live="polite">
-                <span class="kubus-build-kicker" id="kubusBuildKicker">BENTUK AWAL</span>
+                <span class="kubus-build-kicker" id="kubusBuildKicker"
+                  >BENTUK AWAL</span
+                >
                 <h2 id="kubusBuildTitle">Kubus Utuh</h2>
-                <p id="kubusBuildText">Kubus tersusun dari enam sisi berbentuk persegi yang saling bertemu pada rusuknya.</p>
-                <div class="kubus-build-fact" id="kubusBuildFact">6 sisi • 12 rusuk • 8 titik sudut</div>
+                <p id="kubusBuildText">
+                  Kubus tersusun dari enam sisi berbentuk persegi yang saling
+                  bertemu pada rusuknya.
+                </p>
+                <div class="kubus-build-fact" id="kubusBuildFact">
+                  6 sisi • 12 rusuk • 8 titik sudut
+                </div>
               </article>
               <div class="kubus-build-mini-legend">
                 <div><i class="legend-pink"></i><span>Sisi depan</span></div>
@@ -588,7 +690,185 @@
                 <div><i class="legend-yellow"></i><span>Sisi atas</span></div>
                 <div><i class="legend-green"></i><span>Sisi bawah</span></div>
               </div>
-              <div class="kubus-learning-tip"><span>🌟</span><p>Ingat! Walaupun dibongkar, keenam sisi tetap memiliki bentuk dan ukuran yang sama.</p></div>
+              <div class="kubus-learning-tip">
+                <span>🌟</span>
+                <p>
+                  Ingat! Walaupun dibongkar, keenam sisi tetap memiliki bentuk
+                  dan ukuran yang sama.
+                </p>
+              </div>
+            </aside>
+          </main>
+
+          <main class="kubus-formula-layout" id="kubusFormulaView" hidden>
+            <section class="formula-learning-column">
+              <header class="formula-page-heading">
+                <div class="kubus-ribbon-title formula-ribbon">
+                  <img
+                    src="assets/images/materi/icons/07_clipboard.png"
+                    alt=""
+                  />
+                  <h1>Yuk, Pahami Rumus Kubus!</h1>
+                </div>
+                <p>
+                  Amati bentuk kubus, ubah panjang sisinya, lalu temukan cara
+                  menghitung volumenya dan luas permukaannya.
+                </p>
+              </header>
+
+              <div class="formula-model-card">
+                <div class="formula-card-topline">
+                  <span class="formula-chip"
+                    ><img src="assets/images/materi/icons/02_cube.png" alt="" />
+                    LABORATORIUM RUMUS</span
+                  >
+                  <span class="formula-hint">↻ Seret model untuk memutar</span>
+                </div>
+                <model-viewer
+                  id="kubusFormulaModel"
+                  src="assets/models/materi/kubus/kubus_materi_lavender.glb"
+                  alt="Model 3D kubus untuk mempelajari rumus"
+                  camera-controls
+                  auto-rotate
+                  auto-rotate-delay="0"
+                  rotation-per-second="12deg"
+                  interaction-prompt="none"
+                  camera-orbit="35deg 72deg 3.4m"
+                  field-of-view="32deg"
+                  shadow-intensity="0.7"
+                  exposure="1.05"
+                  environment-image="neutral"
+                >
+                </model-viewer>
+                <div class="formula-model-caption">
+                  <span class="formula-dot pink"></span
+                  ><span class="formula-dot blue"></span
+                  ><span class="formula-dot yellow"></span>
+                  <strong>Semua rusuk kubus memiliki panjang yang sama.</strong>
+                </div>
+              </div>
+
+              <div class="formula-side-control">
+                <div class="formula-control-heading">
+                  <img
+                    src="assets/images/materi/icons/03_jelajahi_unsur.png"
+                    alt=""
+                  />
+                  <div>
+                    <h2>Atur Panjang Sisi</h2>
+                    <p>Geser pengatur atau masukkan angka sendiri.</p>
+                  </div>
+                </div>
+                <div class="formula-slider-row">
+                  <input
+                    id="kubusSideRange"
+                    type="range"
+                    min="1"
+                    max="20"
+                    step="1"
+                    value="4"
+                    aria-label="Panjang sisi kubus"
+                  />
+                  <label class="formula-number-input"
+                    ><input
+                      id="kubusSideInput"
+                      type="number"
+                      min="1"
+                      max="20"
+                      step="1"
+                      value="4"
+                      aria-label="Nilai panjang sisi"
+                    /><span>cm</span></label
+                  >
+                </div>
+                <div class="formula-side-scale">
+                  <span>1 cm</span><span>20 cm</span>
+                </div>
+              </div>
+            </section>
+
+            <aside class="formula-result-column">
+              <div class="formula-choice-card">
+                <div class="formula-card-title">
+                  <img
+                    src="assets/images/materi/icons/06_lampu_petunjuk.png"
+                    alt=""
+                  />
+                  <div>
+                    <h2>Pilih yang ingin dihitung</h2>
+                    <p>Ketuk salah satu kartu rumus.</p>
+                  </div>
+                </div>
+                <div
+                  class="formula-choice-buttons"
+                  role="group"
+                  aria-label="Pilih jenis perhitungan"
+                >
+                  <button
+                    type="button"
+                    class="formula-choice is-active"
+                    data-formula-mode="volume"
+                    aria-pressed="true"
+                  >
+                    <span class="formula-choice-icon volume-icon">▦</span
+                    ><strong>Volume</strong><small>Isi ruang kubus</small>
+                  </button>
+                  <button
+                    type="button"
+                    class="formula-choice"
+                    data-formula-mode="area"
+                    aria-pressed="false"
+                  >
+                    <span class="formula-choice-icon area-icon">▧</span
+                    ><strong>Luas Permukaan</strong
+                    ><small>Luas seluruh sisi</small>
+                  </button>
+                </div>
+                <div class="formula-equation-card" aria-live="polite">
+                  <span class="formula-equation-kicker" id="kubusFormulaKicker"
+                    >RUMUS VOLUME</span
+                  >
+                  <div class="formula-equation" id="kubusFormulaEquation">
+                    V = s × s × s
+                  </div>
+                  <p id="kubusFormulaExplanation">
+                    Kalikan panjang sisi sebanyak tiga kali.
+                  </p>
+                  <div class="formula-calculation" id="kubusFormulaCalculation">
+                    V = 4 × 4 × 4
+                  </div>
+                  <div class="formula-answer">
+                    <span id="kubusFormulaAnswerLabel">Volume kubus</span
+                    ><strong id="kubusFormulaAnswer">64 cm³</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="formula-example-card">
+                <div class="formula-card-title">
+                  <img
+                    src="assets/images/materi/icons/07_clipboard.png"
+                    alt=""
+                  />
+                  <div>
+                    <h2>Contoh dalam kehidupan</h2>
+                    <p>Bayangkan sebuah kotak hadiah berbentuk kubus.</p>
+                  </div>
+                </div>
+                <div class="formula-example-visual">
+                  <span class="formula-gift-icon">🎁</span>
+                  <div>
+                    <strong>Kotak hadiah</strong
+                    ><small
+                      >Panjang sisi <b id="kubusExampleSide">4 cm</b></small
+                    >
+                  </div>
+                </div>
+                <p id="kubusExampleText">
+                  Jika setiap sisi kotak 4 cm, ruang di dalam kotak adalah 64
+                  cm³.
+                </p>
+              </div>
             </aside>
           </main>
 
@@ -619,7 +899,7 @@
       >
         <div class="explore-banner">
           <img
-            src="assets/images/Eksplorasi3D/banner_eksplorasi3D.png"
+            src="assets/images/Eksplorasi3D/banner_eksplorasi3d.png"
             alt="Eksplorasi 3D Bangun Ruang"
           />
         </div>

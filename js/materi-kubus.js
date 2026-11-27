@@ -9,6 +9,7 @@
   const observeView = view.querySelector(".kubus-observe-layout");
   const shapeView = document.getElementById("kubusShapeView");
   const buildView = document.getElementById("kubusBuildView");
+  const formulaView = document.getElementById("kubusFormulaView");
   const model = document.getElementById("kubusInteractiveModel");
   const stepButtons = [...view.querySelectorAll("[data-kubus-step]")];
   const dots = [...view.querySelectorAll(".kubus-progress-dots span")];
@@ -61,6 +62,10 @@
     if (typeof window.showToast === "function") window.showToast(message);
   }
   function openKubus() {
+    // Tampilkan subhalaman Kubus dan lepaskan status tersembunyi
+    // yang dipasang router utama saat berpindah halaman.
+    view.classList.remove("app-page-hidden");
+    view.removeAttribute("aria-hidden");
     pageClasses.forEach((name) => body.classList.remove(name));
     body.classList.add("page-kubus");
     document
@@ -75,6 +80,9 @@
     showStage("observe");
   }
   function backToMateri() {
+    // Kembalikan daftar materi dan tandai detail Kubus sebagai tersembunyi.
+    view.classList.add("app-page-hidden");
+    view.setAttribute("aria-hidden", "true");
     body.classList.remove("page-kubus");
     body.classList.add("page-materi");
     document
@@ -88,9 +96,11 @@
   function showStage(stage) {
     const isShape = stage === "shape";
     const isBuild = stage === "build";
-    if (observeView) observeView.hidden = isShape || isBuild;
+    const isFormula = stage === "formula";
+    if (observeView) observeView.hidden = isShape || isBuild || isFormula;
     if (shapeView) shapeView.hidden = !isShape;
     if (buildView) buildView.hidden = !isBuild;
+    if (formulaView) formulaView.hidden = !isFormula;
     stepButtons.forEach((button) =>
       button.classList.toggle("is-active", button.dataset.kubusStep === stage),
     );
@@ -101,7 +111,9 @@
           ? 1
           : stage === "build"
             ? 2
-            : 0;
+            : stage === "formula"
+              ? 3
+              : 0;
     dots.forEach((dot, index) =>
       dot.classList.toggle("active", index === activeIndex),
     );
@@ -288,15 +300,19 @@
     const current =
       buildView && !buildView.hidden
         ? "build"
-        : shapeView && !shapeView.hidden
-          ? "shape"
-          : "observe";
+        : formulaView && !formulaView.hidden
+          ? "formula"
+          : shapeView && !shapeView.hidden
+            ? "shape"
+            : "observe";
     showStage(
       current === "observe"
         ? "shape"
         : current === "shape"
           ? "build"
-          : "observe",
+          : current === "build"
+            ? "formula"
+            : "observe",
     );
   });
   document.getElementById("kubusWatchVideo")?.addEventListener("click", () => {
@@ -307,12 +323,9 @@
   stepButtons.forEach((button) =>
     button.addEventListener("click", () => {
       const stage = button.dataset.kubusStep;
-      if (stage === "observe" || stage === "shape" || stage === "build") {
+      if (stage === "observe" || stage === "shape" || stage === "build" || stage === "formula") {
         showStage(stage);
-        return;
       }
-      const labels = { formula: "Pahami Rumus!", quiz: "Uji Pemahamanmu!" };
-      toast(`Bagian ${labels[stage]} sedang disiapkan.`);
     }),
   );
   view
@@ -490,6 +503,55 @@
     buildScene.addEventListener("pointerup", stopBuildDrag);
     buildScene.addEventListener("pointercancel", stopBuildDrag);
   }
+
+  // Interaksi Pahami Rumus: perubahan sisi langsung memperbarui substitusi dan hasil.
+  const sideRange = document.getElementById("kubusSideRange");
+  const sideInput = document.getElementById("kubusSideInput");
+  const formulaButtons = [...document.querySelectorAll("[data-formula-mode]")];
+  let formulaMode = "volume";
+  function updateFormula(rawValue) {
+    const side = Math.min(20, Math.max(1, Number(rawValue) || 1));
+    if (sideRange) sideRange.value = String(side);
+    if (sideInput) sideInput.value = String(side);
+    const square = side * side;
+    const volume = square * side;
+    const isVolume = formulaMode === "volume";
+    const kicker = document.getElementById("kubusFormulaKicker");
+    const equation = document.getElementById("kubusFormulaEquation");
+    const explanation = document.getElementById("kubusFormulaExplanation");
+    const calculation = document.getElementById("kubusFormulaCalculation");
+    const answerLabel = document.getElementById("kubusFormulaAnswerLabel");
+    const answer = document.getElementById("kubusFormulaAnswer");
+    const exampleSide = document.getElementById("kubusExampleSide");
+    const exampleText = document.getElementById("kubusExampleText");
+    if (kicker) kicker.textContent = isVolume ? "RUMUS VOLUME" : "RUMUS LUAS PERMUKAAN";
+    if (equation) equation.textContent = isVolume ? "V = s × s × s" : "L = 6 × s × s";
+    if (explanation) explanation.textContent = isVolume
+      ? "Kalikan panjang sisi sebanyak tiga kali untuk mengetahui isi ruang kubus."
+      : "Hitung luas satu persegi, kemudian kalikan enam karena kubus memiliki enam sisi.";
+    if (calculation) calculation.textContent = isVolume
+      ? `V = ${side} × ${side} × ${side}`
+      : `L = 6 × ${side} × ${side}`;
+    if (answerLabel) answerLabel.textContent = isVolume ? "Volume kubus" : "Luas permukaan kubus";
+    if (answer) answer.textContent = isVolume ? `${volume.toLocaleString("id-ID")} cm³` : `${(6 * square).toLocaleString("id-ID")} cm²`;
+    if (exampleSide) exampleSide.textContent = `${side} cm`;
+    if (exampleText) exampleText.textContent = isVolume
+      ? `Jika setiap sisi kotak ${side} cm, ruang di dalam kotak adalah ${volume.toLocaleString("id-ID")} cm³.`
+      : `Jika setiap sisi kotak ${side} cm, luas seluruh permukaan kotak adalah ${(6 * square).toLocaleString("id-ID")} cm².`;
+  }
+  sideRange?.addEventListener("input", () => updateFormula(sideRange.value));
+  sideInput?.addEventListener("input", () => updateFormula(sideInput.value));
+  formulaButtons.forEach((button) => button.addEventListener("click", () => {
+    formulaMode = button.dataset.formulaMode;
+    formulaButtons.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    updateFormula(sideInput?.value || 4);
+  }));
+  updateFormula(4);
+
   setBuildState("whole");
   chooseMode("face");
 

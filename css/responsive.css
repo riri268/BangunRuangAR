@@ -1,0 +1,215 @@
+/* =========================================================
+   BANGUNRUANG — RESPONSIVE GUARDRAILS
+   Lapisan pengaman lintas halaman.
+   Layout utama tetap diatur oleh style.css dan CSS masing-masing halaman
+   agar tampilan laptop tidak berubah akibat override global.
+   ========================================================= */
+
+/* Cegah elemen anak memaksa viewport melebar. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+iframe,
+svg,
+model-viewer {
+  max-width: 100%;
+}
+
+.main-content,
+.dashboard-view,
+.materi-view,
+.kubus-view,
+.explore-view,
+.video-view,
+.latihan-view,
+.kuis-view,
+.app-extra-page,
+.main-content > section,
+.main-content > div {
+  min-width: 0;
+}
+
+.material-grid,
+.materi-grid,
+.explore-layout,
+.video-layout,
+.kuis-home-layout,
+.latihan-topic-grid,
+.kubus-observe-layout,
+.kubus-page-shell {
+  min-width: 0;
+}
+
+.material-grid > *,
+.materi-grid > *,
+.explore-layout > *,
+.video-layout > *,
+.kuis-home-layout > *,
+.latihan-topic-grid > *,
+.kubus-observe-layout > * {
+  min-width: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+:where(button, a, input, select, textarea, [role="button"]) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, a, input, select, textarea, [role="button"]):focus-visible {
+  outline: 3px solid rgba(111, 76, 220, .55);
+  outline-offset: 3px;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+/* Tablet: jangan memaksakan grid global.
+   Breakpoint dan jumlah kolom mengikuti CSS tiap halaman. */
+@media (min-width: 721px) and (max-width: 980px) {
+  .main-content,
+  .topbar,
+  .hero-stage,
+  .feature-row {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .main-content {
+    width: auto;
+  }
+
+  .search-box {
+    min-width: 0;
+  }
+
+  .materi-grid,
+  .explore-layout,
+  .video-layout,
+  .kuis-home-layout,
+  .kubus-observe-layout,
+  .latihan-topic-grid {
+    min-width: 0;
+  }
+}
+
+/* HP: aturan ukuran dan susunan utama mengikuti style.css
+   serta stylesheet khusus masing-masing halaman. */
+@media (max-width: 720px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .main-content,
+  .dashboard-view,
+  .materi-view,
+  .kubus-view,
+  .explore-view,
+  .video-view,
+  .latihan-view,
+  .kuis-view {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .main-content > *,
+  .topbar,
+  .hero-stage,
+  .feature-row {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .mobile-menu {
+    z-index: 1002;
+  }
+
+  .sidebar {
+    max-width: calc(100vw - 24px);
+    overscroll-behavior: contain;
+  }
+
+  .material-grid,
+  .materi-grid,
+  .explore-layout,
+  .video-layout,
+  .kuis-home-layout,
+  .latihan-topic-grid,
+  .kubus-observe-layout {
+    min-width: 0;
+  }
+
+  .material-grid > *,
+  .materi-grid > *,
+  .explore-layout > *,
+  .video-layout > *,
+  .kuis-home-layout > *,
+  .latihan-topic-grid > *,
+  .kubus-observe-layout > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .kubus-step,
+  .shape-option,
+  .quick-card,
+  .materi-topic,
+  .latihan-topic,
+  .kuis-type-card,
+  .kuis-start,
+  .video-action,
+  .see-all,
+  .progress-button {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* HP kecil: cegah teks dan kontrol melewati lebar layar. */
+@media (max-width: 390px) {
+  .main-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .topbar,
+  .search-box,
+  .profile-pill {
+    min-width: 0;
+  }
+
+  .search-box input {
+    min-width: 0;
+  }
+}
+
+/* Hormati preferensi aksesibilitas pengguna. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
