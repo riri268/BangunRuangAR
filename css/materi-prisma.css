@@ -1,0 +1,2819 @@
+/* HALAMAN DETAIL MATERI PRISMA SEGITIGA — desain Ayo Mengamati.
+   Semua selector dibatasi pada body.page-prisma / .prisma-view. */
+body.page-prisma .dashboard-view,
+body.page-prisma .materi-view,
+body.page-prisma .explore-view,
+body.page-prisma .video-view,
+body.page-prisma .latihan-view,
+body.page-prisma .kuis-view {
+  display: none !important;
+}
+body.page-prisma .prisma-view {
+  display: block;
+}
+body.page-prisma .page-bg {
+  background: url("../assets/images/materi/background_materi.png") center
+    center / cover no-repeat fixed;
+}
+body.page-prisma .page-bg::after {
+  display: none;
+}
+body.page-prisma .main-content {
+  min-width: 0;
+}
+.prisma-view {
+  display: none;
+  width: 100%;
+  padding: 0 0 28px;
+  color: #101f5b;
+  animation: prismaPageIn 0.28s ease both;
+}
+@keyframes prismaPageIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.prisma-page-shell {
+  width: min(100%, 1500px);
+  margin: 0 auto;
+  padding: 0 clamp(10px, 1.5vw, 22px) 20px;
+}
+.prisma-banner-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 10px;
+}
+.prisma-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 205px;
+  object-fit: contain;
+  object-position: center;
+}
+.prisma-step-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  padding: 9px 11px;
+  margin: 0 0 14px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  background: rgba(245, 242, 255, 0.88);
+  box-shadow:
+    0 7px 20px rgba(75, 83, 160, 0.16),
+    inset 0 2px 5px rgba(255, 255, 255, 0.95);
+}
+.prisma-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 49px;
+  padding: 6px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  background: linear-gradient(145deg, #fff, #f2efff);
+  color: #17245f;
+  font:
+    900 clamp(10px, 0.95vw, 14px) Nunito,
+    Arial,
+    sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(83, 83, 160, 0.08);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.prisma-step img {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  object-fit: contain;
+}
+.prisma-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(83, 83, 160, 0.14);
+}
+.prisma-step.is-active {
+  color: #fff;
+  border-color: #8150ff;
+  background: linear-gradient(105deg, #9a58ff, #6030e9);
+  box-shadow: 0 5px 12px rgba(112, 62, 226, 0.28);
+}
+.prisma-sigma {
+  color: #7544f4;
+  font-size: 30px;
+  font-weight: 1000;
+  line-height: 1;
+}
+.prisma-step.is-active .prisma-sigma {
+  color: #fff;
+}
+.prisma-observe-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 16px;
+  align-items: stretch;
+  padding: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.98);
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 10px 28px rgba(77, 103, 163, 0.14),
+    inset 0 2px 0 #fff;
+}
+.prisma-left-column,
+.prisma-right-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.prisma-welcome-panel,
+.prisma-goal-panel,
+.prisma-observation-panel {
+  min-width: 0;
+  border: 2px solid rgba(255, 255, 255, 0.98);
+  border-radius: 27px;
+  background: linear-gradient(
+    145deg,
+    rgba(247, 239, 255, 0.96),
+    rgba(255, 255, 255, 0.95)
+  );
+  box-shadow:
+    0 5px 16px rgba(103, 75, 178, 0.09),
+    inset 0 1px 0 #fff;
+}
+.prisma-welcome-panel {
+  padding: 12px 14px 10px;
+}
+.prisma-ribbon-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  max-width: 100%;
+  min-height: 47px;
+  padding: 5px 22px 5px 9px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(100deg, #a45cff, #6228e9);
+  box-shadow:
+    0 4px 0 rgba(182, 157, 255, 0.55),
+    0 6px 13px rgba(97, 53, 214, 0.2);
+}
+.prisma-ribbon-title img {
+  width: 55px;
+  height: 55px;
+  flex: 0 0 55px;
+  object-fit: contain;
+  margin: -11px 0 -9px -7px;
+  filter: drop-shadow(0 3px 3px rgba(52, 34, 120, 0.16));
+}
+.prisma-ribbon-title h1,
+.prisma-ribbon-title h2 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(17px, 1.65vw, 25px);
+  line-height: 1.15;
+  font-weight: 1000;
+  white-space: nowrap;
+}
+.prisma-welcome-content {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  min-height: 145px;
+  padding: 8px 0 0;
+}
+.prisma-student {
+  display: block;
+  width: 100%;
+  max-width: 155px;
+  max-height: 155px;
+  object-fit: contain;
+  object-position: center bottom;
+  align-self: end;
+  filter: drop-shadow(0 5px 7px rgba(70, 78, 140, 0.12));
+}
+.prisma-speech {
+  position: relative;
+  padding: 17px 17px;
+  border: 2px solid #b8d5ff;
+  border-radius: 23px;
+  color: #17295f;
+  background: linear-gradient(145deg, #fff, #f8fbff);
+  box-shadow: 0 4px 10px rgba(88, 131, 205, 0.1);
+  font-size: clamp(13px, 1.08vw, 17px);
+  line-height: 1.55;
+  font-weight: 800;
+}
+.prisma-speech::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 20px;
+  width: 17px;
+  height: 17px;
+  background: #fff;
+  border-left: 2px solid #b8d5ff;
+  border-bottom: 2px solid #b8d5ff;
+  transform: rotate(45deg);
+}
+.prisma-goal-panel {
+  flex: 1;
+  padding: 12px 16px 14px;
+}
+.prisma-goal-ribbon {
+  margin-left: 0;
+}
+.prisma-goal-lead {
+  margin: 12px 0 8px 50px;
+  color: #18285e;
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 1.5;
+  font-weight: 800;
+}
+.prisma-goal-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0 4px 0 22px;
+  list-style: none;
+}
+.prisma-goal-list li {
+  display: grid;
+  grid-template-columns: 33px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  color: #17265d;
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 1.45;
+  font-weight: 800;
+}
+.prisma-check {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border: 2px solid #fff;
+  border-radius: 9px;
+  color: #fff;
+  background: linear-gradient(145deg, #58e875, #0bbd42);
+  box-shadow: 0 3px 6px rgba(20, 170, 75, 0.25);
+  font-size: 23px;
+  font-weight: 1000;
+  text-shadow: 0 1px 2px rgba(0, 90, 35, 0.25);
+}
+.prisma-observation-panel {
+  flex: 1;
+  padding: 12px;
+  background: linear-gradient(
+    145deg,
+    rgba(247, 249, 255, 0.98),
+    rgba(255, 255, 255, 0.96)
+  );
+}
+.prisma-observation-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 11px;
+}
+.prisma-small-ribbon {
+  min-height: 43px;
+  flex: 0 0 auto;
+  padding-right: 18px;
+}
+.prisma-small-ribbon img {
+  width: 53px;
+  height: 57px;
+}
+.prisma-small-ribbon h2 {
+  font-size: clamp(16px, 1.4vw, 22px);
+}
+.prisma-observation-heading p {
+  margin: 0;
+  color: #17265d;
+  font-size: clamp(12px, 1.05vw, 16px);
+  font-weight: 900;
+  line-height: 1.35;
+}
+.prisma-objects-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 320px;
+  overflow: hidden;
+  padding: 14px 13px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  background: linear-gradient(180deg, #dff5ff 0%, #f6e9ff 48%, #ffe2bf 100%);
+  box-shadow: inset 0 0 0 1px rgba(112, 167, 219, 0.08);
+}
+.prisma-objects-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 24% 0;
+  background:
+    radial-gradient(
+      ellipse at 18% 22%,
+      rgba(255, 255, 255, 0.8),
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(255, 255, 255, 0.65),
+      transparent 25%
+    );
+  pointer-events: none;
+}
+.prisma-objects-stage > img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-height: 245px;
+  margin: 0 auto -2px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 8px 7px rgba(74, 70, 113, 0.13));
+}
+.prisma-object-labels {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 2% 10px;
+}
+.prisma-object-labels span {
+  justify-self: center;
+  min-width: 0;
+  padding: 6px 13px;
+  border: 1px solid #e8e5ff;
+  border-radius: 999px;
+  color: #17245e;
+  background: #fff;
+  box-shadow: 0 3px 7px rgba(72, 74, 140, 0.1);
+  font-size: clamp(11px, 0.95vw, 15px);
+  font-weight: 1000;
+  text-align: center;
+  white-space: nowrap;
+}
+.prisma-question {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 57px;
+  padding: 8px 15px;
+  border: 2px dashed #a76aff;
+  border-radius: 999px;
+  color: #17245e;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 3px 0 rgba(202, 175, 255, 0.45);
+}
+.prisma-question-icon {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(145deg, #c08aff, #7027ed);
+  font-size: 30px;
+  font-weight: 1000;
+  box-shadow: 0 3px 7px rgba(95, 51, 190, 0.2);
+}
+.prisma-question strong {
+  font-size: clamp(12px, 1.05vw, 16px);
+  line-height: 1.35;
+  font-weight: 1000;
+}
+.prisma-video-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: center;
+  width: min(100%, 390px);
+  min-height: 62px;
+  padding: 7px 24px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(100deg, #9b45ff, #5d25ed);
+  box-shadow:
+    0 5px 0 rgba(174, 146, 255, 0.55),
+    0 8px 17px rgba(88, 49, 196, 0.22);
+  font:
+    1000 clamp(14px, 1.3vw, 20px) Nunito,
+    Arial,
+    sans-serif;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.prisma-video-button img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.prisma-video-button:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 0 rgba(174, 146, 255, 0.55),
+    0 11px 20px rgba(88, 49, 196, 0.25);
+}
+.prisma-bottom-navigation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  margin-top: 7px;
+}
+.prisma-progress-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.prisma-progress-dots span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #b8b6f7;
+  box-shadow: inset 0 1px 2px rgba(49, 43, 133, 0.12);
+}
+.prisma-progress-dots span.active {
+  background: #6b2cff;
+}
+.prisma-next-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  transform: translateY(-50%);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(145deg, #b15cff, #6327ec);
+  box-shadow:
+    0 4px 0 rgba(181, 153, 255, 0.6),
+    0 7px 14px rgba(78, 49, 170, 0.2);
+  font-size: 30px;
+  font-weight: 1000;
+  cursor: pointer;
+}
+.prisma-next-arrow:hover {
+  transform: translateY(calc(-50% - 2px));
+}
+.prisma-back-button {
+  display: none;
+  margin: 12px auto 0;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  color: #27447e;
+  background: rgba(255, 255, 255, 0.8);
+  font:
+    800 12px Nunito,
+    Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.prisma-view button:focus-visible {
+  outline: 3px solid #58b8ff;
+  outline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .prisma-banner {
+    max-height: 175px;
+  }
+  .prisma-step-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .prisma-step {
+    min-height: 45px;
+  }
+  .prisma-observe-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    padding: 13px;
+    gap: 12px;
+  }
+  .prisma-welcome-content {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+  .prisma-objects-stage {
+    min-height: 290px;
+  }
+  .prisma-objects-stage > img {
+    max-height: 210px;
+  }
+}
+@media (max-width: 760px) {
+  .prisma-observe-layout {
+    grid-template-columns: 1fr;
+  }
+  .prisma-left-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+  .prisma-welcome-content {
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+  .prisma-student {
+    max-height: 125px;
+  }
+  .prisma-objects-stage {
+    min-height: 320px;
+  }
+  .prisma-objects-stage > img {
+    max-height: 235px;
+  }
+}
+@media (max-width: 560px) {
+  body.page-prisma .main-content {
+    padding: 10px 10px 22px;
+  }
+  body.page-prisma .topbar {
+    height: 48px;
+    margin-bottom: 8px;
+    gap: 7px;
+  }
+  body.page-prisma .search-box {
+    width: min(100%, 220px);
+  }
+  body.page-prisma .profile-name {
+    display: none;
+  }
+  .prisma-page-shell {
+    padding: 0 0 14px;
+  }
+  .prisma-banner-wrap {
+    margin-bottom: 8px;
+  }
+  .prisma-banner {
+    max-height: 125px;
+  }
+  .prisma-step-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 7px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .prisma-step {
+    justify-content: flex-start;
+    min-height: 43px;
+    padding: 5px 8px;
+    gap: 6px;
+    font-size: 11px;
+  }
+  .prisma-step img {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+  .prisma-sigma {
+    width: 30px;
+    text-align: center;
+    font-size: 25px;
+  }
+  .prisma-observe-layout {
+    padding: 9px;
+    border-radius: 23px;
+    gap: 10px;
+  }
+  .prisma-left-column {
+    display: flex;
+    gap: 10px;
+  }
+  .prisma-welcome-panel,
+  .prisma-goal-panel,
+  .prisma-observation-panel {
+    border-radius: 19px;
+  }
+  .prisma-welcome-panel {
+    padding: 10px;
+  }
+  .prisma-ribbon-title {
+    min-height: 40px;
+    padding: 4px 14px 4px 6px;
+    gap: 7px;
+  }
+  .prisma-ribbon-title img {
+    width: 43px;
+    height: 45px;
+    flex-basis: 43px;
+  }
+  .prisma-ribbon-title h1,
+  .prisma-ribbon-title h2 {
+    font-size: 16px;
+  }
+  .prisma-welcome-content {
+    grid-template-columns: 100px minmax(0, 1fr);
+    min-height: 120px;
+  }
+  .prisma-student {
+    max-height: 125px;
+  }
+  .prisma-speech {
+    padding: 12px;
+    border-radius: 17px;
+    font-size: 12px;
+  }
+  .prisma-goal-panel {
+    padding: 10px 11px 12px;
+  }
+  .prisma-goal-lead {
+    margin: 9px 0 8px 8px;
+    font-size: 12px;
+  }
+  .prisma-goal-list {
+    padding-left: 3px;
+    gap: 8px;
+  }
+  .prisma-goal-list li {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 7px;
+    font-size: 12px;
+  }
+  .prisma-check {
+    width: 27px;
+    height: 27px;
+    font-size: 20px;
+  }
+  .prisma-observation-panel {
+    padding: 9px;
+  }
+  .prisma-observation-heading {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .prisma-small-ribbon {
+    min-height: 38px;
+  }
+  .prisma-small-ribbon img {
+    width: 43px;
+    height: 46px;
+  }
+  .prisma-small-ribbon h2 {
+    font-size: 16px;
+  }
+  .prisma-observation-heading p {
+    font-size: 12px;
+  }
+  .prisma-objects-stage {
+    min-height: 250px;
+    padding: 8px 7px;
+    border-radius: 17px;
+  }
+  .prisma-objects-stage > img {
+    max-height: 165px;
+  }
+  .prisma-object-labels {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .prisma-object-labels span {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+  .prisma-question {
+    gap: 7px;
+    min-height: 46px;
+    padding: 5px 8px;
+  }
+  .prisma-question-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    font-size: 23px;
+  }
+  .prisma-question strong {
+    font-size: 11px;
+  }
+  .prisma-video-button {
+    min-height: 52px;
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+  .prisma-video-button img {
+    width: 39px;
+    height: 39px;
+  }
+  .prisma-next-arrow {
+    width: 48px;
+    height: 48px;
+    font-size: 25px;
+  }
+  .prisma-progress-dots span {
+    width: 11px;
+    height: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prisma-view,
+  .prisma-view * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* TAHAP AMATI BENTUKNYA — model interaktif khusus Materi Prisma */
+.prisma-shape-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.82fr);
+  gap: 16px;
+  padding: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(249, 244, 255, 0.94)
+  );
+  box-shadow: 0 9px 25px rgba(93, 94, 165, 0.13);
+}
+.prisma-shape-layout[hidden] {
+  display: none !important;
+}
+.prisma-model-card,
+.prisma-explore-card {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #eee8ff;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #fff, #fbf9ff);
+  box-shadow: 0 4px 14px rgba(83, 75, 150, 0.07);
+}
+.prisma-model-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+.prisma-model-heading .prisma-ribbon-title {
+  min-height: 48px;
+}
+.prisma-model-heading p {
+  margin: 0;
+  color: #253b79;
+  font-size: clamp(12px, 0.95vw, 15px);
+  font-weight: 900;
+}
+.prisma-interactive-stage {
+  position: relative;
+  min-height: 430px;
+  height: clamp(390px, 43vw, 570px);
+  overflow: hidden;
+  border: 1px solid #d9e7ff;
+  border-radius: 25px;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    #fff 0%,
+    #f2efff 58%,
+    #e5f3ff 100%
+  );
+}
+#prismaInteractiveModel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  --poster-color: transparent;
+  cursor: grab;
+  touch-action: pan-y;
+}
+#prismaInteractiveModel:active {
+  cursor: grabbing;
+}
+.prisma-model-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 24px);
+  padding: 10px 15px;
+  border: 1px solid #e5ddff;
+  border-radius: 999px;
+  color: #35447e;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 4px 12px rgba(75, 70, 145, 0.12);
+  font-size: clamp(10px, 0.85vw, 13px);
+  font-weight: 900;
+  text-align: center;
+  pointer-events: none;
+}
+.prisma-model-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding-top: 12px;
+}
+.prisma-model-controls button {
+  min-width: 112px;
+  padding: 10px 17px;
+  border: 1px solid #dfd5ff;
+  border-radius: 999px;
+  color: #5531a6;
+  background: linear-gradient(145deg, #fff, #f4efff);
+  box-shadow: 0 3px 8px rgba(91, 69, 165, 0.1);
+  font:
+    900 13px Nunito,
+    Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.prisma-model-controls button:hover {
+  transform: translateY(-2px);
+  background: #eee5ff;
+}
+.prisma-info-ribbon {
+  margin-bottom: 10px;
+}
+.prisma-explore-intro {
+  margin: 4px 2px 13px;
+  color: #314478;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 800;
+}
+.prisma-part-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.prisma-part-tabs button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 103px;
+  padding: 9px 5px;
+  border: 1px solid #e6ddff;
+  border-radius: 17px;
+  color: #293a79;
+  background: linear-gradient(145deg, #fff, #f7f4ff);
+  box-shadow: 0 3px 9px rgba(79, 72, 140, 0.07);
+  font:
+    1000 13px Nunito,
+    Arial,
+    sans-serif;
+  cursor: pointer;
+  transition:
+    transform 0.16s ease,
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+.prisma-part-tabs button:hover {
+  transform: translateY(-2px);
+}
+.prisma-part-tabs button.is-active {
+  border: 2px solid #9560ff;
+  color: #fff;
+  background: linear-gradient(145deg, #a85aff, #6330ec);
+  box-shadow: 0 5px 12px rgba(106, 62, 205, 0.23);
+}
+.prisma-part-tabs small {
+  font-size: 10px;
+  opacity: 0.82;
+}
+.prisma-part-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 1000;
+  box-shadow: 0 3px 8px rgba(49, 57, 119, 0.14);
+}
+.face-icon {
+  background: linear-gradient(145deg, #ff83c8, #ed3999);
+}
+.edge-icon {
+  background: linear-gradient(145deg, #5dcaff, #178ce9);
+}
+.vertex-icon {
+  background: linear-gradient(145deg, #ffc34d, #f39a12);
+}
+.prisma-selected-info {
+  margin-top: 14px;
+  padding: 17px;
+  border: 1px solid #e5dcff;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f5efff, #fff);
+}
+.prisma-selected-kicker {
+  color: #8b55e8;
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 1.1px;
+}
+.prisma-selected-info h2 {
+  margin: 5px 0 7px;
+  color: #202d70;
+  font-size: clamp(19px, 1.55vw, 25px);
+  font-weight: 1000;
+}
+.prisma-selected-info p {
+  margin: 0;
+  color: #304478;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 800;
+}
+.prisma-count-pill {
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #5a35a8;
+  background: #e9ddff;
+  font-size: 11px;
+  font-weight: 1000;
+}
+.prisma-learning-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px dashed #b88bff;
+  border-radius: 17px;
+  background: #fffaff;
+}
+.prisma-learning-tip span {
+  font-size: 22px;
+}
+.prisma-learning-tip p {
+  margin: 0;
+  color: #354579;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 900;
+}
+@media (max-width: 1050px) {
+  .prisma-shape-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+    padding: 12px;
+    gap: 11px;
+  }
+  .prisma-interactive-stage {
+    min-height: 360px;
+    height: 42vw;
+  }
+}
+@media (max-width: 760px) {
+  .prisma-shape-layout {
+    grid-template-columns: 1fr;
+  }
+  .prisma-interactive-stage {
+    height: clamp(330px, 75vw, 480px);
+    min-height: 330px;
+  }
+}
+@media (max-width: 560px) {
+  .prisma-shape-layout {
+    padding: 8px;
+    gap: 9px;
+    border-radius: 22px;
+  }
+  .prisma-model-card,
+  .prisma-explore-card {
+    padding: 10px;
+    border-radius: 18px;
+  }
+  .prisma-model-heading {
+    align-items: flex-start;
+  }
+  .prisma-model-heading p {
+    width: 100%;
+  }
+  .prisma-interactive-stage {
+    height: 350px;
+    min-height: 320px;
+    border-radius: 18px;
+  }
+  #prismaInteractiveModel {
+    min-height: 320px;
+  }
+  .prisma-model-hint {
+    bottom: 8px;
+    padding: 8px 10px;
+    font-size: 9px;
+  }
+  .prisma-model-controls button {
+    min-width: 90px;
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+  .prisma-part-tabs button {
+    min-height: 88px;
+    font-size: 11px;
+  }
+  .prisma-part-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
+  }
+}
+
+.prisma-observe-layout[hidden] {
+  display: none !important;
+}
+
+/* Palet interaktif unsur prisma: sorotan model mengikuti warna ikon tombol. */
+.prisma-part-tabs button.is-active[data-prisma-part="face"] {
+  border-color: #f34baa;
+  color: #9d205f;
+  background: linear-gradient(145deg, #fff0f8, #ffd9ed);
+  box-shadow: 0 5px 12px rgba(243, 75, 170, 0.2);
+}
+.prisma-part-tabs button.is-active[data-prisma-part="edge"] {
+  border-color: #29a9f4;
+  color: #075c9a;
+  background: linear-gradient(145deg, #effaff, #cdeeff);
+  box-shadow: 0 5px 12px rgba(41, 169, 244, 0.2);
+}
+.prisma-part-tabs button.is-active[data-prisma-part="vertex"] {
+  border-color: #ffad24;
+  color: #8a5100;
+  background: linear-gradient(145deg, #fff8e9, #ffe4ad);
+  box-shadow: 0 5px 12px rgba(255, 173, 36, 0.22);
+}
+.prisma-part-tabs button.is-active .prisma-part-icon {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 1px;
+}
+.prisma-part-tabs button.is-active[data-prisma-part="face"] .face-icon {
+  background: linear-gradient(145deg, #ff83c8, #ed3999);
+}
+.prisma-part-tabs button.is-active[data-prisma-part="edge"] .edge-icon {
+  background: linear-gradient(145deg, #5dcaff, #178ce9);
+}
+.prisma-part-tabs button.is-active[data-prisma-part="vertex"] .vertex-icon {
+  background: linear-gradient(145deg, #ffc34d, #f39a12);
+}
+
+/* ===== Jelajahi Unsurnya: tahap eksplorasi khusus ===== */
+.prisma-elements-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.85fr);
+  gap: 16px;
+  align-items: stretch;
+  margin: 0 0 18px;
+}
+.prisma-elements-layout[hidden] {
+  display: none !important;
+}
+.prisma-elements-model-card,
+.prisma-elements-info-card {
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #e8ddff;
+  border-radius: 26px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(99, 74, 174, 0.09);
+}
+.prisma-exploded-stage {
+  position: relative;
+  min-height: 510px;
+  height: min(58vw, 590px);
+  max-height: 620px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #f5f0ff, #e5f4ff);
+  border: 1px solid #dce5ff;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  perspective: 1100px;
+  touch-action: pan-y;
+}
+.prisma-css-scene {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.prisma-css-scene.is-dragging {
+  cursor: grabbing;
+}
+.prisma-css-object {
+  --cube-size: 190px;
+  position: relative;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  transform-style: preserve-3d;
+  transform: rotateX(-24deg) rotateY(-34deg);
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.exploded-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  border-radius: 5px;
+  background: linear-gradient(145deg, #d8c8fa, #b99be9);
+  box-shadow: inset 0 0 22px rgba(255, 255, 255, 0.25);
+  opacity: 0.96;
+  cursor: pointer;
+  backface-visibility: visible;
+  transition:
+    transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background 0.2s,
+    filter 0.2s,
+    opacity 0.2s;
+}
+.face-front {
+  transform: translateZ(calc(var(--cube-size) / 2));
+}
+.face-back {
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+}
+.face-right {
+  transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+.face-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+.face-top {
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+.face-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+.exploded-face.is-exploded.face-front {
+  transform: translateZ(calc(var(--cube-size) * 0.95));
+}
+.exploded-face.is-exploded.face-back {
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) * 0.95));
+}
+.exploded-face.is-exploded.face-right {
+  transform: rotateY(90deg) translateZ(calc(var(--cube-size) * 0.95));
+}
+.exploded-face.is-exploded.face-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) * 0.95));
+}
+.exploded-face.is-exploded.face-top {
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) * 0.95));
+}
+.exploded-face.is-exploded.face-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--cube-size) * 0.95));
+}
+.exploded-face.is-selected {
+  background: linear-gradient(145deg, #ffb5df, #f36bb8);
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 0 25px rgba(255, 255, 255, 0.45),
+    0 0 18px rgba(237, 72, 164, 0.45);
+}
+.exploded-edge-layer,
+.exploded-vertex-layer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.exploded-edge {
+  position: absolute;
+  width: var(--cube-size);
+  height: 7px;
+  left: 0;
+  top: calc(50% - 3.5px);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(72, 54, 112, 0.25);
+  transform-style: preserve-3d;
+  pointer-events: auto;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.exploded-edge.is-selected {
+  background: #26a9f4;
+  box-shadow:
+    0 0 0 3px rgba(38, 169, 244, 0.25),
+    0 0 18px #26a9f4;
+}
+.exploded-vertex {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #f5b34b;
+  box-shadow: 0 2px 7px #8b77a7;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.exploded-vertex.is-selected {
+  background: #ffad24;
+  transform: translate(-50%, -50%) scale(1.45);
+  box-shadow:
+    0 0 0 5px rgba(255, 173, 36, 0.24),
+    0 0 16px #ffad24;
+}
+.prisma-exploded-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 28px);
+  white-space: nowrap;
+  background: #fff;
+  border: 1px solid #e5dcff;
+  border-radius: 30px;
+  padding: 10px 16px;
+  color: #34467f;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 5px 16px rgba(75, 56, 130, 0.12);
+  text-align: center;
+}
+.prisma-elements-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+}
+.prisma-elements-controls button {
+  border: 1px solid #e3d5ff;
+  border-radius: 24px;
+  background: #f8f3ff;
+  color: #5830b3;
+  padding: 11px 17px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(100, 70, 170, 0.09);
+  transition: 0.2s;
+}
+.prisma-elements-controls button:hover {
+  transform: translateY(-2px);
+  background: #eee3ff;
+}
+.prisma-element-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0 14px;
+}
+.prisma-element-tabs button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-height: 100px;
+  padding: 11px 5px;
+  border: 1px solid #e8ddff;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(90, 70, 150, 0.06);
+  color: #26366f;
+  cursor: pointer;
+  font-weight: 900;
+}
+.prisma-element-tabs button.is-active {
+  background: #7c35ee;
+  color: #fff;
+  border-color: #7c35ee;
+  box-shadow: 0 7px 17px rgba(124, 53, 238, 0.25);
+}
+.element-symbol {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 900;
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(40, 30, 90, 0.12);
+}
+.face-symbol {
+  color: #ed4fae;
+}
+.edge-symbol {
+  color: #159fe9;
+}
+.vertex-symbol {
+  color: #f1a51b;
+}
+.prisma-element-tabs small {
+  font-size: 10px;
+  opacity: 0.8;
+}
+.prisma-element-detail {
+  border: 1px solid #e8ddff;
+  border-radius: 20px;
+  padding: 17px;
+  background: linear-gradient(145deg, #fbf8ff, #fff);
+  min-height: 185px;
+}
+.prisma-element-kicker {
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  color: #8953ec;
+}
+.prisma-element-detail h2 {
+  margin: 7px 0;
+  color: #253875;
+  font-size: 24px;
+}
+.prisma-element-detail p {
+  color: #34477f;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.prisma-element-fact {
+  display: inline-block;
+  border-radius: 20px;
+  background: #eee4ff;
+  color: #6739bc;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 900;
+}
+.prisma-element-tip {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border: 1px dashed #b88aff;
+  border-radius: 17px;
+  padding: 13px;
+  margin-top: 14px;
+  background: #fffaff;
+  color: #405080;
+}
+.prisma-element-tip span {
+  font-size: 20px;
+}
+.prisma-element-tip p {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0;
+}
+.prisma-elements-layout.mode-edge .exploded-face {
+  filter: saturate(0.55);
+  opacity: 0.8;
+}
+.prisma-elements-layout.mode-vertex .exploded-face {
+  filter: saturate(0.45);
+  opacity: 0.72;
+}
+@media (max-width: 1050px) {
+  .prisma-elements-layout {
+    grid-template-columns: 1fr;
+  }
+  .prisma-exploded-stage {
+    height: 480px;
+    min-height: 420px;
+  }
+  .prisma-elements-info-card {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .prisma-elements-model-card,
+  .prisma-elements-info-card {
+    padding: 11px;
+    border-radius: 19px;
+  }
+  .prisma-exploded-stage {
+    height: 370px;
+    min-height: 340px;
+  }
+  .prisma-css-object {
+    --cube-size: 125px;
+  }
+  .prisma-exploded-caption {
+    font-size: 10px;
+    padding: 8px 11px;
+  }
+  .prisma-elements-controls button {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+  .prisma-element-detail h2 {
+    font-size: 20px;
+  }
+}
+
+/* =========================================================
+   REVISI VISUAL MATERI KUBUS — navigasi bersih & profesional
+   Perubahan dibatasi pada halaman Materi Prisma.
+   ========================================================= */
+body.page-prisma .prisma-step-nav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(8px, 0.85vw, 13px);
+  padding: 0;
+  margin: 0 0 clamp(14px, 1.25vw, 19px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.page-prisma .prisma-step {
+  min-height: 54px;
+  padding: 7px clamp(8px, 0.9vw, 14px);
+  gap: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 999px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(247, 244, 255, 0.94)
+  );
+  color: #19275f;
+  box-shadow:
+    0 4px 12px rgba(66, 76, 145, 0.09),
+    inset 0 1px 0 #fff;
+  font-size: clamp(11px, 0.9vw, 14px);
+  white-space: normal;
+  line-height: 1.2;
+}
+
+body.page-prisma .prisma-step img {
+  width: clamp(30px, 2.6vw, 38px);
+  height: clamp(30px, 2.6vw, 38px);
+  flex-basis: clamp(30px, 2.6vw, 38px);
+  filter: drop-shadow(0 2px 3px rgba(43, 55, 115, 0.12));
+}
+
+body.page-prisma .prisma-step:hover {
+  transform: translateY(-2px);
+  border-color: #d9caff;
+  background: #fff;
+  box-shadow: 0 7px 16px rgba(90, 72, 160, 0.14);
+}
+
+body.page-prisma .prisma-step.is-active {
+  border-color: #7a42f2;
+  color: #fff;
+  background: linear-gradient(105deg, #9251fa, #642be9);
+  box-shadow: 0 5px 13px rgba(104, 55, 213, 0.25);
+}
+
+body.page-prisma .prisma-step:focus-visible {
+  outline: 3px solid #58b8ff;
+  outline-offset: 3px;
+}
+
+body.page-prisma .prisma-sigma {
+  flex: 0 0 34px;
+  text-align: center;
+  font-size: 30px;
+}
+
+body.page-prisma .prisma-observe-layout {
+  gap: clamp(12px, 1.1vw, 17px);
+  padding: clamp(12px, 1.15vw, 17px);
+  border-color: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow:
+    0 9px 25px rgba(77, 103, 163, 0.11),
+    inset 0 1px 0 #fff;
+}
+
+body.page-prisma .prisma-welcome-panel,
+body.page-prisma .prisma-goal-panel,
+body.page-prisma .prisma-observation-panel,
+body.page-prisma .prisma-model-card,
+body.page-prisma .prisma-explore-card {
+  box-shadow:
+    0 4px 13px rgba(86, 76, 151, 0.065),
+    inset 0 1px 0 #fff;
+}
+
+body.page-prisma .prisma-step,
+body.page-prisma .prisma-video-button,
+body.page-prisma .prisma-model-controls button,
+body.page-prisma .prisma-part-tabs button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 1100px) {
+  body.page-prisma .prisma-step-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+  }
+  body.page-prisma .prisma-step {
+    min-height: 50px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 760px) {
+  body.page-prisma .prisma-step-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 11px;
+  }
+  body.page-prisma .prisma-step {
+    justify-content: flex-start;
+    min-height: 47px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  body.page-prisma .prisma-step-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+  body.page-prisma .prisma-step {
+    min-height: 43px;
+    padding: 5px 8px;
+    gap: 6px;
+    font-size: 10.5px;
+  }
+  body.page-prisma .prisma-step img {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+  body.page-prisma .prisma-observe-layout {
+    background: rgba(255, 255, 255, 0.86);
+  }
+}
+
+/* ===== Bongkar & Bentuk: model 3D prisma khusus materi (CSS 3D, terpisah dari Eksplorasi 3D) ===== */
+.prisma-build-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.85fr);
+  gap: 16px;
+  align-items: stretch;
+  margin: 0 0 18px;
+}
+.prisma-build-layout[hidden] {
+  display: none !important;
+}
+.prisma-build-model-card,
+.prisma-build-info-card {
+  min-width: 0;
+  padding: clamp(13px, 1.35vw, 19px);
+  border: 1px solid rgba(232, 221, 255, 0.95);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(99, 74, 174, 0.09);
+}
+.prisma-build-ribbon {
+  background: linear-gradient(100deg, #11b9dc, #3476f4) !important;
+}
+.prisma-build-stage {
+  height: clamp(390px, 43vw, 535px);
+  min-height: 390px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #dce5ff;
+  border-radius: 24px;
+  background: radial-gradient(
+    ellipse at 50% 46%,
+    rgba(255, 255, 255, 0.98),
+    rgba(239, 242, 255, 0.96) 58%,
+    rgba(225, 242, 255, 0.96)
+  );
+  perspective: 1100px;
+  isolation: isolate;
+}
+.prisma-build-glow {
+  position: absolute;
+  width: 330px;
+  height: 90px;
+  bottom: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(91, 90, 174, 0.15);
+  filter: blur(24px);
+}
+.prisma-build-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  z-index: 1;
+}
+.prisma-build-scene.is-dragging {
+  cursor: grabbing;
+}
+.prisma-build-object {
+  --build-size: clamp(132px, 16vw, 190px);
+  position: relative;
+  width: var(--build-size);
+  height: var(--build-size);
+  transform-style: preserve-3d;
+  transform: rotateX(-23deg) rotateY(-34deg);
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.build-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: 3px solid rgba(255, 255, 255, 0.96);
+  border-radius: 10px;
+  color: rgba(31, 43, 99, 0.8);
+  font:
+    1000 12px Nunito,
+    sans-serif;
+  letter-spacing: 1px;
+  box-shadow:
+    inset 0 0 28px rgba(255, 255, 255, 0.32),
+    0 5px 14px rgba(61, 65, 125, 0.12);
+  backface-visibility: visible;
+  cursor: pointer;
+  transition:
+    transform 1.05s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.3s,
+    box-shadow 0.3s;
+}
+.build-front {
+  background: linear-gradient(145deg, #ff91ca, #f052a6);
+  transform: translateZ(calc(var(--build-size) / 2));
+}
+.build-back {
+  background: linear-gradient(145deg, #b99aff, #8658ed);
+  transform: rotateY(180deg) translateZ(calc(var(--build-size) / 2));
+}
+.build-right {
+  background: linear-gradient(145deg, #72d4ff, #2698ec);
+  transform: rotateY(90deg) translateZ(calc(var(--build-size) / 2));
+}
+.build-left {
+  background: linear-gradient(145deg, #7ce6c1, #24bf91);
+  transform: rotateY(-90deg) translateZ(calc(var(--build-size) / 2));
+}
+.build-top {
+  background: linear-gradient(145deg, #ffe58a, #ffb52c);
+  transform: rotateX(90deg) translateZ(calc(var(--build-size) / 2));
+}
+.build-bottom {
+  background: linear-gradient(145deg, #c8e5ff, #78a9ef);
+  transform: rotateX(-90deg) translateZ(calc(var(--build-size) / 2));
+}
+.build-face span {
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.32);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.build-face:hover span,
+.build-face:focus-visible span {
+  opacity: 1;
+}
+.prisma-build-stage[data-build-state="explode"] .build-front {
+  transform: translateZ(calc(var(--build-size) * 1.18));
+}
+.prisma-build-stage[data-build-state="explode"] .build-back {
+  transform: rotateY(180deg) translateZ(calc(var(--build-size) * 1.18));
+}
+.prisma-build-stage[data-build-state="explode"] .build-right {
+  transform: rotateY(90deg) translateZ(calc(var(--build-size) * 1.18));
+}
+.prisma-build-stage[data-build-state="explode"] .build-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--build-size) * 1.18));
+}
+.prisma-build-stage[data-build-state="explode"] .build-top {
+  transform: rotateX(90deg) translateZ(calc(var(--build-size) * 1.18));
+}
+.prisma-build-stage[data-build-state="explode"] .build-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--build-size) * 1.18));
+}
+.prisma-build-stage[data-build-state="net"] .prisma-build-object {
+  transform: rotateX(0deg) rotateY(0deg) scale(0.78);
+}
+.prisma-build-stage[data-build-state="net"] .build-front {
+  transform: translate3d(0, 0, 0);
+}
+.prisma-build-stage[data-build-state="net"] .build-back {
+  transform: translate3d(calc(var(--build-size) * 1.02), 0, 0);
+}
+.prisma-build-stage[data-build-state="net"] .build-right {
+  transform: translate3d(
+    calc(var(--build-size) * 0),
+    calc(var(--build-size) * -1.02),
+    0
+  );
+}
+.prisma-build-stage[data-build-state="net"] .build-left {
+  transform: translate3d(calc(var(--build-size) * -1.02), 0, 0);
+}
+.prisma-build-stage[data-build-state="net"] .build-top {
+  transform: translate3d(0, calc(var(--build-size) * -2.04), 0);
+}
+.prisma-build-stage[data-build-state="net"] .build-bottom {
+  transform: translate3d(0, calc(var(--build-size) * 1.02), 0);
+}
+.prisma-build-stage[data-build-state="whole"] .prisma-build-object {
+  animation: buildCubeFloat 4.5s ease-in-out infinite;
+}
+@keyframes buildCubeFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+.prisma-build-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 28px);
+  padding: 10px 16px;
+  border: 1px solid #e5dcff;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 5px 16px rgba(75, 56, 130, 0.12);
+  color: #34467f;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+}
+.prisma-build-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 13px 0 3px;
+}
+.prisma-build-actions button {
+  min-height: 41px;
+  padding: 9px 14px;
+  border: 1px solid #dfd3ff;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #fff, #f4efff);
+  color: #5133a3;
+  font:
+    900 12px Nunito,
+    sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 11px rgba(100, 70, 170, 0.09);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.prisma-build-actions button:hover,
+.prisma-build-actions button.is-active {
+  transform: translateY(-2px);
+  color: #fff;
+  border-color: #7839ed;
+  background: linear-gradient(100deg, #9251fa, #642be9);
+  box-shadow: 0 6px 15px rgba(104, 55, 213, 0.23);
+}
+.prisma-build-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 9px 0 0;
+  color: #52618d;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+.prisma-build-hint span {
+  font-size: 18px;
+}
+.prisma-build-intro {
+  margin: 9px 0 14px;
+  color: #405080;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+.prisma-build-detail {
+  min-height: 205px;
+  padding: 18px;
+  border: 1px solid #e6dcff;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fbf8ff, #fff);
+}
+.prisma-build-kicker {
+  color: #8750ec;
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+}
+.prisma-build-detail h2 {
+  margin: 8px 0;
+  color: #253875;
+  font-size: clamp(21px, 1.6vw, 26px);
+}
+.prisma-build-detail p {
+  margin: 0 0 14px;
+  color: #34477f;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.65;
+}
+.prisma-build-fact {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #eee4ff;
+  color: #6739bc;
+  font-size: 11px;
+  font-weight: 900;
+}
+.prisma-build-mini-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 15px 0;
+}
+.prisma-build-mini-legend div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #43517e;
+  font-size: 11px;
+  font-weight: 850;
+}
+.prisma-build-mini-legend i {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(40, 40, 80, 0.15);
+}
+.legend-pink {
+  background: #f052a6;
+}
+.legend-blue {
+  background: #2698ec;
+}
+.legend-yellow {
+  background: #ffb52c;
+}
+.legend-green {
+  background: #24bf91;
+}
+@media (max-width: 1050px) {
+  .prisma-build-layout {
+    grid-template-columns: 1fr;
+  }
+  .prisma-build-stage {
+    height: 460px;
+  }
+}
+@media (max-width: 600px) {
+  .prisma-build-model-card,
+  .prisma-build-info-card {
+    padding: 11px;
+    border-radius: 19px;
+  }
+  .prisma-build-stage {
+    height: 370px;
+    min-height: 350px;
+  }
+  .prisma-build-object {
+    --build-size: clamp(112px, 36vw, 145px);
+  }
+  .prisma-build-caption {
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+  .prisma-build-actions {
+    gap: 6px;
+  }
+  .prisma-build-actions button {
+    flex: 1 1 calc(50% - 6px);
+    font-size: 10px;
+    padding: 8px 6px;
+  }
+  .prisma-build-detail {
+    min-height: 0;
+    padding: 14px;
+  }
+}
+@keyframes buildCubeSpin {
+  0% {
+    transform: rotateX(-23deg) rotateY(-34deg);
+  }
+  100% {
+    transform: rotateX(-23deg) rotateY(326deg);
+  }
+}
+.prisma-build-stage[data-build-state="whole"] .prisma-build-object,
+.prisma-build-stage[data-build-state="explode"] .prisma-build-object {
+  animation: buildCubeSpin 18s linear infinite;
+}
+.prisma-build-stage[data-build-state="net"] .prisma-build-object {
+  animation: none;
+}
+.build-face.is-picked {
+  filter: brightness(1.12) saturate(1.2);
+  box-shadow:
+    inset 0 0 0 5px rgba(255, 255, 255, 0.9),
+    0 0 25px rgba(120, 75, 230, 0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .prisma-build-stage[data-build-state] .prisma-build-object {
+    animation: none !important;
+  }
+  .build-face {
+    transition: none;
+  }
+  .prisma-build-object {
+    transition: none;
+  }
+}
+
+/* PENYEGARAN PASTEL — Bongkar & Bentuk Prisma */
+body.page-prisma .prisma-build-layout {
+  gap: clamp(12px, 1.25vw, 18px);
+}
+body.page-prisma .prisma-build-model-card,
+body.page-prisma .prisma-build-info-card {
+  border-color: rgba(255, 255, 255, 0.98);
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(250, 247, 255, 0.96)
+  );
+  box-shadow:
+    0 7px 20px rgba(104, 88, 166, 0.09),
+    inset 0 1px 0 #fff;
+}
+body.page-prisma .prisma-build-stage {
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    #fff 0%,
+    #f5f0ff 56%,
+    #e5f5ff 100%
+  );
+  border-color: #e5ddff;
+}
+body.page-prisma .prisma-build-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 14% 18%,
+      rgba(255, 190, 224, 0.23),
+      transparent 23%
+    ),
+    radial-gradient(
+      circle at 88% 22%,
+      rgba(160, 218, 255, 0.25),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 55% 90%,
+      rgba(255, 222, 151, 0.2),
+      transparent 28%
+    );
+}
+body.page-prisma .prisma-build-ribbon {
+  background: linear-gradient(100deg, #36bfe9, #5488f5) !important;
+}
+body.page-prisma .build-face {
+  border-color: rgba(255, 255, 255, 0.98);
+  box-shadow:
+    inset 0 0 24px rgba(255, 255, 255, 0.4),
+    0 5px 14px rgba(61, 65, 125, 0.1);
+}
+body.page-prisma .build-face span {
+  opacity: 0.88;
+  color: #34406f;
+  background: rgba(255, 255, 255, 0.58);
+  font-size: 10px;
+  letter-spacing: 0.6px;
+}
+body.page-prisma .prisma-build-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 15px 2px 3px;
+}
+body.page-prisma .prisma-build-actions button {
+  min-width: 0;
+  min-height: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 7px;
+  border: 1.5px solid #e6ddff;
+  border-radius: 19px;
+  color: #344274;
+  background: linear-gradient(150deg, #fff, #f8f5ff);
+  box-shadow: 0 4px 11px rgba(93, 79, 153, 0.08);
+  font:
+    900 12px Nunito,
+    Arial,
+    sans-serif;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+body.page-prisma .prisma-build-actions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(93, 79, 153, 0.13);
+}
+body.page-prisma .prisma-build-actions .build-action-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  font-size: 20px;
+  box-shadow: 0 3px 8px rgba(70, 70, 120, 0.12);
+}
+body.page-prisma .prisma-build-actions .build-action-pink {
+  border-color: #ffc5e2;
+  background: linear-gradient(145deg, #fff3fa, #ffe2f1);
+  color: #a63878;
+}
+body.page-prisma .prisma-build-actions .build-action-pink .build-action-icon {
+  background: linear-gradient(145deg, #ffb7dc, #f477b8);
+}
+body.page-prisma .prisma-build-actions .build-action-blue {
+  border-color: #bde7ff;
+  background: linear-gradient(145deg, #f0fbff, #ddf3ff);
+  color: #176b9e;
+}
+body.page-prisma .prisma-build-actions .build-action-blue .build-action-icon {
+  background: linear-gradient(145deg, #9ce0ff, #54b8f0);
+}
+body.page-prisma .prisma-build-actions .build-action-yellow {
+  border-color: #ffe2a3;
+  background: linear-gradient(145deg, #fffaf0, #fff0ce);
+  color: #94610b;
+}
+body.page-prisma .prisma-build-actions .build-action-yellow .build-action-icon {
+  background: linear-gradient(145deg, #ffe08c, #ffc34b);
+}
+body.page-prisma .prisma-build-actions .build-action-green {
+  border-color: #b9efdc;
+  background: linear-gradient(145deg, #f0fff8, #dcf8eb);
+  color: #197b61;
+}
+body.page-prisma .prisma-build-actions .build-action-green .build-action-icon {
+  background: linear-gradient(145deg, #a5eed2, #57cda6);
+}
+body.page-prisma .prisma-build-actions button.is-active {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 5px 14px rgba(89, 77, 145, 0.16);
+}
+body.page-prisma .prisma-build-actions .build-action-pink.is-active {
+  border-color: #f18abd;
+  background: #ffe5f2;
+}
+body.page-prisma .prisma-build-actions .build-action-blue.is-active {
+  border-color: #69c4f2;
+  background: #e0f5ff;
+}
+body.page-prisma .prisma-build-actions .build-action-yellow.is-active {
+  border-color: #f4c15b;
+  background: #fff2d3;
+}
+body.page-prisma .prisma-build-actions .build-action-green.is-active {
+  border-color: #69d5b0;
+  background: #e1faef;
+}
+body.page-prisma .prisma-build-detail {
+  border-color: #e6dcff;
+  background: linear-gradient(145deg, #fff7fc, #f6f3ff 55%, #f0faff);
+}
+body.page-prisma .prisma-build-fact {
+  background: #eee5ff;
+  color: #6844b0;
+}
+body.page-prisma .prisma-build-mini-legend {
+  gap: 11px 14px;
+}
+body.page-prisma .prisma-build-mini-legend div {
+  padding: 7px 9px;
+  border: 1px solid #eee8ff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+body.page-prisma .prisma-learning-tip {
+  border-color: #e1c6ff;
+  background: linear-gradient(100deg, #fff8fb, #f7f4ff);
+}
+body.page-prisma .prisma-build-caption {
+  border-color: #e6dcff;
+  background: rgba(255, 255, 255, 0.96);
+}
+@media (max-width: 760px) {
+  body.page-prisma .prisma-build-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 420px) {
+  body.page-prisma .prisma-build-actions button {
+    min-height: 68px;
+    font-size: 11px;
+  }
+}
+
+
+/* ===== Pahami Rumus: laboratorium interaktif prisma ===== */
+.prisma-formula-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(350px, .92fr);
+  gap: 18px;
+  width: 100%;
+  align-items: stretch;
+  padding: 8px 0 18px;
+}
+.prisma-formula-layout[hidden] { display: none !important; }
+.formula-learning-column, .formula-result-column { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.formula-page-heading p { margin: 8px 4px 0; color: #33477f; font-weight: 650; line-height: 1.55; }
+.formula-ribbon { background: linear-gradient(110deg,#35b9ee,#6650ee) !important; }
+.formula-ribbon img { width: 48px; height: 48px; object-fit: contain; }
+.formula-model-card, .formula-side-control, .formula-choice-card, .formula-example-card, .formula-check-card {
+  border: 1px solid #dce4ff; border-radius: 22px; padding: 16px;
+  background: linear-gradient(145deg,rgba(255,255,255,.97),rgba(239,246,255,.94));
+  box-shadow: 0 8px 22px rgba(92,112,190,.09);
+}
+.formula-card-topline { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+.formula-chip { display:inline-flex; align-items:center; gap:7px; padding:7px 12px; border-radius:999px; background:#f0e8ff; color:#6740c9; font-size:11px; font-weight:900; letter-spacing:.07em; }
+.formula-chip img { width:22px; height:22px; object-fit:contain; }
+.formula-hint { color:#65739e; font-size:11px; font-weight:700; }
+#prismaFormulaModel { display:block; width:100%; height:clamp(230px,30vw,350px); background:radial-gradient(ellipse at 50% 58%,#fff 0%,#edf5ff 55%,#e7eaff 100%); border-radius:17px; margin-top:10px; --poster-color: transparent; }
+.formula-model-caption { display:flex; align-items:center; gap:7px; flex-wrap:wrap; padding:10px 4px 0; color:#43558d; font-size:12px; }
+.formula-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+.formula-dot.pink { background:#f477c7; }.formula-dot.blue { background:#48b9f2; }.formula-dot.yellow { background:#ffc65b; }
+.formula-model-caption strong { margin-left:4px; }
+.formula-control-heading, .formula-card-title { display:flex; align-items:center; gap:11px; }
+.formula-control-heading img, .formula-card-title img { width:42px; height:42px; object-fit:contain; flex:0 0 auto; }
+.formula-control-heading h2, .formula-card-title h2 { margin:0; color:#263c80; font-size:17px; }
+.formula-control-heading p, .formula-card-title p { margin:3px 0 0; color:#68769e; font-size:11px; font-weight:650; line-height:1.45; }
+.formula-slider-row { display:flex; align-items:center; gap:15px; margin-top:13px; }
+#prismaSideRange { flex:1; min-width:0; accent-color:#8a55ed; cursor:pointer; }
+.formula-number-input { display:flex; align-items:center; gap:5px; padding:8px 10px; border:1px solid #d7caff; border-radius:13px; background:#fff; color:#4e3b9d; font-weight:850; }
+.formula-number-input input { width:42px; border:0; outline:0; background:transparent; color:#263c80; font:inherit; text-align:center; }
+.formula-side-scale { display:flex; justify-content:space-between; margin:4px 2px 0; color:#8792b5; font-size:10px; font-weight:700; }
+.formula-choice-card { background:linear-gradient(145deg,#fff,#f7f1ff 58%,#eff8ff); }
+.formula-choice-buttons { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:13px 0; }
+.formula-choice { display:grid; justify-items:center; gap:5px; padding:12px 7px; border:1px solid #e0d9ff; border-radius:17px; background:#fff; color:#31447e; cursor:pointer; transition:.2s ease; }
+.formula-choice:hover { transform:translateY(-2px); box-shadow:0 7px 16px #8f82d52a; }
+.formula-choice.is-active { border-color:#a77af7; background:linear-gradient(145deg,#f8eaff,#e9eaff); box-shadow:0 5px 13px #9a78e52b; }
+.formula-choice-icon { display:grid; place-items:center; width:38px; height:38px; border-radius:13px; color:white; font-size:23px; font-weight:900; box-shadow:0 4px 8px #6873a52a; }
+.volume-icon { background:linear-gradient(145deg,#ff8bc8,#d84eae); }.area-icon { background:linear-gradient(145deg,#70cafa,#438ee9); }
+.formula-choice strong { font-size:12px; }.formula-choice small { color:#7883a5; font-size:10px; font-weight:650; }
+.formula-equation-card { padding:15px; border-radius:17px; background:linear-gradient(135deg,#fff0f8,#f0efff 55%,#eaf8ff); border:1px dashed #cbb9ff; }
+.formula-equation-kicker { color:#8954db; font-size:10px; font-weight:900; letter-spacing:.1em; }
+.formula-equation { margin:5px 0; color:#5435b1; font-size:clamp(23px,2.5vw,30px); font-weight:950; letter-spacing:.02em; }
+.formula-equation-card p { margin:0 0 10px; color:#52618d; font-size:12px; line-height:1.5; }
+.formula-calculation { padding:9px 12px; border-radius:11px; background:#fff; color:#33477f; font-size:14px; font-weight:850; }
+.formula-answer { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:10px; color:#425487; font-size:12px; font-weight:750; }
+.formula-answer strong { color:#158b79; font-size:19px; }
+.formula-example-visual { display:flex; align-items:center; gap:12px; margin:12px 0 8px; padding:11px; border-radius:15px; background:linear-gradient(110deg,#fff4d9,#fff0f8); }
+.formula-gift-icon { display:grid; place-items:center; width:48px; height:48px; border-radius:14px; background:#fff; font-size:28px; box-shadow:0 4px 10px #b68b5124; }
+.formula-example-visual div { display:grid; gap:3px; color:#4a4380; font-size:13px; }.formula-example-visual small { color:#7881a3; }
+.formula-example-card > p { margin:0; color:#56658e; font-size:12px; line-height:1.5; }
+.formula-question { margin:12px 0; color:#34477e; font-size:13px; font-weight:800; line-height:1.5; }
+.formula-answer-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.formula-answer-options button { padding:10px 5px; border:1px solid #d8dfff; border-radius:12px; background:#fff; color:#4b478e; font-size:12px; font-weight:850; cursor:pointer; }
+.formula-answer-options button:hover { background:#f1ebff; border-color:#a88af2; }
+.formula-answer-options button.is-correct { background:#e4faef; border-color:#65c99b; color:#16764e; }
+.formula-feedback { margin:9px 0 0; color:#7781a3; font-size:11px; font-weight:700; line-height:1.45; }
+.formula-feedback.is-success { color:#16845b; }
+@media (max-width: 1050px) {
+  .prisma-formula-layout { grid-template-columns:minmax(0,1fr); }
+  .formula-result-column { display:grid; grid-template-columns:1fr 1fr; align-items:start; }
+  .formula-choice-card { grid-row:span 2; }
+}
+@media (max-width: 640px) {
+  .prisma-formula-layout { gap:11px; }
+  .formula-result-column { display:flex; }
+  .formula-model-card, .formula-side-control, .formula-choice-card, .formula-example-card, .formula-check-card { padding:12px; border-radius:17px; }
+  #prismaFormulaModel { height:245px; }
+  .formula-page-heading p { font-size:12px; }
+  .formula-ribbon img { width:38px; height:38px; }
+  .formula-ribbon h1 { font-size:18px; }
+}
+
+
+/* Revisi fokus materi: empat tahapan inti tanpa tombol evaluasi terpisah. */
+body.page-prisma .prisma-step-nav {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.prisma-formula-layout {
+  grid-template-columns: minmax(0, 1.02fr) minmax(330px, .98fr);
+  gap: clamp(12px, 1.25vw, 18px);
+}
+.formula-model-card {
+  background: linear-gradient(145deg, #fffafd, #f0f8ff 58%, #f7f1ff);
+  border-color: #e4dcff;
+}
+.formula-side-control {
+  background: linear-gradient(145deg, #fff9ed, #fff4fa 52%, #f1f8ff);
+  border-color: #f1dff0;
+}
+.formula-choice-card {
+  border-color: #e6dcff;
+}
+@media (max-width: 1100px) {
+  body.page-prisma .prisma-step-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  body.page-prisma .prisma-step-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .prisma-formula-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Integrasi Augmented Reality pada tahap Eksplorasi Prisma.
+   Gaya dibatasi pada halaman Prisma agar identitas halaman lain tetap aman. */
+body.page-prisma .prisma-ar-button {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 19px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(105deg, #9251fa, #642be9);
+  box-shadow: 0 6px 18px rgba(104,55,213,.25);
+  font: 900 13px/1.2 'Nunito', sans-serif;
+  cursor: pointer;
+  z-index: 2;
+}
+body.page-prisma .prisma-ar-button:hover { filter: brightness(1.06); transform: translateX(-50%) translateY(-1px); }
+body.page-prisma .prisma-ar-button:focus-visible { outline: 3px solid #58b8ff; outline-offset: 3px; }
+body.page-prisma .prisma-ar-note {
+  margin: 9px 4px 0;
+  color: #64719b;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  body.page-prisma .prisma-ar-button { bottom: 62px; min-height: 40px; padding: 9px 15px; font-size: 12px; }
+  body.page-prisma .prisma-ar-note { font-size: 10px; }
+}
+
+/* REVISI JARING-JARING KUBUS: pola horizontal agar seluruh sisi terlihat */
+body.page-prisma .prisma-build-stage[data-build-state="net"] .prisma-build-object {
+  transform: translateX(calc(var(--build-size) * -0.51)) scale(0.78);
+}
+body.page-prisma .prisma-build-stage[data-build-state="net"] .build-front {
+  transform: translate3d(0, 0, 0);
+}
+body.page-prisma .prisma-build-stage[data-build-state="net"] .build-left {
+  transform: translate3d(calc(var(--build-size) * -1.02), 0, 0);
+}
+body.page-prisma .prisma-build-stage[data-build-state="net"] .build-right {
+  transform: translate3d(calc(var(--build-size) * 1.02), 0, 0);
+}
+body.page-prisma .prisma-build-stage[data-build-state="net"] .build-back {
+  transform: translate3d(calc(var(--build-size) * 2.04), 0, 0);
+}
+body.page-prisma .prisma-build-stage[data-build-state="net"] .build-top {
+  transform: translate3d(0, calc(var(--build-size) * -1.02), 0);
+}
+body.page-prisma .prisma-build-stage[data-build-state="net"] .build-bottom {
+  transform: translate3d(0, calc(var(--build-size) * 1.02), 0);
+}
+@media (max-width: 600px) {
+  body.page-prisma .prisma-build-stage[data-build-state="net"] .prisma-build-object {
+    transform: translateX(calc(var(--build-size) * -0.51)) scale(0.55);
+  }
+}
+
+/* ==========================================================
+   PENYEGARAN TEMA MATERI KUBUS
+   Tanpa banner besar, pastel cerah warna-warni, tetap konsisten.
+   Semua aturan tetap dibatasi pada halaman detail Prisma.
+   ========================================================== */
+body.page-prisma .prisma-banner-wrap,
+body.page-prisma .prisma-banner {
+  display: none !important;
+}
+
+body.page-prisma .prisma-page-shell {
+  padding-top: clamp(8px, 1.2vw, 16px);
+}
+
+body.page-prisma .prisma-step-nav {
+  margin-top: 0;
+  border-color: #ffffff;
+  background: linear-gradient(105deg, #e9f7ff 0%, #f5edff 35%, #fff0f7 68%, #effff6 100%);
+  box-shadow: 0 8px 22px rgba(78, 104, 180, .16), inset 0 2px 5px rgba(255,255,255,.98);
+}
+
+body.page-prisma .prisma-step:nth-child(1) {
+  --step-accent: #258fe9;
+  --step-soft: #e2f4ff;
+}
+body.page-prisma .prisma-step:nth-child(2) {
+  --step-accent: #19b978;
+  --step-soft: #e2fff1;
+}
+body.page-prisma .prisma-step:nth-child(3) {
+  --step-accent: #f0a51c;
+  --step-soft: #fff4d9;
+}
+body.page-prisma .prisma-step:nth-child(4) {
+  --step-accent: #e85ba9;
+  --step-soft: #ffe7f4;
+}
+body.page-prisma .prisma-step {
+  border: 2px solid color-mix(in srgb, var(--step-accent) 24%, white);
+  background: linear-gradient(145deg, #ffffff, var(--step-soft));
+  box-shadow: 0 4px 10px rgba(76, 83, 150, .10);
+}
+body.page-prisma .prisma-step:not(.is-active) {
+  color: #20336f;
+}
+body.page-prisma .prisma-step.is-active {
+  border-color: #ffffff;
+  background: linear-gradient(110deg, var(--step-accent), color-mix(in srgb, var(--step-accent) 72%, #8055f5));
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--step-accent) 25%, white), 0 8px 16px color-mix(in srgb, var(--step-accent) 28%, transparent);
+}
+body.page-prisma .prisma-step:not(.is-active) .prisma-sigma {
+  color: var(--step-accent);
+}
+
+body.page-prisma .prisma-observe-layout,
+body.page-prisma .prisma-shape-layout,
+body.page-prisma .prisma-build-layout,
+body.page-prisma .prisma-formula-layout {
+  border-color: rgba(255,255,255,.98);
+  background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(239,247,255,.96) 38%, rgba(250,240,255,.96) 72%, rgba(255,247,235,.96));
+  box-shadow: 0 10px 28px rgba(75, 96, 165, .14), inset 0 2px 0 #fff;
+}
+body.page-prisma .prisma-welcome-panel {
+  background: linear-gradient(140deg, #f1eaff, #fff0f8 58%, #fff9e9);
+}
+body.page-prisma .prisma-goal-panel {
+  background: linear-gradient(140deg, #eaf8ff, #f2edff 58%, #fff0f7);
+}
+body.page-prisma .prisma-observation-panel {
+  background: linear-gradient(145deg, #effaff, #f8f0ff 55%, #fff8e9);
+}
+body.page-prisma .prisma-ribbon-title {
+  background: linear-gradient(100deg, #ff75bd, #9a54f5 55%, #4e9df5);
+  box-shadow: 0 4px 0 rgba(190, 166, 255, .58), 0 7px 15px rgba(102, 69, 190, .20);
+}
+body.page-prisma .prisma-objects-stage {
+  background: linear-gradient(145deg, #dff5ff 0%, #f1e8ff 48%, #ffe8f4 76%, #fff2d9 100%);
+}
+body.page-prisma .prisma-question {
+  border-color: #ff9ccf;
+  background: linear-gradient(100deg, rgba(255,255,255,.97), rgba(255,244,250,.96));
+}
+body.page-prisma .prisma-question-icon {
+  background: linear-gradient(145deg, #ffbf55, #ff79b8);
+}
+body.page-prisma .prisma-video-button,
+body.page-prisma .prisma-next-arrow {
+  background: linear-gradient(110deg, #ff79bb, #9b5aff 55%, #4d9df5);
+}
+body.page-prisma .prisma-interactive-stage {
+  background: radial-gradient(ellipse at 18% 18%, #fff 0%, transparent 34%), linear-gradient(135deg, #e4f7ff, #f3eaff 52%, #fff0f7);
+}
+body.page-prisma .prisma-selected-info {
+  background: linear-gradient(135deg, #fff0f7, #f1eaff 55%, #eaf8ff);
+}
+body.page-prisma .prisma-learning-tip {
+  border-color: #ffc45e;
+  background: linear-gradient(110deg, #fff9e9, #fff0f7);
+}
+
+@media (max-width: 760px) {
+  body.page-prisma .prisma-page-shell {
+    padding-top: 5px;
+  }
+  body.page-prisma .prisma-step-nav {
+    margin-bottom: 10px;
+  }
+}
+
+/* Revisi: hilangkan bidang/latar belakang di belakang tombol tahapan.
+   Warna pastel tetap hanya berada pada masing-masing tombol. */
+body.page-prisma .prisma-step-nav {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Revisi tata letak tahap Pahami Rumus: pisahkan kolom dan kartu agar tidak tampak menyatu. */
+body.page-prisma .prisma-formula-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(330px, .98fr);
+  align-items: start;
+  gap: clamp(18px, 1.8vw, 26px);
+  padding: 8px 0 22px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.page-prisma .formula-learning-column,
+body.page-prisma .formula-result-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+body.page-prisma .formula-model-card,
+body.page-prisma .formula-side-control,
+body.page-prisma .formula-choice-card,
+body.page-prisma .formula-example-card,
+body.page-prisma .formula-check-card {
+  border: 1px solid rgba(211, 220, 255, .95);
+  border-radius: 22px;
+  box-shadow: 0 7px 20px rgba(77, 91, 160, .10);
+}
+
+body.page-prisma .formula-model-card {
+  background: linear-gradient(145deg, #ffffff 0%, #eef8ff 58%, #f4efff 100%);
+}
+body.page-prisma .formula-side-control {
+  background: linear-gradient(145deg, #fffaf0 0%, #fff2f8 55%, #eff8ff 100%);
+}
+body.page-prisma .formula-choice-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f5efff 60%, #eef8ff 100%);
+}
+body.page-prisma .formula-example-card {
+  background: linear-gradient(145deg, #ffffff 0%, #fff6e8 55%, #fff0f7 100%);
+}
+body.page-prisma .formula-check-card {
+  background: linear-gradient(145deg, #ffffff, #effaf5);
+}
+
+body.page-prisma .formula-page-heading {
+  padding: 0 2px 2px;
+}
+body.page-prisma .formula-page-heading p {
+  max-width: 720px;
+}
+
+@media (max-width: 1050px) {
+  body.page-prisma .prisma-formula-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  body.page-prisma .formula-result-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 680px) {
+  body.page-prisma .prisma-formula-layout {
+    gap: 12px;
+    padding-top: 4px;
+  }
+  body.page-prisma .formula-learning-column,
+  body.page-prisma .formula-result-column {
+    display: flex;
+    gap: 12px;
+  }
+  body.page-prisma .formula-model-card,
+  body.page-prisma .formula-side-control,
+  body.page-prisma .formula-choice-card,
+  body.page-prisma .formula-example-card,
+  body.page-prisma .formula-check-card {
+    padding: 13px;
+    border-radius: 18px;
+  }
+}
+
+/* REVISI TAHAP 3 — pisahkan kartu model dan kartu informasi */
+body.page-prisma .prisma-build-layout {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  gap: clamp(14px, 1.4vw, 22px) !important;
+  align-items: stretch;
+}
+
+body.page-prisma .prisma-build-model-card,
+body.page-prisma .prisma-build-info-card {
+  border: 1px solid rgba(224, 211, 255, 0.95) !important;
+  border-radius: 26px !important;
+  background: linear-gradient(150deg, #ffffff 0%, #f8f3ff 58%, #eef8ff 100%) !important;
+  box-shadow: 0 8px 22px rgba(93, 77, 155, 0.10), inset 0 1px 0 #ffffff !important;
+}
+
+body.page-prisma .prisma-build-model-card {
+  padding: clamp(14px, 1.4vw, 20px) !important;
+}
+
+body.page-prisma .prisma-build-info-card {
+  padding: clamp(15px, 1.45vw, 21px) !important;
+}
+
+@media (max-width: 900px) {
+  body.page-prisma .prisma-build-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+
+/* Petunjuk tahap Pahami Rumus: ilustrasi siswa laki-laki + balon percakapan. */
+body.page-prisma .formula-instruction-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.4vw, 20px);
+  min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, .96);
+  border-radius: 22px;
+  background: linear-gradient(115deg, #eaf7ff 0%, #f1edff 48%, #fff0f7 100%);
+  box-shadow: 0 7px 18px rgba(87, 100, 169, .10), inset 0 1px 0 #fff;
+}
+body.page-prisma .formula-student-boy {
+  display: block;
+  flex: 0 0 clamp(104px, 12vw, 148px);
+  width: clamp(104px, 12vw, 148px);
+  height: clamp(104px, 12vw, 148px);
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 16px;
+}
+body.page-prisma .formula-instruction-bubble {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 16px 19px;
+  border: 2px solid #a9caff;
+  border-radius: 21px;
+  background: linear-gradient(145deg, #fff 0%, #f8fbff 100%);
+  box-shadow: 0 5px 13px rgba(83, 129, 205, .10);
+}
+body.page-prisma .formula-instruction-bubble::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  transform: translateY(-50%) rotate(45deg);
+  border-left: 2px solid #a9caff;
+  border-bottom: 2px solid #a9caff;
+  background: #fff;
+}
+body.page-prisma .formula-instruction-bubble p {
+  position: relative;
+  margin: 0;
+  color: #20366f;
+  font-size: clamp(13px, 1.12vw, 16px);
+  font-weight: 850;
+  line-height: 1.55;
+}
+@media (max-width: 680px) {
+  body.page-prisma .formula-instruction-card {
+    gap: 8px;
+    padding: 9px;
+    border-radius: 18px;
+  }
+  body.page-prisma .formula-student-boy {
+    flex-basis: 88px;
+    width: 88px;
+    height: 104px;
+  }
+  body.page-prisma .formula-instruction-bubble {
+    padding: 12px 13px;
+    border-radius: 16px;
+  }
+  body.page-prisma .formula-instruction-bubble::before {
+    left: -8px;
+    width: 13px;
+    height: 13px;
+  }
+  body.page-prisma .formula-instruction-bubble p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+}
+@media (max-width: 380px) {
+  body.page-prisma .formula-student-boy {
+    flex-basis: 72px;
+    width: 72px;
+    height: 92px;
+  }
+  body.page-prisma .formula-instruction-bubble { padding: 10px; }
+}
+
+
+/* Penanda tombol Sisi: enam warna pastel, mengikuti konsep tombol Sisi Balok.
+   Hanya tombol Sisi pada halaman Prisma yang diberi aksen ini. */
+body.page-prisma .prisma-part-tabs button[data-prisma-part="face"] {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 15px;
+  border-color: #e8ddff;
+  background: linear-gradient(145deg, #fff, #fbf8ff);
+  box-shadow: 0 3px 9px rgba(79, 72, 140, 0.07);
+}
+body.page-prisma .prisma-part-tabs button[data-prisma-part="face"]::after {
+  content: "";
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  bottom: 7px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+    #ff91c8 0 16.66%,
+    #b69af8 16.66% 33.33%,
+    #78c9f5 33.33% 50%,
+    #ffe080 50% 66.66%,
+    #8cdeb9 66.66% 83.33%,
+    #ffad91 83.33% 100%);
+  box-shadow: 0 1px 3px rgba(100, 83, 150, 0.14);
+}
+body.page-prisma .prisma-part-tabs button[data-prisma-part="face"].is-active {
+  border: 2px solid #e78bc5;
+  color: #96366f;
+  background: linear-gradient(145deg, #fff, #fff7fc);
+  box-shadow: 0 5px 12px rgba(219, 111, 177, 0.17);
+}
+body.page-prisma .prisma-part-tabs button[data-prisma-part="face"].is-active::after {
+  left: 13%;
+  right: 13%;
+  bottom: 6px;
+  height: 6px;
+}
+body.page-prisma .prisma-part-tabs button[data-prisma-part="face"]:hover {
+  border-color: #e9a4d0;
+  background: linear-gradient(145deg, #fff, #fff8fc);
+}
+
+/* Identitas warna Prisma: emas dan oranye; struktur dan jarak mengikuti Kubus. */
+body.page-prisma .prisma-step.is-active { background: linear-gradient(105deg,#ffbd45,#f28a27); border-color:#e98a24; box-shadow:0 5px 12px rgba(226,142,39,.25); }
+body.page-prisma .prisma-ribbon-title { }
+body.page-prisma .prisma-check { color:#e9942e; }
+body.page-prisma .prisma-view { --prisma-accent:#f2a12d; }
+body.page-prisma .prisma-selected-kicker { color:#d88920; }
+body.page-prisma .prisma-count-pill { background:#fff1d7; color:#9b5b12; }
+body.page-prisma .prisma-step-nav { background:rgba(255,247,230,.9); }
+
+
+/* Perbaikan integrasi halaman Prisma Segitiga */
+body.page-prisma .kubus-view,
+body.page-prisma .balok-view {
+  display: none !important;
+}
+body.page-prisma .prisma-view {
+  display: block;
+}
+.prisma-back-button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.prisma-build-scene {
+  overflow: hidden;
+}
+.prisma-build-model-viewer {
+  display: block;
+  width: min(100%, 560px);
+  height: min(100%, 390px);
+  min-height: 300px;
+  margin: auto;
+  --poster-color: transparent;
+  background: transparent;
+}
+.prisma-length-heading {
+  margin-top: 14px;
+}
+.prisma-length-input {
+  width: max-content;
+  margin-top: 8px;
+}
+.prisma-length-input input {
+  width: 54px;
+}
+@media (max-width: 560px) {
+  .prisma-build-model-viewer {
+    min-height: 260px;
+  }
+}
+
+/* Animasi lima bidang Prisma Segitiga — mengikuti alur interaksi materi Balok. */
+body.page-prisma #prismaBuildScene { display:grid; place-items:center; perspective:1100px; }
+body.page-prisma .prisma-build-svg { display:block; width:min(100%,690px); height:100%; max-height:100%; overflow:visible; filter:drop-shadow(0 12px 14px rgba(77,83,145,.10)); }
+body.page-prisma .prisma-build-svg[hidden], body.page-prisma .prisma-build-net-viewer[hidden] { display:none !important; }
+body.page-prisma .prisma-svg-object { transform-box:view-box; transform-origin:320px 195px; }
+body.page-prisma .prisma-svg-face { stroke:rgba(255,255,255,.98); stroke-width:5; stroke-linejoin:round; vector-effect:non-scaling-stroke; transition:transform 900ms cubic-bezier(.2,.78,.2,1),opacity 550ms ease,filter 550ms ease; transform-box:fill-box; transform-origin:center; }
+/* Prisma utuh bergerak perlahan agar siswa dapat mengamati beberapa sisinya. */
+body.page-prisma #prismaBuildStage[data-build-state="whole"] .prisma-svg-object { animation:prismaWholeFloat 5.5s ease-in-out infinite; }
+@keyframes prismaWholeFloat { 0%,100%{transform:rotate(-2deg) scale(.98)} 50%{transform:rotate(2deg) scale(1.02)} }
+/* Lima bidang bergerak ke arah berbeda, tetapi tetap terlihat sebagai satu susunan. */
+body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-rect-1 { transform:translate(-46px,-43px) rotate(-7deg); }
+body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-rect-2 { transform:translate(-4px,67px) rotate(6deg); }
+body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-rect-3 { transform:translate(58px,9px) rotate(8deg); }
+body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-tri-front { transform:translate(-102px,27px) rotate(-12deg); }
+body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-tri-back { transform:translate(94px,-53px) rotate(11deg); }
+body.page-prisma #prismaBuildStage[data-build-state="explode"] .prisma-svg-face { filter:drop-shadow(0 9px 8px rgba(66,74,130,.16)); }
+/* Saat disusun kembali, kelima bidang kembali ke koordinat awal dengan transisi. */
+body.page-prisma #prismaBuildStage[data-build-state="rebuild"] .prisma-svg-object { animation:prismaRebuildPulse 900ms ease both; }
+@keyframes prismaRebuildPulse { 0%{transform:scale(.94);opacity:.78} 65%{transform:scale(1.025);opacity:1} 100%{transform:scale(1);opacity:1} }
+body.page-prisma .prisma-build-net-viewer { width:100%; height:100%; min-height:280px; --poster-color:transparent; background:transparent; }
+@media (max-width:700px) {
+  body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-rect-1 { transform:translate(-25px,-28px) rotate(-6deg); }
+  body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-rect-2 { transform:translate(0,42px) rotate(5deg); }
+  body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-rect-3 { transform:translate(34px,4px) rotate(7deg); }
+  body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-tri-front { transform:translate(-58px,18px) rotate(-10deg); }
+  body.page-prisma #prismaBuildStage[data-build-state="explode"] .face-tri-back { transform:translate(57px,-34px) rotate(9deg); }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.page-prisma .prisma-svg-object, body.page-prisma .prisma-svg-face { transition:none !important; animation:none !important; }
+}

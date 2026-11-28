@@ -2690,3 +2690,48 @@ body.page-kubus .formula-instruction-bubble p {
   }
   body.page-kubus .formula-instruction-bubble { padding: 10px; }
 }
+
+
+/* Penanda tombol Sisi: enam warna pastel, mengikuti konsep tombol Sisi Balok.
+   Hanya tombol Sisi pada halaman Kubus yang diberi aksen ini. */
+body.page-kubus .kubus-part-tabs button[data-kubus-part="face"] {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 15px;
+  border-color: #e8ddff;
+  background: linear-gradient(145deg, #fff, #fbf8ff);
+  box-shadow: 0 3px 9px rgba(79, 72, 140, 0.07);
+}
+body.page-kubus .kubus-part-tabs button[data-kubus-part="face"]::after {
+  content: "";
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  bottom: 7px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+    #ff91c8 0 16.66%,
+    #b69af8 16.66% 33.33%,
+    #78c9f5 33.33% 50%,
+    #ffe080 50% 66.66%,
+    #8cdeb9 66.66% 83.33%,
+    #ffad91 83.33% 100%);
+  box-shadow: 0 1px 3px rgba(100, 83, 150, 0.14);
+}
+body.page-kubus .kubus-part-tabs button[data-kubus-part="face"].is-active {
+  border: 2px solid #e78bc5;
+  color: #96366f;
+  background: linear-gradient(145deg, #fff, #fff7fc);
+  box-shadow: 0 5px 12px rgba(219, 111, 177, 0.17);
+}
+body.page-kubus .kubus-part-tabs button[data-kubus-part="face"].is-active::after {
+  left: 13%;
+  right: 13%;
+  bottom: 6px;
+  height: 6px;
+}
+body.page-kubus .kubus-part-tabs button[data-kubus-part="face"]:hover {
+  border-color: #e9a4d0;
+  background: linear-gradient(145deg, #fff, #fff8fc);
+}

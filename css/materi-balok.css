@@ -1,0 +1,677 @@
+/* HALAMAN DETAIL MATERI BALOK — mengikuti kerangka halaman Kubus.
+   Seluruh aturan dibatasi pada body.page-balok agar halaman lain aman. */
+.balok-view {
+  display: none;
+  width: 100%;
+  padding: 0 0 28px;
+  color: #101f5b;
+  animation: kubusPageIn 0.28s ease both;
+}
+body.page-balok .dashboard-view,
+body.page-balok .materi-view,
+body.page-balok .explore-view,
+body.page-balok .video-view,
+body.page-balok .latihan-view,
+body.page-balok .kuis-view,
+body.page-balok .kubus-view {
+  display: none !important;
+}
+body.page-balok .balok-view {
+  display: block !important;
+}
+body.page-balok .page-bg {
+  background: url("../assets/images/materi/background_materi.png") center center / cover no-repeat fixed;
+}
+body.page-balok .page-bg::after { display: none; }
+body.page-balok .main-content { min-width: 0; }
+body.page-balok .kubus-page-shell {
+  width: min(100%, 1500px);
+  margin: 0 auto;
+  padding: 0 clamp(10px, 1.5vw, 22px) 20px;
+}
+
+/* Kartu objek pengamatan Balok — satu caption per gambar. */
+body.page-balok #balokView .balok-object-gallery {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(8px, 1.2vw, 16px);
+  width: 100%;
+  margin: 0 auto 12px;
+}
+body.page-balok #balokView .balok-object-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(8px, 1vw, 13px) clamp(6px, .8vw, 10px) 10px;
+  border: 1px solid rgba(255,255,255,.96);
+  border-radius: 20px;
+  background: linear-gradient(155deg, #e6f6ff 0%, #f5edff 55%, #fff1e6 100%);
+  box-shadow: 0 5px 14px rgba(81, 91, 160, .12), inset 0 1px 0 #fff;
+}
+body.page-balok #balokView .balok-object-card img {
+  display: block;
+  width: 100%;
+  height: clamp(112px, 12vw, 175px);
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 5px 5px rgba(60, 70, 120, .12));
+}
+body.page-balok #balokView .balok-object-card figcaption {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  max-width: 100%;
+  margin-top: 7px;
+  padding: 5px 13px;
+  border: 1px solid #e8e5ff;
+  border-radius: 999px;
+  background: rgba(255,255,255,.96);
+  color: #17245e;
+  box-shadow: 0 3px 7px rgba(72,74,140,.1);
+  font-size: clamp(11px, .95vw, 15px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  body.page-balok #balokView .balok-object-gallery { gap: 7px; }
+  body.page-balok #balokView .balok-object-card { border-radius: 14px; padding: 7px 4px 8px; }
+  body.page-balok #balokView .balok-object-card img { height: clamp(82px, 25vw, 125px); }
+  body.page-balok #balokView .balok-object-card figcaption { padding: 4px 7px; font-size: 10px; white-space: normal; }
+}
+
+
+/* Balok: bentuk 3D berbasis prisma segi empat, bukan kubus. */
+body.page-balok #balokView .kubus-build-object {
+  --balok-w: clamp(150px, 19vw, 220px);
+  --balok-h: calc(var(--balok-w) * .62);
+  --balok-d: calc(var(--balok-w) * .48);
+  --build-size: var(--balok-w);
+  width: var(--balok-w);
+  height: var(--balok-h);
+  margin-top: calc((var(--balok-w) - var(--balok-h)) / 2);
+}
+body.page-balok #balokView .build-face {
+  inset: auto;
+  width: auto;
+  height: auto;
+  border-radius: 9px;
+}
+body.page-balok #balokView .build-front,
+body.page-balok #balokView .build-back {
+  width: var(--balok-w);
+  height: var(--balok-h);
+  left: 0;
+  top: 0;
+}
+body.page-balok #balokView .build-front {
+  transform: translateZ(calc(var(--balok-d) / 2));
+  background: linear-gradient(145deg, #ff9acb, #f36fb0);
+}
+body.page-balok #balokView .build-back {
+  transform: rotateY(180deg) translateZ(calc(var(--balok-d) / 2));
+  background: linear-gradient(145deg, #bba2ff, #9474e8);
+}
+body.page-balok #balokView .build-right,
+body.page-balok #balokView .build-left {
+  width: var(--balok-d);
+  height: var(--balok-h);
+  left: calc((var(--balok-w) - var(--balok-d)) / 2);
+  top: 0;
+}
+body.page-balok #balokView .build-right {
+  transform: rotateY(90deg) translateZ(calc(var(--balok-w) / 2));
+  background: linear-gradient(145deg, #8bdcff, #55b9ed);
+}
+body.page-balok #balokView .build-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--balok-w) / 2));
+  background: linear-gradient(145deg, #91e8ca, #55cba7);
+}
+body.page-balok #balokView .build-top,
+body.page-balok #balokView .build-bottom {
+  width: var(--balok-w);
+  height: var(--balok-d);
+  left: 0;
+  top: calc((var(--balok-h) - var(--balok-d)) / 2);
+}
+body.page-balok #balokView .build-top {
+  transform: rotateX(90deg) translateZ(calc(var(--balok-h) / 2));
+  background: linear-gradient(145deg, #ffe99a, #ffd16b);
+}
+body.page-balok #balokView .build-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--balok-h) / 2));
+  background: linear-gradient(145deg, #c9ddff, #91b9f4);
+}
+
+/* Animasi pembongkaran: tiap bidang bergerak keluar sesuai orientasinya. */
+body.page-balok #balokView .kubus-build-stage[data-build-state="explode"] .build-front {
+  transform: translateZ(calc(var(--balok-d) * 1.8));
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="explode"] .build-back {
+  transform: rotateY(180deg) translateZ(calc(var(--balok-d) * 1.8));
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="explode"] .build-right {
+  transform: rotateY(90deg) translateZ(calc(var(--balok-w) * .95));
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="explode"] .build-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--balok-w) * .95));
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="explode"] .build-top {
+  transform: rotateX(90deg) translateZ(calc(var(--balok-h) * 1.9));
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="explode"] .build-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--balok-h) * 1.9));
+}
+
+/* Jaring-jaring balok: empat sisi tegak berjajar, dua sisi penutup di atas/bawah. */
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .kubus-build-object {
+  transform: rotateX(0deg) rotateY(0deg) scale(.72);
+  margin: 0;
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-front {
+  transform: translate3d(0, 0, 0);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-back {
+  transform: translate3d(0, calc(var(--balok-h) * 1.02), 0);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-right {
+  transform: translate3d(calc(var(--balok-w) * 1.02), 0, 0);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-left {
+  transform: translate3d(calc(var(--balok-w) * -1.02), 0, 0);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-top {
+  transform: translate3d(0, calc(var(--balok-h) * -1.02), 0);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-bottom {
+  transform: translate3d(0, calc(var(--balok-h) * 2.04), 0);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-front,
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-back {
+  width: var(--balok-w);
+  height: var(--balok-h);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-right,
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-left {
+  width: var(--balok-d);
+  height: var(--balok-h);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-top,
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-bottom {
+  width: var(--balok-w);
+  height: var(--balok-d);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-right,
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-left {
+  left: calc((var(--balok-w) - var(--balok-d)) / 2);
+}
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-top,
+body.page-balok #balokView .kubus-build-stage[data-build-state="net"] .build-bottom {
+  top: calc((var(--balok-h) - var(--balok-d)) / 2);
+}
+@media (max-width: 640px) {
+  body.page-balok #balokView .kubus-build-object {
+    --balok-w: min(54vw, 190px);
+  }
+}
+
+/* Navigasi empat tahap: sama dengan Kubus, tanpa bidang gabungan di belakang tombol. */
+body.page-balok .kubus-step-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 0.85vw, 13px);
+  padding: 0;
+  margin: 0 0 clamp(14px, 1.25vw, 19px);
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.page-balok .kubus-step {
+  min-height: 54px;
+  padding: 7px clamp(8px, 0.9vw, 14px);
+  gap: 9px;
+  border: 2px solid color-mix(in srgb, var(--step-accent) 24%, white);
+  border-radius: 999px;
+  background: linear-gradient(145deg, #fff, var(--step-soft));
+  color: #20336f;
+  box-shadow: 0 4px 10px rgba(76,83,150,.10);
+  font-size: clamp(11px, .9vw, 14px);
+  line-height: 1.2;
+  white-space: normal;
+}
+body.page-balok .kubus-step:nth-child(1) { --step-accent:#258fe9; --step-soft:#e2f4ff; }
+body.page-balok .kubus-step:nth-child(2) { --step-accent:#19b978; --step-soft:#e2fff1; }
+body.page-balok .kubus-step:nth-child(3) { --step-accent:#f0a51c; --step-soft:#fff4d9; }
+body.page-balok .kubus-step:nth-child(4) { --step-accent:#e85ba9; --step-soft:#ffe7f4; }
+body.page-balok .kubus-step img {
+  width: clamp(30px, 2.6vw, 38px);
+  height: clamp(30px, 2.6vw, 38px);
+  flex-basis: clamp(30px, 2.6vw, 38px);
+  object-fit: contain;
+}
+body.page-balok .kubus-step.is-active {
+  border-color: #fff;
+  color: #fff;
+  background: linear-gradient(110deg, var(--step-accent), color-mix(in srgb, var(--step-accent) 72%, #8055f5));
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--step-accent) 25%, white), 0 8px 16px color-mix(in srgb, var(--step-accent) 28%, transparent);
+}
+body.page-balok .kubus-step:not(.is-active) .kubus-sigma { color: var(--step-accent); }
+body.page-balok .kubus-step:focus-visible { outline: 3px solid #58b8ff; outline-offset: 3px; }
+@media (max-width: 760px) {
+  body.page-balok .kubus-step-nav { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+}
+
+/* Empat tahap tampil sebagai halaman terpisah; formula tidak menyatu dengan shell. */
+body.page-balok .kubus-formula-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(330px, .98fr);
+  align-items: start;
+  gap: clamp(18px, 1.8vw, 26px);
+  width: 100%;
+  padding: 8px 0 22px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.page-balok .formula-learning-column,
+body.page-balok .formula-result-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 16px;
+}
+body.page-balok .formula-model-card,
+body.page-balok .formula-side-control,
+body.page-balok .formula-choice-card,
+body.page-balok .formula-example-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(211,220,255,.95);
+  border-radius: 22px;
+  box-shadow: 0 7px 20px rgba(77,91,160,.10);
+}
+body.page-balok .formula-model-card { background:linear-gradient(145deg,#fff,#eef8ff 58%,#f4efff); }
+body.page-balok .formula-side-control { background:linear-gradient(145deg,#fffaf0,#fff2f8 55%,#eff8ff); }
+body.page-balok .formula-choice-card { background:linear-gradient(145deg,#fff,#f5efff 60%,#eef8ff); }
+body.page-balok .formula-example-card { background:linear-gradient(145deg,#fff,#fff6e8 55%,#fff0f7); }
+body.page-balok #balokFormulaModel {
+  display:block;
+  width:100%;
+  height:clamp(230px,30vw,350px);
+  margin-top:10px;
+  border-radius:17px;
+  background:radial-gradient(ellipse at 50% 58%,#fff 0%,#edf5ff 55%,#e7eaff 100%);
+  --poster-color:transparent;
+}
+
+/* Kartu instruksi ringkas: avatar cowok di kiri, balon perintah di kanan. */
+body.page-balok .formula-instruction-card {
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,1.4vw,20px);
+  min-width:0;
+  padding:12px 16px;
+  border:1px solid rgba(255,255,255,.96);
+  border-radius:22px;
+  background:linear-gradient(115deg,#eaf7ff 0%,#f1edff 48%,#fff0f7 100%);
+  box-shadow:0 7px 18px rgba(87,100,169,.10), inset 0 1px 0 #fff;
+}
+body.page-balok .formula-student-boy {
+  display:block;
+  flex:0 0 clamp(104px,12vw,148px);
+  width:clamp(104px,12vw,148px);
+  height:clamp(104px,12vw,148px);
+  object-fit:contain;
+  object-position:center bottom;
+  border-radius:16px;
+}
+body.page-balok .formula-instruction-bubble {
+  position:relative;
+  flex:1 1 auto;
+  min-width:0;
+  padding:16px 19px;
+  border:2px solid #a9caff;
+  border-radius:21px;
+  background:linear-gradient(145deg,#fff,#f8fbff);
+  box-shadow:0 5px 13px rgba(83,129,205,.10);
+}
+body.page-balok .formula-instruction-bubble::before {
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:50%;
+  width:17px;
+  height:17px;
+  transform:translateY(-50%) rotate(45deg);
+  border-left:2px solid #a9caff;
+  border-bottom:2px solid #a9caff;
+  background:#fff;
+}
+body.page-balok .formula-instruction-bubble p {
+  position:relative;
+  margin:0;
+  color:#20366f;
+  font-size:clamp(13px,1.12vw,16px);
+  font-weight:850;
+  line-height:1.55;
+}
+body.page-balok .formula-model-caption { color:#43558d; }
+
+@media (max-width:1050px) {
+  body.page-balok .kubus-formula-layout { grid-template-columns:minmax(0,1fr); gap:16px; }
+  body.page-balok .formula-result-column { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; }
+}
+@media (max-width:760px) {
+  body.page-balok .kubus-step-nav { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+}
+@media (max-width:680px) {
+  body.page-balok .kubus-formula-layout { gap:12px; padding-top:4px; }
+  body.page-balok .formula-learning-column,
+  body.page-balok .formula-result-column { display:flex; gap:12px; }
+  body.page-balok .formula-model-card,
+  body.page-balok .formula-side-control,
+  body.page-balok .formula-choice-card,
+  body.page-balok .formula-example-card { padding:13px; border-radius:18px; }
+  body.page-balok #balokFormulaModel { height:245px; }
+  body.page-balok .formula-instruction-card { gap:8px; padding:9px; border-radius:18px; }
+  body.page-balok .formula-student-boy { flex-basis:88px; width:88px; height:104px; }
+  body.page-balok .formula-instruction-bubble { padding:12px 13px; border-radius:16px; }
+  body.page-balok .formula-instruction-bubble::before { left:-8px; width:13px; height:13px; }
+  body.page-balok .formula-instruction-bubble p { font-size:12px; line-height:1.45; }
+}
+@media (max-width:380px) {
+  body.page-balok .formula-student-boy { flex-basis:72px; width:72px; height:92px; }
+  body.page-balok .formula-instruction-bubble { padding:10px; }
+}
+
+/* Pastikan atribut hidden tetap dihormati pada keempat tahap Balok. */
+body.page-balok .kubus-observe-layout[hidden],
+body.page-balok .kubus-shape-layout[hidden],
+body.page-balok .kubus-build-layout[hidden],
+body.page-balok .kubus-formula-layout[hidden] { display: none !important; }
+
+
+/* Penyelarasan akhir: navigasi Balok memakai pola visual yang sama dengan Kubus. */
+body.page-balok .kubus-step-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  padding: 9px 11px;
+  margin: 0 0 14px;
+  border: 2px solid rgba(255,255,255,.95) !important;
+  border-radius: 28px;
+  background: rgba(245,242,255,.88) !important;
+  box-shadow: 0 7px 20px rgba(75,83,160,.16), inset 0 2px 5px rgba(255,255,255,.95) !important;
+}
+body.page-balok .kubus-step {
+  min-height: 49px;
+  padding: 6px 9px;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 999px;
+  background: linear-gradient(145deg,#fff,#f2efff);
+  color: #17245f;
+  box-shadow: 0 3px 8px rgba(83,83,160,.08);
+  font: 900 clamp(10px,.95vw,14px) Nunito,Arial,sans-serif;
+  white-space: nowrap;
+}
+body.page-balok .kubus-step img {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  object-fit: contain;
+}
+body.page-balok .kubus-step.is-active {
+  color: #fff;
+  border-color: #8150ff;
+  background: linear-gradient(105deg,#9a58ff,#6030e9);
+  box-shadow: 0 5px 12px rgba(112,62,226,.28);
+}
+body.page-balok .kubus-step:not(.is-active) .kubus-sigma { color:#7544f4; }
+body.page-balok .kubus-step.is-active .kubus-sigma { color:#fff; }
+
+/* Tahapan Balok benar-benar berganti halaman; tidak boleh saling menumpuk. */
+body.page-balok #balokView .kubus-observe-layout[hidden],
+body.page-balok #balokView .kubus-shape-layout[hidden],
+body.page-balok #balokView .kubus-build-layout[hidden],
+body.page-balok #balokView .kubus-formula-layout[hidden] {
+  display: none !important;
+}
+body.page-balok #balokView .kubus-observe-layout:not([hidden]) { display:grid; }
+body.page-balok #balokView .kubus-shape-layout:not([hidden]) { display:grid; }
+body.page-balok #balokView .kubus-build-layout:not([hidden]) { display:grid; }
+body.page-balok #balokView .kubus-formula-layout:not([hidden]) { display:grid; }
+
+/* Formula: dua kolom seimbang pada desktop, satu kolom pada layar kecil. */
+body.page-balok #balokFormulaView {
+  grid-template-columns: minmax(0,1.02fr) minmax(0,.98fr);
+  align-items: start;
+  gap: clamp(14px,1.5vw,22px);
+}
+body.page-balok #balokFormulaView .formula-result-column {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  min-width:0;
+}
+body.page-balok #balokFormulaView .formula-equation-card {
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+body.page-balok #balokFormulaView .formula-equation {
+  font-size:clamp(24px,2.3vw,34px);
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
+body.page-balok #balokFormulaView .formula-calculation {
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+body.page-balok #balokFormulaView .balok-dimension-row {
+  display:grid;
+  grid-template-columns:minmax(74px,.72fr) minmax(70px,1.5fr) minmax(58px,.55fr) auto;
+  align-items:center;
+  gap:9px;
+}
+body.page-balok #balokFormulaView .balok-dimension-row input[type="range"] {
+  width:100%;
+  min-width:0;
+  accent-color:#8750ed;
+}
+body.page-balok #balokFormulaView .balok-dimension-row input[type="number"] {
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+}
+@media (max-width:760px) {
+  body.page-balok .kubus-step-nav { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  body.page-balok #balokFormulaView { grid-template-columns:minmax(0,1fr); }
+  body.page-balok #balokFormulaView .balok-dimension-row {
+    grid-template-columns:74px minmax(65px,1fr) 58px auto;
+    gap:6px;
+  }
+}
+@media (max-width:390px) {
+  body.page-balok #balokFormulaView .balok-dimension-row {
+    grid-template-columns:1fr 1fr;
+  }
+  body.page-balok #balokFormulaView .balok-dimension-row label { grid-column:1; }
+  body.page-balok #balokFormulaView .balok-dimension-row input[type="range"] { grid-column:2; }
+  body.page-balok #balokFormulaView .balok-dimension-row input[type="number"] { grid-column:1; }
+}
+
+/* Revisi khusus Balok: hilangkan bidang latar pada tombol Sisi, Rusuk,
+   dan Titik Sudut. Ikon tetap berwarna sebagai penanda tiap unsur.
+   Aturan dibatasi pada halaman Balok; tampilan Kubus tidak berubah. */
+body.page-balok .kubus-part-tabs button,
+body.page-balok .kubus-part-tabs button:hover,
+body.page-balok .kubus-part-tabs button.is-active,
+body.page-balok .kubus-part-tabs button.is-active[data-kubus-part="face"],
+body.page-balok .kubus-part-tabs button.is-active[data-kubus-part="edge"],
+body.page-balok .kubus-part-tabs button.is-active[data-kubus-part="vertex"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+body.page-balok .kubus-part-tabs button.is-active[data-kubus-part="face"] { color: #9d205f; }
+body.page-balok .kubus-part-tabs button.is-active[data-kubus-part="edge"] { color: #075c9a; }
+body.page-balok .kubus-part-tabs button.is-active[data-kubus-part="vertex"] { color: #8a5100; }
+
+/* Navigasi tahap Balok: empat tombol pastel terpisah, mengikuti gaya navigasi Kubus. */
+body.page-balok #balokView .kubus-step-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 15px);
+  padding: 0;
+  margin: 0 0 clamp(14px, 1.25vw, 19px);
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.page-balok #balokView .kubus-step-nav .kubus-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 0;
+  min-height: 62px;
+  padding: 8px clamp(8px, 1vw, 15px);
+  border: 2px solid rgba(255,255,255,.98) !important;
+  border-radius: 999px !important;
+  color: #17245f !important;
+  font: 900 clamp(11px, .95vw, 15px) Nunito, Arial, sans-serif;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: var(--step-bg) !important;
+  box-shadow: 0 4px 10px rgba(75, 91, 150, .13), inset 0 1px 0 rgba(255,255,255,.95) !important;
+  transform: none;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+body.page-balok #balokView .kubus-step-nav .kubus-step:nth-child(1) {
+  --step-bg: linear-gradient(110deg, #e4f4ff, #d8edff);
+  --step-active: linear-gradient(110deg, #3298ed, #3975e9);
+  --step-border: #b9ddff;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step:nth-child(2) {
+  --step-bg: linear-gradient(110deg, #effff8, #ddf9ed);
+  --step-active: linear-gradient(110deg, #27c58c, #159e91);
+  --step-border: #c5f0dd;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step:nth-child(3) {
+  --step-bg: linear-gradient(110deg, #fffaf0, #fff0d2);
+  --step-active: linear-gradient(110deg, #ffbd42, #f39a18);
+  --step-border: #ffe2a8;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step:nth-child(4) {
+  --step-bg: linear-gradient(110deg, #fff5fb, #ffe6f2);
+  --step-active: linear-gradient(110deg, #f47dbb, #df5ba6);
+  --step-border: #f8c9e2;
+}
+
+body.page-balok #balokView .kubus-step-nav .kubus-step:not(.is-active) {
+  border-color: var(--step-border) !important;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step:hover {
+  filter: saturate(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 13px rgba(75, 91, 150, .16), inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step.is-active {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.98) !important;
+  background: var(--step-active) !important;
+  box-shadow: 0 5px 0 rgba(100, 91, 160, .12), 0 8px 15px rgba(75, 91, 150, .20) !important;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step img {
+  width: clamp(30px, 2.6vw, 38px);
+  height: clamp(30px, 2.6vw, 38px);
+  flex: 0 0 clamp(30px, 2.6vw, 38px);
+  object-fit: contain;
+}
+body.page-balok #balokView .kubus-step-nav .kubus-step:focus-visible {
+  outline: 3px solid #7b5bf2;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  body.page-balok #balokView .kubus-step-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  body.page-balok #balokView .kubus-step-nav .kubus-step {
+    min-height: 54px;
+    white-space: normal;
+  }
+}
+/* Model 3D Balok — samakan ukuran dan pemusatan dengan model Kubus.
+   CSS ini khusus halaman Balok dan tidak memengaruhi halaman lain. */
+body.page-balok #balokView #balokInteractiveModel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  background: transparent;
+  --poster-color: transparent;
+  cursor: grab;
+  touch-action: pan-y;
+}
+body.page-balok #balokView #balokInteractiveModel:active {
+  cursor: grabbing;
+}
+@media (max-width: 760px) {
+  body.page-balok #balokView #balokInteractiveModel {
+    min-height: 340px;
+  }
+}
+
+/* Tombol Sisi Balok: satu tombol dengan aksen enam warna pastel.
+   Hanya tombol data-kubus-part="face" pada halaman Balok yang ditata di sini. */
+body.page-balok #balokView .kubus-part-tabs button[data-kubus-part="face"],
+body.page-balok #balokView .kubus-part-tabs button[data-kubus-part="face"]:hover,
+body.page-balok #balokView .kubus-part-tabs button[data-kubus-part="face"].is-active {
+  position: relative;
+  overflow: hidden;
+  color: #783d70 !important;
+  background: #fff !important;
+  border: 1px solid #eadcf3 !important;
+  border-radius: 14px;
+  box-shadow: 0 3px 9px rgba(95, 79, 145, .10) !important;
+}
+
+body.page-balok #balokView .kubus-part-tabs button[data-kubus-part="face"]::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  bottom: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #ff91c8 0% 16.66%,
+    #a98bfa 16.66% 33.33%,
+    #70c7f5 33.33% 50%,
+    #ffd16e 50% 66.66%,
+    #83ddb5 66.66% 83.33%,
+    #ff9b83 83.33% 100%
+  );
+}
+
+body.page-balok #balokView .kubus-part-tabs button[data-kubus-part="face"].is-active {
+  border-color: #d9c5ed !important;
+  box-shadow: 0 4px 11px rgba(135, 91, 170, .16) !important;
+}

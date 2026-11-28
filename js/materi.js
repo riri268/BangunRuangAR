@@ -7,6 +7,7 @@
   function filterMateri() {
     if (!searchInput || !document.body.classList.contains("page-materi"))
       return;
+
     const query = searchInput.value.trim().toLocaleLowerCase("id");
     let shown = 0;
 
@@ -25,6 +26,18 @@
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       const topic = card.dataset.materiTopic;
+
+      // Prisma dibuka melalui halaman belajar interaktif khusus.
+      // Fungsi tersedia setelah js/materi-prisma.js dimuat.
+      if (topic === "Prisma") {
+        if (typeof window.openPrismaMaterial === "function") {
+          window.openPrismaMaterial();
+        } else if (typeof window.showToast === "function") {
+          window.showToast("Halaman Prisma belum siap. Muat ulang halaman, ya!");
+        }
+        return;
+      }
+
       if (typeof window.showToast === "function") {
         window.showToast(`Materi ${topic} dipilih. Selamat belajar!`);
       }

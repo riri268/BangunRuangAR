@@ -29,6 +29,8 @@ const pageElements = {
 // Kubus adalah subhalaman dari menu Materi. Elemen ini harus ikut
 // disembunyikan ketika siswa berpindah ke menu sidebar lain.
 const materiDetailView = document.getElementById("kubusView");
+const balokDetailView = document.getElementById("balokView");
+const prismaDetailView = document.getElementById("prismaView");
 
 // Menu Games dan Progres Belajar belum memiliki section khusus di HTML.
 // Buat halaman informasi ringan agar tombol tetap memberikan respons.
@@ -86,11 +88,13 @@ if (!document.getElementById("appPageRouterStyles")) {
 const allPageViews = [
   ...Object.values(pageElements),
   materiDetailView,
+  balokDetailView,
+  prismaDetailView,
 ].filter(Boolean);
 const bodyPageClasses = [
   "page-materi", "page-kubus", "page-kuis", "page-explore",
   "page-explorasi3d", "page-video", "page-latihan",
-  "page-latihan-soal", "page-games", "page-progress",
+  "page-latihan-soal", "page-games", "page-progress", "page-balok", "page-prisma",
 ];
 
 function navigateToPage(pageName) {
@@ -110,9 +114,11 @@ function navigateToPage(pageName) {
 
   // Saat siswa menekan Materi dari subhalaman Kubus, tampilkan kembali
   // daftar seluruh bangun ruang, bukan halaman Kubus yang tertinggal.
-  if (pageName === "Materi" && materiDetailView) {
-    materiDetailView.classList.add("app-page-hidden");
-    materiDetailView.setAttribute("aria-hidden", "true");
+  if (pageName === "Materi") {
+    [materiDetailView, balokDetailView, prismaDetailView].filter(Boolean).forEach((view) => {
+      view.classList.add("app-page-hidden");
+      view.setAttribute("aria-hidden", "true");
+    });
   }
 
   // Pertahankan class body yang digunakan oleh stylesheet halaman tertentu.
@@ -153,6 +159,33 @@ function navigateToPage(pageName) {
   };
   showToast(messages[pageName] || `Halaman ${pageName} dibuka.`);
 }
+
+
+// Navigasi subhalaman materi memakai mekanisme yang sama dengan router utama.
+window.openMaterialDetail = function (viewId, bodyClass) {
+  const view = document.getElementById(viewId);
+  if (!view) {
+    showToast("Halaman materi belum tersedia.");
+    return;
+  }
+  allPageViews.forEach((item) => {
+    item.classList.add("app-page-hidden");
+    item.setAttribute("aria-hidden", "true");
+  });
+  view.classList.remove("app-page-hidden");
+  view.removeAttribute("aria-hidden");
+  document.body.classList.remove(...bodyPageClasses);
+  if (bodyClass) document.body.classList.add(bodyClass);
+  document.querySelectorAll(".nav-link").forEach((item) => {
+    const active = item.dataset.page === "Materi";
+    item.classList.toggle("active", active);
+    item.setAttribute("aria-current", active ? "page" : "false");
+  });
+  document.getElementById("sidebar")?.classList.remove("open");
+  document.body.classList.remove("sidebar-open");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+window.navigateToPage = navigateToPage;
 
 // Delegasi event: berlaku untuk sidebar, logo, tombol pintasan,
 // tombol kembali, serta tombol yang dibuat secara dinamis.
